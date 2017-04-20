@@ -23,8 +23,8 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 
-        String userid = ((ServletRequest) response).getParameter("username");
-        String pass = ((ServletRequest) response).getParameter("password");
+        String userid = (String) request.getParameter("username");
+        String pass = (String) request.getParameter("password");
       
         out.println("Username: " + userid);  
         out.println("<br/>Password: " + pass);        
