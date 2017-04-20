@@ -16,7 +16,7 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	
 	}
 
 
@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
         String pass = (String) request.getParameter("password");
       
         out.println("Username: " + userid);  
-        out.println("<br/>Password: " + pass);        
+        out.println("Password: " + pass);        
                 
 	}
 
