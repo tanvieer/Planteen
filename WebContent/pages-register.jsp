@@ -35,6 +35,12 @@
 						<form action="RegistrationServlet" method="POST">
 							<h1>Register</h1>
 							<p class="text-muted">Create your account</p>
+							
+							<div class="input-group mb-3">
+								<span class="input-group-addon"><i class="icon-user"></i>
+								</span> <input type="text" class="form-control" placeholder="Full Name" name="name">
+							</div>
+							
 							<div class="input-group mb-3">
 								<span class="input-group-addon"><i class="icon-user"></i>
 								</span> <input type="text" class="form-control" placeholder="Username" name="username">
