@@ -20,4 +20,16 @@ UserRepository repository;
     	return repository.getAll();
     }
     
+    public UserInfo getUserByUsername(String uname){
+    	return repository.getUserByUsername(uname);
+    }
+    
+    public boolean editUserByUsername(UserInfo userinfo){
+    	return repository.editUserByUsername(userinfo);
+    }
+    
+    public boolean deleteUserByUsername(String uname){
+    	return repository.deleteUserByUsername(uname);
+    }
+    
 }

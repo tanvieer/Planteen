@@ -34,15 +34,32 @@ public class LoginServlet extends HttpServlet {
         
         out.println("start: "); 
         
-        ArrayList<UserInfo> users = new UserInfoController().getAll();
+        ArrayList<UserInfo> users = new UserInfoController().getAll();  // all user
         
         for(UserInfo u: users){
         	  out.println("Name: " + u.getName()); 
         }
         
         
-
-      	  out.println("ses: ");  
+        UserInfo user = new UserInfoController().getUserByUsername(userid);  // specific user
+        
+        
+        if(user != null)
+      	out.println("ses: " + user.getPassword() + "  "+ user.getName());  
+      	
+      	
+      	
+      	
+      	UserInfo user2 = new UserInfo("Mohammad Tanvir Islam",userid,"bolbona","vaag","admin");    // Update
+      	
+      	
+      	out.println("UPDATE : " + new UserInfoController().editUserByUsername(user2) ); 
+      	
+      	
+    	//out.println("Delete : " + new UserInfoController().deleteUserByUsername(userid));   // delete
+      	
+      	
+      	
 	}
 
 }
