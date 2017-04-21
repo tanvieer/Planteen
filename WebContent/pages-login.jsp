@@ -18,7 +18,7 @@
     <meta name="keyword" content="CoreUI Bootstrap 4 Admin Template">
     <!-- <link rel="shortcut icon" href="assets/ico/favicon.png"> -->
 
-    <title>CoreUI Bootstrap 4 Admin Template</title>
+    <title>User Login</title>
 
     <!-- Icons -->
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -26,6 +26,14 @@
 
     <!-- Main styles for this application -->
     <link href="css/style.css" rel="stylesheet">
+    
+    <script type="text/javascript">
+    
+    function goTo(){
+    	document.location = "pages-register.jsp";
+    }
+    
+    </script>
 
 </head>
 
@@ -44,7 +52,7 @@
                                 <div class="input-group mb-3">
                                     <span class="input-group-addon"><i class="icon-user"></i>
                                     </span>
-                                    <input type="text" class="form-control" placeholder="Username" name= 'username'>
+                                    <input type="text" class="form-control" placeholder="Username" name='username'  id='username'>
                                 </div>
                                 <div class="input-group mb-4">
                                     <span class="input-group-addon"><i class="icon-lock"></i>
@@ -60,6 +68,8 @@
                                     </div>
                                 </div>
                             </form>
+                            
+                     
 
                         </div>
                     </div>
@@ -68,7 +78,7 @@
                             <div>
                                 <h2>Sign up</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <button type="button" class="btn btn-primary active mt-3">Register Now!</button>
+                                <button type="button" class="btn btn-primary active mt-3" onClick = "goTo()">Register Now!</button>
                             </div>
                         </div>
                     </div>
@@ -81,6 +91,7 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/tether/dist/js/tether.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="AJAX/checkExistingUser.js"></script>
 
 
 
