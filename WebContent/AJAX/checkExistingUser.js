@@ -15,14 +15,17 @@ function checkByEmail() {
 				document.getElementById("existTagEmail").innerHTML = check;
 				return false;
 			} else{
-				document.getElementById("existTagUsername").innerHTML = "ok";
+				document.getElementById("existTagUsername").innerHTML = "";
 				return true;
 			}
 		}
 	};
 
-	xmlhttp.open("GET", url, true);
-	xmlhttp.send();
+	if(email.length>1){
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+	}
+	
 
 }
 
@@ -45,13 +48,15 @@ function checkByUsername() {
 				document.getElementById("existTagUsername").innerHTML = check;
 				return false;
 			} else{
-				document.getElementById("existTagUsername").innerHTML = "ok";
+				document.getElementById("existTagUsername").innerHTML = "";
 				return true;
 			}
 				
 		}
 	};
 
-	xmlhttp.open("GET", url, true);
-	xmlhttp.send();
+	if(username.length>1){
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+	}
 }
