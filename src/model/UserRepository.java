@@ -1,12 +1,9 @@
 package model;
 
-import java.sql.*;
+import java.util.ArrayList;
 
-import org.apache.jasper.tagplugins.jstl.core.If;
-
-import com.sun.crypto.provider.RSACipher;
-import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
-import com.sun.corba.se.pept.transport.Connection;
+import com.mysql.jdbc.ResultSet;
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 import DataAccessLayer.MySqlDataAccess;
 import entity.UserInfo;
@@ -23,7 +20,7 @@ public class UserRepository {
          
             String query = "INSERT INTO userinfo(name,username,email,password,type) VALUES('"+userinfo.getName()+"','"+userinfo.getUsername()+"','"+userinfo.getEmail()+"','"+userinfo.getPassword()+"','"+userinfo.getUserType()+"')";
             
-            System.out.println(query);
+           // System.out.println(query);
             int result = da.executeQuery(query);
             
 
@@ -37,8 +34,39 @@ public class UserRepository {
             return false;
         }
         
-        
-        
+    }
+    
+    
+    public ArrayList<UserInfo> getAll() {
+        ArrayList<UserInfo> userlist = new ArrayList<UserInfo>();
+        try {
+           
+            String query = "SELECT * FROM user";
+            
+            MySqlDataAccess da = new MySqlDataAccess ();
+            
+            java.sql.ResultSet rs = da.getData(query);
+            
+
+            while (rs.next()) {
+                
+
+                int id = rs.getInt("id");
+                String username = rs.getString("username");
+                String password = rs.getString("password");
+                String name =  rs.getString("name");
+                String type = rs.getString("type");
+                String email = rs.getString("email");
+                UserInfo userinfo = new UserInfo(id,name,username,email,password,type);
+                userlist.add(userinfo);
+             
+            }
+          
+           
+        } catch (Exception e) {
+            System.out.println("exception found at UserRepository.java");
+        }
+        return userlist;
     }
 
 

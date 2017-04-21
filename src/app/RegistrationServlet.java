@@ -43,7 +43,7 @@ public class RegistrationServlet extends HttpServlet {
         
         
         UserInfo user = new UserInfo(name,username,email,password,type);  
-        System.out.println(new UserInfoController().add(user));
+        System.out.println(new UserInfoController().addUser(user));
         
 	}
 
