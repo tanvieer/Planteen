@@ -2,14 +2,14 @@ package entity;
 
 public class UserInfo {
 	private int id;
-	private String userId;
+	private String username;
 	private String password;
 	private String name;
 	private String userType;
 	private String email;
 
-	public UserInfo(String userId,String name, String password, String email, String userType) {
-		this.userId = userId;
+	public UserInfo(String name, String userId, String email,  String password, String userType) {
+		this.username = userId;
 		this.password = password;
 		this.name = name;
 		this.userType = userType;
@@ -17,10 +17,9 @@ public class UserInfo {
 
 	}
 
-	public UserInfo(int id, String name, String userId, String password, String email,
-			String userType) {
+	public UserInfo(int id, String name, String userId, String email,  String password, String userType) {
 		this.id = id;
-		this.userId = userId;
+		this.username = userId;
 		this.password = password;
 		this.name = name;
 		this.userType = userType;
@@ -31,9 +30,18 @@ public class UserInfo {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	
+	public String getUsername() {
+		return username;
+	}
 
-	public void setUserid(String uid) {
-		this.userId = uid;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public void setName(String name) {
@@ -47,14 +55,8 @@ public class UserInfo {
 	public void setUserType(String utype) {
 		this.userType = utype;
 	}
-
-	public int getId() {
-		return id;
-	}
-
-	public String getUserId() {
-		return userId;
-	}
+	
+	
 
 	public String getName() {
 		return name;
@@ -69,9 +71,6 @@ public class UserInfo {
 		this.email = email;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
 
 	public String getPassword() {
 		return password;
