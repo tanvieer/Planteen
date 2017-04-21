@@ -11,7 +11,6 @@ UserRepository repository;
 	public UserInfoController(){
 		repository = new UserRepository();
 	}
-	
     public boolean addUser(UserInfo user){
         return repository.addUser(user);
     }
@@ -30,6 +29,10 @@ UserRepository repository;
     
     public boolean deleteUserByUsername(String uname){
     	return repository.deleteUserByUsername(uname);
+    }
+    
+    public UserInfo getUserByEmail(String mail){
+    	return repository.getUserByEmail(mail);
     }
     
 }
