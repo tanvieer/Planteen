@@ -38,7 +38,7 @@
 							
 							<div class="input-group mb-3">
 								<span class="input-group-addon"><i class="icon-user"></i>
-								</span> <input type="text" class="form-control" placeholder="Full Name" name="name">
+								</span> <input type="text" class="form-control" placeholder="Full Name" name="name" id="name">
 							</div>
 							
 							<div class="input-group mb-3">
@@ -77,12 +77,12 @@
 					<div class="card-footer p-4">
 						<div class="row">
 							<div class="col-6">
-								<button class="btn btn-block btn-facebook" type="button">
-									<span>facebook</span>
+								<button class="btn btn-block btn-facebook" type="button" onClick="loginFB()">
+									<span id="status">facebook</span>
 								</button>
 							</div>
 							<div class="col-6">
-								<button class="btn btn-block btn-twitter" type="button">
+								<button class="btn btn-block btn-twitter" type="button" onClick ="getInfo()">
 									<span>twitter</span>
 								</button>
 							</div>
@@ -98,6 +98,7 @@
 	<script src="bower_components/tether/dist/js/tether.min.js"></script>
 	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="AJAX/checkExistingUser.js"></script>
+	<script src="LoginWithSocialMedia/facebookapi.js"></script>
 
 
 </body>
