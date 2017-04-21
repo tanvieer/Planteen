@@ -1,10 +1,4 @@
-<!--
- * CoreUI - Open Source Bootstrap Admin Template
- * @version v1.0.0-alpha.4
- * @link http://coreui.io
- * Copyright (c) 2017 creativeLabs Łukasz Holeczek
- * @license MIT
- -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,6 +35,12 @@
 						<form action="RegistrationServlet" method="POST">
 							<h1>Register</h1>
 							<p class="text-muted">Create your account</p>
+							
+							<div class="input-group mb-3">
+								<span class="input-group-addon"><i class="icon-user"></i>
+								</span> <input type="text" class="form-control" placeholder="Full Name" name="name">
+							</div>
+							
 							<div class="input-group mb-3">
 								<span class="input-group-addon"><i class="icon-user"></i>
 								</span> <input type="text" class="form-control" placeholder="Username" name="username">
