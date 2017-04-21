@@ -1,4 +1,6 @@
 package app;
+
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -7,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import controller.UserInfoController;
+import entity.UserInfo;
 
 @WebServlet("/RegistrationServlet")
 public class RegistrationServlet extends HttpServlet {
@@ -22,17 +27,24 @@ public class RegistrationServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
+		
 		String name = (String) request.getParameter("name");
         String username = (String) request.getParameter("username");
         String email = (String) request.getParameter("email");
         String password = (String) request.getParameter("password");
         String cpassword = (String) request.getParameter("cpassword");
         
-        out.println("Name: " + name); 
+        String type = "user";
+        
         out.println("Username: " + username);  
         out.println("Email: " + email); 
         out.println("Password: " + password);  
         out.println("Confirm PassWord: " + cpassword); 
+        
+        
+        UserInfo user = new UserInfo(name,username,email,password,type);  
+        System.out.println(new UserInfoController().add(user));
+        
 	}
 
 }
