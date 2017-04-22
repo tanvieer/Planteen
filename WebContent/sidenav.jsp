@@ -56,6 +56,8 @@
                         <a class="nav-link" href="charts.jsp"><i class="icon-pie-chart"></i> Charts</a>
                     </li>
                     <li class="divider"></li>
+                    
+                    
                     <li class="nav-title">
                         Extras
                     </li>
