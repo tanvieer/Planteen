@@ -3,7 +3,7 @@
 		<li class="nav-item"><a class="nav-link active" data-toggle="tab"
 			href="#cartitems" role="tab"><i class="icon-list"></i></a></li>
 		<li class="nav-item"><a class="nav-link" data-toggle="tab"
-			href="#delivery" role="tab"><i class="fa fa-truck"></i></a></li>
+			href="#delivery" role="tab"><i class="fa fa-motorcycle"></i></a></li>
 	</ul>
 
 	<!-- Tab panes -->
@@ -40,7 +40,7 @@
 					</div>
 				</div>
 			</c:forEach>
-			<div class="callout callout-warning m-0 py-3">
+			<div class="callout callout-primary m-0 py-3">
 				<button type="button" class="btn btn-block btn-primary">Checkout</button>
 			</div>
 			
@@ -75,7 +75,7 @@
 
 			<hr class="transparent mx-3 my-0">
 
-			<div class="callout callout-warning m-0 py-3">
+			<div class="m-0 py-3">
 				<button type="button" class="btn btn-block btn-primary">Checkout</button>
 			</div>
 		</div>

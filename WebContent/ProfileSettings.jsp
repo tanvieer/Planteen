@@ -147,7 +147,7 @@
 								<td>50004</td>
 								<td>2.2.2016</td>
 								<td>2.3.2015</td>
-								<td><span class="badge badge-success">Active</span></td>
+								<td><span class="badge badge-primary">Active</span></td>
 							</tr>
 						</tbody>
 					</table>
@@ -355,5 +355,5 @@
 	</div>
 </div>
 
-
+<%@include file="asidenav.jsp"%>
 <%@include file="profileFooter.jsp"%>

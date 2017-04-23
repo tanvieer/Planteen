@@ -2,55 +2,19 @@
 <%@include file="sidenav.jsp"%>
 
 <!-- Main content -->
-<main class="main"> <!-- Breadcrumb -->
-<ol class="breadcrumb">
-	<li class="breadcrumb-item">Home</li>
-	<li class="breadcrumb-item"><a href="#">Admin</a></li>
-	<li class="breadcrumb-item active">Dashboard</li>
-	<li>
-
-
-		<form action="" method="post" class="form-2orizontal ">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="input-group">
-						<div class="input-group-btn">
-
-							<select class="form-control">
-								<option class="dropdown-item ">All Categories</option>
-
-								<c:forEach varStatus="loop" begin="1" end="50" step="1">
-									<option class="dropdown-item ">Category ${loop.index}</option>
-								</c:forEach>
-							</select>
-
-						</div>
-						<input type="text" id="input3-group3" name="input3-group3"
-							class="form-control" placeholder="..">
-						<div class="input-group-btn">
-							<button type="submit" class="btn btn-primary">
-								<i class="fa fa-search"></i>
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</form>
-
-	</li>
-</ol>
-
+<main class="main" style="background:white"> <!-- Breadcrumb -->
+<%@include file="productSearch.jsp"%>
 
 
 
 <div class="container-fluid">
 	<div class="row animated fadeIn">
 		<c:forEach varStatus="loop" begin="1" end="50" step="1">
-			<div class="col-sm-4 col-md-4 d-flex">
-				<div class="card card-accent-primary">
+			<div class="col-sm-4 col-md-4">
+				<div class="card card-accent-default align-middle">
 					<h4 class="card-header card-title">Product ${loop.index}</h4>
 
-					<img class="card-img-top img-responsive" src="./img/logo1.png"
+					<img class="card-img-top" style="max-height:20rem;width:auto" src="./img/test.jpg"
 						alt="Card image cap">
 					<div class="card-block">
 
@@ -69,10 +33,10 @@
 
 							<li class="list-group-item text-center">
 
-								<button type="button" class="btn btn-outline-primary">
+								<button type="button" class="btn btn-warning">
 									<i class="fa fa-check"></i>&nbsp; Add To Cart
 								</button>
-								<button type="button" class="btn btn-outline-primary">
+								<button type="button" class="btn btn-danger">
 									<i class="fa fa-star"></i>&nbsp; Wishlist
 								</button>
 
@@ -87,11 +51,11 @@
 
 
 
-			<div class="col-sm-4 col-md-4 d-flex">
-				<div class="card card-accent-primary align-middle">
+			<div class="col-sm-4 col-md-4">
+				<div class="card card-accent-default align-middle">
 					<h4 class="card-header card-title">Product ${loop.index}</h4>
 
-					<img class="card-img-top img-responsive" src="./img/favicon.png"
+					<img class="card-img-top" style="max-height:20rem;width:auto" src="./img/test2.jpg"
 						alt="Card image cap">
 					<div class="card-block">
 
@@ -110,10 +74,10 @@
 
 							<li class="list-group-item text-center">
 
-								<button type="button" class="btn btn-outline-primary">
-									<i class="fa fa-check"></i>&nbsp;Add To Cart
+								<button type="button" class="btn btn-warning">
+									<i class="fa fa-check"></i>&nbsp; Add To Cart
 								</button>
-								<button type="button" class="btn btn-outline-primary">
+								<button type="button" class="btn btn-danger">
 									<i class="fa fa-star"></i>&nbsp; Wishlist
 								</button>
 
