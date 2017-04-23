@@ -8,7 +8,7 @@
 
 
 		<form action="" method="post" class="form-2orizontal ">
-			<div class="row">
+			<div class="form-group row">
 				<div class="col-md-12">
 					<div class="input-group">
 						<div class="input-group-btn">

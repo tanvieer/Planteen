@@ -27,7 +27,11 @@
 */
 
 $(document).ready(function($){
-
+	//ADDED BY NABILA
+	//$('.selectpicker').selectpicker();
+	
+	
+	
   // Add class .active to current link
   $.navigation.find('a').each(function(){
 
