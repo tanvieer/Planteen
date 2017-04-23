@@ -9,6 +9,7 @@
 	<li class="breadcrumb-item active">Dashboard</li>
 	<li>
 
+
 		<form action="" method="post" class="form-2orizontal ">
 			<div class="row">
 				<div class="col-md-12">
@@ -107,7 +108,7 @@
 
 							</li>
 
-							<li class="list-group-item text-center">
+							<li class="list-group-item">
 
 								<button type="button" class="btn btn-outline-primary">
 									<i class="fa fa-check"></i>&nbsp;Add To Cart
@@ -118,8 +119,6 @@
 
 							</li>
 						</ul>
-
-
 					</div>
 				</div>
 			</div>
@@ -128,7 +127,6 @@
 	</div>
 
 </div>
-
 
 
 </main>
