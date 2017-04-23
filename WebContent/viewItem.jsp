@@ -58,25 +58,6 @@
 		    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
 		    <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
 		  
-		  
-		  
-		  
-<!--              <h5 class="mt-0">Size</h5> -->
-<!--              <ul class="list-group list-group-flush"> -->
-<!--                <li class="list-group-item"> -->
-<!--                  <button type="button" class="btn btn-default btn-xs">Small</button> -->
-<!--                </li> -->
-<!--                <li class="list-group-item"> -->
-<!--                  <button type="button" class="btn btn-default btn-xs">Medium</button> -->
-<!--                </li> -->
-<!--                <li class="list-group-item"> -->
-<!--                  <button type="button" class="btn btn-default btn-xs">Large</button> -->
-<!--                </li> -->
-<!--                <li class="list-group-item"> -->
-<!--                  <button type="button" class="btn btn-default btn-xs">Xtra-Large</button> -->
-<!--                </li> -->
-<!--              </ul> -->
-           
            	
            	<hr class="transparent my-3"/>
            	
@@ -84,12 +65,20 @@
            	
            	<hr class="transparent my-3"/>
            	
-					<button type="button" class="btn btn-warning">
-						<i class="fa fa-check"></i>&nbsp;Add To Cart
-					</button>
-					<button type="button" class="btn btn-danger">
-						<i class="fa fa-star"></i>&nbsp; Wishlist
-					</button>
+           	<div class="mb-0">Quantity&nbsp;
+           		<select><c:forEach varStatus="loop" begin="1" end="10" step="1">
+					<option value="${loop.index}">${loop.index}</option> <!-- item dropdown -->
+				</c:forEach></select>&nbsp;
+           	</div>
+		  
+           	<hr class="transparent my-3"/>
+           	
+			<button type="button" class="btn btn-warning">
+				<i class="fa fa-check"></i>&nbsp;Add To Cart
+			</button>
+			<button type="button" class="btn btn-danger">
+				<i class="fa fa-star"></i>&nbsp; Wishlist
+			</button>
 	
 				
            </div>
