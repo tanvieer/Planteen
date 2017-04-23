@@ -44,134 +44,45 @@
 
 
 <div class="container-fluid">
-
-        <!-- page content -->
-        <div class="right_col" role="main">
-
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>E-commerce :: Product Page</h3>
-              </div>
-            </div>
-            
-            <div class="clearfix"></div>
-
-            <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="card">
-                  <div class="card-title">
-                    <h2>E-commerce page design</h2>
-                  </div>
-                  <div class="x_content">
-
-                    <div class="col-md-7 col-sm-7 col-xs-12">
-                      <div class="product-image">
-                        <img src="images/prod-1.jpg" alt="..." />
-                      </div>
-                      <div class="product_gallery">
-                        <a>
-                          <img src="images/prod-2.jpg" alt="..." />
-                        </a>
-                        <a>
-                          <img src="images/prod-3.jpg" alt="..." />
-                        </a>
-                        <a>
-                          <img src="images/prod-4.jpg" alt="..." />
-                        </a>
-                        <a>
-                          <img src="images/prod-5.jpg" alt="..." />
-                        </a>
-                      </div>
-                    </div>
-
-                    <div class="col-md-5 col-sm-5 col-xs-12" style="border:0px solid #e5e5e5;">
-
-                      <h3 class="prod_title">LOWA Men’s Renegade GTX Mid Hiking Boots Review</h3>
-
-                      <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p>
-                      <br />
-
-                      <div class="">
-                        <h2>Available Colors</h2>
-                        <ul class="list-inline prod_color">
-                          <li>
-                            <p>Green</p>
-                            <div class="color bg-green"></div>
-                          </li>
-                          <li>
-                            <p>Blue</p>
-                            <div class="color bg-blue"></div>
-                          </li>
-                          <li>
-                            <p>Red</p>
-                            <div class="color bg-red"></div>
-                          </li>
-                          <li>
-                            <p>Orange</p>
-                            <div class="color bg-orange"></div>
-                          </li>
-
-                        </ul>
-                      </div>
-                      <br />
-
-                      <div class="">
-                        <h2>Size <small>Please select one</small></h2>
-                        <ul class="list-inline prod_size">
-                          <li>
-                            <button type="button" class="btn btn-default btn-xs">Small</button>
-                          </li>
-                          <li>
-                            <button type="button" class="btn btn-default btn-xs">Medium</button>
-                          </li>
-                          <li>
-                            <button type="button" class="btn btn-default btn-xs">Large</button>
-                          </li>
-                          <li>
-                            <button type="button" class="btn btn-default btn-xs">Xtra-Large</button>
-                          </li>
-                        </ul>
-                      </div>
-                      <br />
-
-                      <div class="">
-                        <div class="product_price">
-                          <h1 class="price">Ksh80.00</h1>
-                          <span class="price-tax">Ex Tax: Ksh80.00</span>
-                          <br>
-                        </div>
-                      </div>
-
-                      <div class="">
-                        <button type="button" class="btn btn-default btn-lg">Add to Cart</button>
-                        <button type="button" class="btn btn-default btn-lg">Add to Wishlist</button>
-                      </div>
-
-                      <div class="product_social">
-                        <ul class="list-inline">
-                          <li><a href="#"><i class="fa fa-facebook-square"></i></a>
-                          </li>
-                          <li><a href="#"><i class="fa fa-twitter-square"></i></a>
-                          </li>
-                          <li><a href="#"><i class="fa fa-envelope-square"></i></a>
-                          </li>
-                          <li><a href="#"><i class="fa fa-rss-square"></i></a>
-                          </li>
-                        </ul>
-                      </div>
-
-                    </div>
-
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
+	<div class="row animated fadeIn">
+       <!-- page content -->
+       
+       
+       <div class="media">
+<!-- 		  <img class="d-flex align-self-center mr-3" style="max-height: 100%; width: auto; max-width: 40%" src="./img/test2.jpg" alt="Generic placeholder image"> -->
+		  <img class="d-flex align-self-center mr-3 img-responsive" style="max-height: 100%; width: auto; max-width: 40%" src="./img/logo.png" alt="Generic placeholder image">
+		  <div class="media-body">
+		    <h5 class="mt-0">Center-aligned media</h5>
+		    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+		    <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+		  
+		  
+		  
+		  <div>
+             <h2>Size <small>Please select one</small></h2>
+             <ul class="list-inline prod_size">
+               <li>
+                 <button type="button" class="btn btn-default btn-xs">Small</button>
+               </li>
+               <li>
+                 <button type="button" class="btn btn-default btn-xs">Medium</button>
+               </li>
+               <li>
+                 <button type="button" class="btn btn-default btn-xs">Large</button>
+               </li>
+               <li>
+                 <button type="button" class="btn btn-default btn-xs">Xtra-Large</button>
+               </li>
+             </ul>
+           </div>
+           </div>
+		  
+		  
+		</div>
+ 	</div>       
 </div>
+
+
 </main>
 
 <!-- /page content -->
