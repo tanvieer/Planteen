@@ -16,7 +16,7 @@
 
 		<li class="nav-item"><a class="nav-link " data-toggle="tab"
 			href="#Past_Order" role="tab" aria-controls="TestTable"
-			aria-expanded="false">My Orders</a></li>
+			aria-expanded="false">Previous Orders</a></li>
 
 	</ul>
 	
@@ -32,7 +32,7 @@
 			<div class="card">
 
 				<center>
-					<img class="card-img-top img-responsive"
+					<img class="card-img-top my-4 img-responsive"
 						style="width: 150px; height: 150px"
 						src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png"
 						alt="Card image cap">
@@ -72,7 +72,7 @@
 			</div>
 
 			<!-- 	View Profile end  -->
-			<a href="">Edit Profile</a>
+<!-- 			<a href="">Edit Profile</a> -->
 
 		</div>
 
@@ -87,6 +87,7 @@
 				<div class="card-header">
 					<i class="fa fa-align-justify"></i> Current Orders
 				</div>
+				
 				<div class="card-block">
 					<table class="table">
 						<thead>
@@ -118,7 +119,6 @@
 								<td>50004</td>
 								<td>2.2.2016</td>
 								<td>2.3.2015</td>
-								<td></td>
 								<td><span class="badge badge-danger">Banned</span></td>
 							</tr>
 							<tr>
@@ -190,7 +190,7 @@
 
 
 				<div class="card-header">
-					<strong>Basic Form</strong>Elements
+					<strong>Account Information</strong>
 				</div>
 
 
