@@ -23,8 +23,10 @@
 								<th>Buy Price</th>
 								<th>Sell Price</th>
 								<th>Buy Date</th>
-
+								
 								<th>Total Order</th>
+								<th>Profit</th>
+								
 							</tr>
 						</thead>
 
@@ -45,6 +47,7 @@
 
 
 									</td>
+									<td>Profit</td>
 								</tr>
 
 								<tr class="even gradeA">
@@ -62,6 +65,7 @@
 
 
 									</td>
+									<td>Profit</td>
 
 								</tr>
 
