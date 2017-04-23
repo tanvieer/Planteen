@@ -65,8 +65,8 @@
 					<th>Product Name</th>
 					<th>Quantity</th>
 					<th>Item Price</th>
-					<th class="text-center">Total</th>
-					<th></th>
+					<th>Total</th>
+					<th>Remove</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -93,17 +93,32 @@
 						<td>
 							${loop.index}0 BDT
 						</td>
-						<td class="text-center">
+						<td>
 							<strong>${loop.index}0 BDT</strong>
 						</td>
 						<td class="text-center">
-							<button class="btn btn-sm btn-warning"><i class="fa fa-remove"></i></button>
+							<button class="btn btn-sm btn-warning"><i class="fa fa-trash"></i></button>
 						</td>
 						
 					</tr>
 				</c:forEach>
 
 			</tbody>
+			
+			
+			<thead class="thead-default">
+				<tr>
+					<th colspan=4>
+						<button class="btn btn-sm btn-success"><i class="fa fa-dollar"> Proceed to Checkout</i></button>
+					
+						<button class="btn btn-sm btn-warning"><i class="fa fa-shopping-cart"> Continue Shopping</i> </button>
+					
+						<button class="btn btn-sm btn-danger"><i class="fa fa-trash"> Clear Cart</i></button>
+					</th>
+					<th colspan=2 class="text-right">Sub Total: 150000 BDT</th>
+				</tr>
+			</thead>
+			
 		</table>
 
 
