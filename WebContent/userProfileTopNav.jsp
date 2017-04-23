@@ -12,7 +12,7 @@
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,Angular 2,Angular4,Angular 4,jQuery,CSS,HTML,RWD,Dashboard,React,React.js,Vue,Vue.js">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>CoreUI - Open Source Bootstrap Admin Template</title>
+    <title>Settings</title>
 
     <!-- Icons -->
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -28,12 +28,10 @@
         <button class="navbar-toggler mobile-sidebar-toggler d-lg-none" type="button"><i class="fa fa-reorder"></i></button>
         <a class="navbar-brand" href="#"></a>
         <ul class="nav navbar-nav d-md-down-none">
-            <li class="nav-item">
-                <a class="nav-link navbar-toggler sidebar-toggler" href="#"><i class="fa fa-reorder"></i></a>
-            </li>
+          
 
             <li class="nav-item px-3">
-                <a class="nav-link" href="Home.js">Home</a>
+                <a class="nav-link" href=Home.jsp>Home</a>
             </li>
             
         </ul>

@@ -12,7 +12,7 @@
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,Angular 2,Angular4,Angular 4,jQuery,CSS,HTML,RWD,Dashboard,React,React.js,Vue,Vue.js">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>CoreUI - Open Source Bootstrap Admin Template</title>
+    <title>Admin</title>
 
     <!-- Icons -->
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -33,7 +33,7 @@
             </li>
 
             <li class="nav-item px-3">
-                <a class="nav-link" href="Home.js">Home</a>
+                <a class="nav-link" href="AdminHome.jsp">Home</a>
             </li>
             
         </ul>
@@ -58,9 +58,16 @@
                 </div>
             </li>
             <li class="nav-item d-md-down-none">
-                <a class="nav-link navbar-toggler aside-menu-toggler" href="#"><i class="icon-basket"></i><small><span class="badge badge-pill badge-danger">5</span></small></a>
+                <a class="nav-link navbar-toggler aside-menu-toggler" href="#">Pending Orders<i class="icon-basket"></i><small><span class="badge badge-pill badge-danger">5</span></small></a>
             </li>
 
         </ul>
     </header>
     <div class="app-body">
+    
+    
+    
+    
+    
+
+   
