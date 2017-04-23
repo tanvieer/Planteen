@@ -2,7 +2,7 @@
 <%@include file="sidenav.jsp"%>
 
 <!-- Main content -->
-<main class="main"> <!-- Breadcrumb -->
+<main class="main" style="background:white"> <!-- Breadcrumb -->
 <ol class="breadcrumb">
 	<li class="breadcrumb-item">Home</li>
 	<li class="breadcrumb-item"><a href="#">Admin</a></li>
@@ -48,11 +48,11 @@
 		<!-- page content -->
 
 
-		<div class="row">
-			<div class="col-md-12">
-				<div class="card">
-					<div class="card-header">Traffic &amp; Sales</div>
-					<div class="card-block">
+<!-- 		<div class="row"> -->
+<!-- 			<div class="col-md-12"> -->
+<!-- 				<div class="card"> -->
+<!-- 					<div class="card-header">Traffic &amp; Sales</div> -->
+<!-- 					<div class="card-block"> -->
 
 
 
@@ -123,11 +123,11 @@
 
 
 
-					</div>
-				</div>
-			</div>
-			<!--/.col-->
-		</div>
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<!--/.col-->
+<!-- 		</div> -->
 
 
 

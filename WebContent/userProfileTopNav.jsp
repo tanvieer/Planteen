@@ -31,7 +31,7 @@
           
 
             <li class="nav-item px-3">
-                <a class="nav-link" href=Home.jsp>Home</a>
+                <a class="nav-link" href="Home.js"><i class="icon-home"></i><span class="d-md-down-none"> Home </span></a>
             </li>
             
         </ul>

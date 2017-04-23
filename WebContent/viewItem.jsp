@@ -2,7 +2,7 @@
 <%@include file="sidenav.jsp"%>
 
 <!-- Main content -->
-<main class="main"> <!-- Breadcrumb -->
+<main class="main" style="background:white"> <!-- Breadcrumb -->
 <ol class="breadcrumb">
 	<li class="breadcrumb-item">Home</li>
 	<li class="breadcrumb-item"><a href="#">Admin</a></li>
