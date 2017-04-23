@@ -66,7 +66,7 @@
 					<th>Quantity</th>
 					<th>Item Price</th>
 					<th>Total</th>
-					<th>Remove</th>
+					<th class="text-center"><i class="fa fa-trash"></i></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -115,7 +115,7 @@
 					
 						<button class="btn btn-sm btn-danger"><i class="fa fa-trash"> Clear Cart</i></button>
 					</th>
-					<th colspan=2 class="text-right">Sub Total: 150000 BDT</th>
+					<th colspan=2 class="text-right">SUB-TOTAL:&nbsp;150000 BDT</th>
 				</tr>
 			</thead>
 			

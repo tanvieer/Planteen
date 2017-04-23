@@ -33,7 +33,7 @@
             </li>
 
             <li class="nav-item px-3">
-                <a class="nav-link" href="Home.js"><i class="icon-home"></i><span class="d-md-down-none"> Home </span></a>
+                <a class="nav-link" href="Home.jsp"><i class="icon-home"></i><span class="d-md-down-none"> Home </span></a>
             </li>
             
         </ul>
@@ -58,7 +58,7 @@
                 </div>
             </li>
             <li class="nav-item d-md-down-none">
-                <a class="nav-link navbar-toggler aside-menu-toggler" href="#"><i class="icon-basket"></i><small><span class="badge badge-pill badge-danger">5</span></small></a>
+                <a class="nav-link navbar-toggler aside-menu-toggler" href="#"><i class="icon-basket fa-lg"></i><small><span class="badge badge-pill badge-danger">5</span></small></a>
             </li>
 
         </ul>
