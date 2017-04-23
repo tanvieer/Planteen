@@ -9,28 +9,12 @@
 	<li class="breadcrumb-item active">Dashboard</li>
 	<li>
 
+
 		<form action="" method="post" class="form-2orizontal ">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="input-group">
 						<div class="input-group-btn">
-							<!--button type="button" class="btn btn-primary dropdown-toggle"
-								data-toggle="dropdown">
-								All Categories <span class="caret"></span>
-							</button>
-
-							<div class="dropdown-menu">
-								<!-- Dropdown category ==>
-								<c:forEach varStatus="loop" begin="1" end="10" step="1">
-									<a class="dropdown-item" href="#">Category ${loop.index}</a>
-								</c:forEach>
-							</div> -->
-							<!-- <select class="dropdown-menu scrollable-menu container">      <!-- Dropdown category ==>
-                           <c:forEach varStatus="loop" begin="1" end="50" step="1">
-							  <option class="dropdown-item ">Category ${loop.index}</option>
-							</c:forEach>
-                        </select> -->
-
 
 							<select class="form-control">
 								<option class="dropdown-item ">All Categories</option>
@@ -60,55 +44,85 @@
 
 
 <div class="container-fluid">
-	<div class="animated fadeIn">
+	<div class="row animated fadeIn">
+		<c:forEach varStatus="loop" begin="1" end="50" step="1">
+			<div class="col-sm-4 col-md-4">
+				<div class="card card-accent-primary">
+					<h4 class="card-header card-title">Product ${loop.index}</h4>
 
-		<div class="row">
-			<c:forEach varStatus="loop" begin="1" end="50" step="1">
-				<div class="col-sm-6 col-md-4">
-					<div class="card card-accent-primary">
-						<h4 class="card-header card-title">Product ${loop.index}</h4>
+					<img class="card-img-top img-responsive" src="./img/logo1.png"
+						alt="Card image cap">
+					<div class="card-block">
 
-						<div class="card" style="margin: 5px">
-							<img class="card-img-top img-responsive"
-								src="./img/Prodacts/plant.jpg" alt="Card image cap">
-							<div class="card-block">
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
 
-								<p class="card-text">Some quick example text to build on the
-									card title and make up the bulk of the card's content.</p>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item"><b>Price: 500BDT</b></li>
+							<li class="list-group-item">
 
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item"><b>Price: 500BDT</b></li>
-									<li class="list-group-item">
+								<button type="button"
+									class="btn btn-outline-primary btn-lg btn-block">See
+									Product Details</button>
 
-										<button type="button"
-											class="btn btn-lg btn-outline-primary btn-block">View
-											Details</button>
+							</li>
 
-									</li>
+							<li class="list-group-item text-center">
 
-									<li class="list-group-item text-center">
+								<button type="button" class="btn btn-outline-primary">
+									<i class="fa fa-check"></i>&nbsp; Add To Cart
+								</button>
+								<button type="button" class="btn btn-outline-primary">
+									<i class="fa fa-star"></i>&nbsp; Wishlist
+								</button>
 
-										<button type="button" class="btn btn-outline-primary">
-											<i class="fa fa-check"></i>&nbsp;Add To Cart
-										</button>
-										<button type="button" class="btn btn-outline-primary">
-											<i class="fa fa-star"></i>&nbsp; Wishlist
-										</button>
-
-									</li>
-								</ul>
-
-							</div>
+							</li>
+						</ul>
 
 
-
-						</div>
 					</div>
 				</div>
+			</div>
 
-			</c:forEach>
 
-		</div>
+
+
+			<div class="col-sm-4 col-md-4">
+				<div class="card card-accent-primary align-middle">
+					<h4 class="card-header card-title">Product ${loop.index}</h4>
+
+					<img class="card-img-top img-responsive" src="./img/favicon.png"
+						alt="Card image cap">
+					<div class="card-block">
+
+						<p class="card-text">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item"><b>Price: 500BDT</b></li>
+							<li class="list-group-item">
+
+								<button type="button"
+									class="btn btn-outline-primary btn-lg btn-block">See
+									Product Details</button>
+
+							</li>
+
+							<li class="list-group-item">
+
+								<button type="button" class="btn btn-outline-primary">
+									<i class="fa fa-check"></i>&nbsp;Add To Cart
+								</button>
+								<button type="button" class="btn btn-outline-primary">
+									<i class="fa fa-star"></i>&nbsp; Wishlist
+								</button>
+
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</c:forEach>
 
 	</div>
 
