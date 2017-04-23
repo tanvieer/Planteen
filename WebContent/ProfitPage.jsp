@@ -16,7 +16,7 @@ window.onload = function () {
 	var chart = new CanvasJS.Chart("chartContainer",
 	{
 		title:{
-			text: "Most Sold Product Category Chart"
+			text: "Most Profitable Product Category Chart"
 		},
                 animationEnabled: true,
 		legend:{
@@ -55,7 +55,7 @@ window.onload = function () {
 	var chart2 = new CanvasJS.Chart("chartContainer2",
 		    {
 		      title:{
-		        text: "Yearly Sell"    
+		        text: "Yearly Profit"    
 		      },
 		      animationEnabled: true,
 		      axisY: {

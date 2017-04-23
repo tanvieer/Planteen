@@ -2,7 +2,7 @@
 <%@include file="AdminSideNav.jsp"%>
 
 <!-- Main content -->
-<main class="main"> <!-- Breadcrumb -->
+<main class="main" style="background:white">  <!-- Breadcrumb -->
 
 
 <div class="row">

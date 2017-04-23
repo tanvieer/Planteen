@@ -27,6 +27,14 @@
 			
 			
 			<li class="nav-item">
+				<a class="nav-link" href="ProfitPage.jsp">
+					<i class="fa fa-dollar"></i>
+					 	Profit Page
+				</a>
+			</li>
+			
+			
+			<li class="nav-item">
 				<a class="nav-link" href="ProductPage.jsp">
 					<i class="fa fa-dropbox"></i>
 					 	Product Page 
