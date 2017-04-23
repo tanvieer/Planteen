@@ -281,6 +281,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<!-- Advanced Tables -->
+						
 						<div class="panel panel-default">
 							<div class="panel-body">
 								<div class="table-responsive">
@@ -295,6 +296,7 @@
 												<th>CSS grade</th>
 											</tr>
 										</thead>
+										
 										<tbody>
 											<tr class="odd gradeX">
 												<td>Trident</td>
@@ -728,8 +730,6 @@
 
 			<!-- tab-pane ends -->
 
-
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
 
 </div>
 </div>
