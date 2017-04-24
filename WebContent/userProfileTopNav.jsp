@@ -31,7 +31,7 @@
           
 
             <li class="nav-item px-3">
-                <a class="nav-link" href=Home.jsp>Home</a>
+                <a class="nav-link" href="Home.jsp"><i class="icon-home"></i><span class="d-md-down-none"> Home </span></a>
             </li>
             
         </ul>
@@ -50,13 +50,13 @@
 
                     <a class="dropdown-item" href="ProfileSettings.jsp"><i class="fa fa-wrench"></i> My Profile</a>
                     <a class="dropdown-item" href="Orders.jsp"><i class="fa fa-usd"></i> Orders</a>
-                    <a class="dropdown-item" href="#"><i class="fa fa-shopping-cart"></i> Cart<span class="badge badge-primary">42</span></a>
+                    <a class="dropdown-item" href="userCart.jsp"><i class="fa fa-shopping-cart"></i> Cart<span class="badge badge-primary">42</span></a>
                     <div class="divider"></div>
                     <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a>
                 </div>
             </li>
             <li class="nav-item d-md-down-none">
-                <a class="nav-link navbar-toggler aside-menu-toggler" href="#"><i class="icon-basket"></i><small><span class="badge badge-pill badge-danger">5</span></small></a>
+                <a class="nav-link navbar-toggler aside-menu-toggler" href="#"><i class="icon-basket fa-lg"></i><small><span class="badge badge-pill badge-danger">5</span></small></a>
             </li>
 
         </ul>
