@@ -2,8 +2,10 @@
 <%@include file="sidenav.jsp"%>
 
 <!-- Main content -->
+
 <main class="main" style="background:white"> <!-- Breadcrumb -->
 <%@include file="productSearch.jsp"%>
+r
 
 
 

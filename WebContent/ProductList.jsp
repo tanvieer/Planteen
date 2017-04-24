@@ -19,14 +19,19 @@
 						<thead>
 							<tr>
 								<th>Product Name</th>
+								<th>Product Category</th>
 								<th>Quantity</th>
 								<th>Buy Price</th>
 								<th>Sell Price</th>
 								<th>Buy Date</th>
+<<<<<<< HEAD:WebContent/ProductList.jsp
+								<th>Action</th>
+=======
 								
 								<th>Total Order</th>
 								<th>Profit</th>
 								
+>>>>>>> refs/remotes/origin/master:WebContent/ProductPage.jsp
 							</tr>
 						</thead>
 
@@ -37,17 +42,27 @@
 									<td>${loop.index}0</td>
 									<td>1${loop.index }</td>
 									<td class="center">1${loop.index}0</td>
+									
+									<td class="center">1${loop.index}5</td>
 
 									<td class="center">10/02/1${loop.index}</td>
-									<td class="center">
+									<td class="center">  <!-- Modal Button -->
 
 										<button type="button" class="btn btn-primary"
 											data-toggle="modal" data-target="#primaryModal${loop.index}">
+<<<<<<< HEAD:WebContent/ProductList.jsp
+											Edit Product</button>  
+
+
+=======
 											Edit Product</button>
+>>>>>>> refs/remotes/origin/master:WebContent/ProductPage.jsp
 									</td>
 									<td>Profit</td>
 								</tr>
 
+<<<<<<< HEAD:WebContent/ProductList.jsp
+=======
 								<tr class="even gradeA">
 									<td>Product ${loop.index}</td>
 									<td>${loop.index}0</td>
@@ -67,6 +82,7 @@
 
 								</tr>
 
+>>>>>>> refs/remotes/origin/master:WebContent/ProductPage.jsp
 							</c:forEach>
 						</tbody>
 					</table>

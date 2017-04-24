@@ -33,14 +33,14 @@
             </li>
 
             <li class="nav-item px-3">
-                <a class="nav-link" href="AdminHome.jsp">Home</a>
+                <a class="nav-link" href="AdminDashboard.jsp">Home</a>
             </li>
             
         </ul>
         <ul class="nav navbar-nav ml-auto">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    <img src="img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                    <img src="img/avatars/6.jpg" class="img-avatar" alt="admin@planteen.com">
                     <i class="icon-user"></i><span class="d-md-down-none"> My Account </span>
                     
                 </a>
@@ -50,7 +50,7 @@
                         <strong>Account</strong>
                     </div>
 
-                    <a class="dropdown-item" href="ProfileSettings.jsp"><i class="fa fa-wrench"></i> My Profile</a>
+                    <a class="dropdown-item" href="AdminProfileSettings.jsp"><i class="fa fa-wrench"></i> My Profile</a>
                     <a class="dropdown-item" href="Orders.jsp"><i class="fa fa-usd"></i> Orders</a>
                     <a class="dropdown-item" href="#"><i class="fa fa-shopping-cart"></i> Cart<span class="badge badge-primary">42</span></a>
                     <div class="divider"></div>
