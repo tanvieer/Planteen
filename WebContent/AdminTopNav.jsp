@@ -50,7 +50,7 @@
                         <strong>Account</strong>
                     </div>
 
-                    <a class="dropdown-item" href="ProfileSettings.jsp"><i class="fa fa-wrench"></i> My Profile</a>
+                    <a class="dropdown-item" href="AdminProfileSettings.jsp"><i class="fa fa-wrench"></i> My Profile</a>
                     <a class="dropdown-item" href="Orders.jsp"><i class="fa fa-usd"></i> Orders</a>
                     <a class="dropdown-item" href="#"><i class="fa fa-shopping-cart"></i> Cart<span class="badge badge-primary">42</span></a>
                     <div class="divider"></div>

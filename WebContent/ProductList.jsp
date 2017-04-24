@@ -19,12 +19,12 @@
 						<thead>
 							<tr>
 								<th>Product Name</th>
+								<th>Product Category</th>
 								<th>Quantity</th>
 								<th>Buy Price</th>
 								<th>Sell Price</th>
 								<th>Buy Date</th>
-
-								<th>Total Order</th>
+								<th>Action</th>
 							</tr>
 						</thead>
 
@@ -35,34 +35,18 @@
 									<td>${loop.index}0</td>
 									<td>1${loop.index }</td>
 									<td class="center">1${loop.index}0</td>
+									
+									<td class="center">1${loop.index}5</td>
 
 									<td class="center">10/02/1${loop.index}</td>
-									<td class="center">
+									<td class="center">  <!-- Modal Button -->
 
 										<button type="button" class="btn btn-primary"
 											data-toggle="modal" data-target="#primaryModal${loop.index}">
-											Edit Product</button>
+											Edit Product</button>  
 
 
 									</td>
-								</tr>
-
-								<tr class="even gradeA">
-									<td>Product ${loop.index}</td>
-									<td>${loop.index}0</td>
-									<td>1${loop.index }</td>
-									<td class="center">1${loop.index}0</td>
-
-									<td class="center">10/02/1${loop.index}</td>
-									<td class="center">
-
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#primaryModal${loop.index}a">
-											Edit Product</button>
-
-
-									</td>
-
 								</tr>
 
 							</c:forEach>
