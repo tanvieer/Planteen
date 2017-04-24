@@ -16,10 +16,10 @@
 
 		<li class="nav-item"><a class="nav-link " data-toggle="tab"
 			href="#Past_Order" role="tab" aria-controls="TestTable"
-			aria-expanded="false">My Orders</a></li>
+			aria-expanded="false">Previous Orders</a></li>
 
 	</ul>
-	
+
 
 
 	<div class="tab-content">
@@ -32,7 +32,7 @@
 			<div class="card">
 
 				<center>
-					<img class="card-img-top img-responsive"
+					<img class="card-img-top my-4 img-responsive"
 						style="width: 150px; height: 150px"
 						src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png"
 						alt="Card image cap">
@@ -72,7 +72,7 @@
 			</div>
 
 			<!-- 	View Profile end  -->
-			<a href="">Edit Profile</a>
+			<!-- 			<a href="">Edit Profile</a> -->
 
 		</div>
 
@@ -87,6 +87,7 @@
 				<div class="card-header">
 					<i class="fa fa-align-justify"></i> Current Orders
 				</div>
+
 				<div class="card-block">
 					<table class="table">
 						<thead>
@@ -118,7 +119,6 @@
 								<td>50004</td>
 								<td>2.2.2016</td>
 								<td>2.3.2015</td>
-								<td></td>
 								<td><span class="badge badge-danger">Banned</span></td>
 							</tr>
 							<tr>
@@ -147,7 +147,7 @@
 								<td>50004</td>
 								<td>2.2.2016</td>
 								<td>2.3.2015</td>
-								<td><span class="badge badge-success">Active</span></td>
+								<td><span class="badge badge-primary">Active</span></td>
 							</tr>
 						</tbody>
 					</table>
@@ -190,7 +190,7 @@
 
 
 				<div class="card-header">
-					<strong>Basic Form</strong>Elements
+					<strong>Account Information</strong>
 				</div>
 
 
@@ -261,8 +261,8 @@
 
 		<div class="tab-pane" id="Past_Order" role="tabpanel"
 			aria-expanded="false">
-			
-			
+
+
 
 
 			<div id="page-inner">
@@ -296,25 +296,30 @@
 												<td class="center">4</td>
 												<td class="center">X</td>
 											</tr>
-
-											
-										<c:forEach varStatus="loop" begin="1" end="100" step="1">
-											<tr class="odd gradeU">
-												<td>Trident ${loop.index}</td>
-												<td>Internet Explorer 1.${loop.index}</td>
-												<td>Win ${loop.index}5+</td>
-												<td class="center">5.${loop.index}</td>
-												<td class="center">A${loop.index}</td>
-											</tr>
-											
-											<tr class="even gradeA">
+											<tr class="even gradeC">
 												<td>Trident</td>
-												<td>Internet Explorer 5.5</td>
+												<td>Internet Explorer 5.0</td>
 												<td>Win 95+</td>
-												<td class="center">5.5</td>
-												<td class="center">A</td>
+												<td class="center">5</td>
+												<td class="center">C</td>
 											</tr>
-										</c:forEach>
+											<c:forEach varStatus="loop" begin="1" end="100" step="1">
+												<tr class="odd gradeU">
+													<td>Trident ${loop.index}</td>
+													<td>Internet Explorer 1.${loop.index}</td>
+													<td>Win ${loop.index}5+</td>
+													<td class="center">5.${loop.index}</td>
+													<td class="center">A${loop.index}</td>
+												</tr>
+
+												<tr class="even gradeA">
+													<td>Trident</td>
+													<td>Internet Explorer 5.5</td>
+													<td>Win 95+</td>
+													<td class="center">5.5</td>
+													<td class="center">A</td>
+												</tr>
+											</c:forEach>
 										</tbody>
 									</table>
 								</div>
@@ -328,27 +333,27 @@
 				</div>
 				<!-- /. PAGE INNER  -->
 			</div>
+		</div>
+
+
+		<script src="assets/js/jquery-1.10.2.js"></script>
+
+
+		<script src="assets/js/dataTables/jquery.dataTables.js"></script>
+
+		<script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
+
+		<script>
+			$(document).ready(function() {
+				$('#dataTables-example').dataTable();
+			});
+		</script>
+
+
+		<!-- tab-pane ends -->
+
 	</div>
-
-
-			<script src="assets/js/jquery-1.10.2.js"></script>
-
-
-			<script src="assets/js/dataTables/jquery.dataTables.js"></script>
-
-			<script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
-
-			<script>
-				$(document).ready(function() {
-					$('#dataTables-example').dataTable();
-				});
-			</script>
-
-
-			<!-- tab-pane ends -->
-
-</div>
 </div>
 
-
-			<%@include file="profileFooter.jsp"%>
+<%@include file="asidenav.jsp"%>
+<%@include file="profileFooter.jsp"%>
