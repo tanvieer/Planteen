@@ -18,7 +18,7 @@
 										id="dataTables-example">
 										<thead>
 											<tr>
-												<th>User Name</th>
+												<th>Name</th>
 												<th>Email</th>
 												<th>Address</th>
 												<th>Phone</th>

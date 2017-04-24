@@ -27,18 +27,7 @@
 */
 
 $(document).ready(function($){
-	//ADDED BY NABILA
-	
-	
-	$(".dropdown-menu a").click(function(){
-	
-	  $(this).parents(".input-group-btn").find('.selection').text($(this).text());
-	  $(this).parents(".input-group-btn").find('.selection').val($(this).text());
-	
-	});
-	
-	
-	
+
   // Add class .active to current link
   $.navigation.find('a').each(function(){
 
