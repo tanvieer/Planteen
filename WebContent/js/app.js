@@ -28,7 +28,14 @@
 
 $(document).ready(function($){
 	//ADDED BY NABILA
-	//$('.selectpicker').selectpicker();
+	
+	
+	$(".dropdown-menu a").click(function(){
+	
+	  $(this).parents(".input-group-btn").find('.selection').text($(this).text());
+	  $(this).parents(".input-group-btn").find('.selection').val($(this).text());
+	
+	});
 	
 	
 	

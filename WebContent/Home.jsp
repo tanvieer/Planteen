@@ -22,12 +22,12 @@
 							card title and make up the bulk of the card's content.</p>
 
 						<ul class="list-group list-group-flush">
-							<li class="list-group-item"><b>Price: 500BDT</b></li>
-							<li class="list-group-item">
+							<li class="list-group-item text-center"><b>Price: 500BDT</b></li>
+							<li class="list-group-item text-center">
 
 								<button type="button"
-									class="btn btn-outline-primary btn-lg btn-block">See
-									Product Details</button>
+									class="btn btn-outline-primary btn-lg btn-block">Product Details
+								</button>
 
 							</li>
 
@@ -63,12 +63,12 @@
 							card title and make up the bulk of the card's content.</p>
 
 						<ul class="list-group list-group-flush">
-							<li class="list-group-item"><b>Price: 500BDT</b></li>
-							<li class="list-group-item">
+							<li class="list-group-item text-center"><b>Price: 500BDT</b></li>
+							<li class="list-group-item text-center">
 
 								<button type="button"
-									class="btn btn-outline-primary btn-lg btn-block">See
-									Product Details</button>
+									class="btn btn-outline-primary btn-lg btn-block">Product Details
+								</button>
 
 							</li>
 
