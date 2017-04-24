@@ -10,7 +10,7 @@
 	<li>
 
 
-		<form action="" method="post" class="form-2orizontal ">
+		<form action="" method="post" class="form-horizontal ">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="input-group">
