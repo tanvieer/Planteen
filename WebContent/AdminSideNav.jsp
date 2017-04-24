@@ -4,14 +4,14 @@
 		<ul class="nav">
 		
 			<li class="nav-item">
-				<a class="nav-link" href="AdminDashboard.jsp">
+				<a class="nav-link" href="adminDashboard.jsp">
 					<i class="icon-speedometer"></i>
 					 	Dashboard 
 				</a>
 			</li>
 			
 			<li class="nav-item">
-				<a class="nav-link" href="UsersPage.jsp">
+				<a class="nav-link" href="adminUsersPage.jsp">
 					<i class="icon-people"></i>
 					 	Users Page 
 				</a>
@@ -24,14 +24,14 @@
                   <ul class="nav-dropdown-items">
       
 					<li class="nav-item">
-						<a class="nav-link" href="SalesPage.jsp">
+						<a class="nav-link" href="adminSalesPage.jsp">
 							<i class="fa fa-dollar"></i>
 							 	Sales Report 
 						</a>
 					</li>
 				
 					<li class="nav-item">
-						<a class="nav-link" href="ProfitPage.jsp">
+						<a class="nav-link" href="adminProfitPage.jsp">
 							<i class="fa fa-dollar"></i>
 							 	Profit Report
 						</a>
@@ -39,7 +39,7 @@
 					 
 					 
 					 <li class="nav-item">
-						<a class="nav-link" href="UserReport.jsp">
+						<a class="nav-link" href="adminUserReport.jsp">
 							<i class="fa fa-user"></i>
 							 	User Report
 						</a>
@@ -51,7 +51,7 @@
 			
 			
 			<li class="nav-item">
-				<a class="nav-link" href="OrdersPage.jsp">
+				<a class="nav-link" href="adminOrdersPage.jsp">
 					<i class="icon-basket-loaded"></i>
 					 	Order Page
 				</a>
@@ -63,7 +63,7 @@
 			
 			
 			<li class="nav-item">
-				<a class="nav-link" href="OrdersPage.jsp">
+				<a class="nav-link" href="adminOrdersPage.jsp">
 					<i class="fa fa-motorcycle"></i>
 					 	Delivery Page
 				</a>
@@ -78,14 +78,14 @@
                   <ul class="nav-dropdown-items">
       
 					<li class="nav-item">
-						<a class="nav-link" href="CategoryList.jsp">
+						<a class="nav-link" href="adminCategoryList.jsp">
 							<i class="fa fa-dollar"></i>
 							 	Category List
 						</a>
 					</li>
 				
 					<li class="nav-item">
-						<a class="nav-link" href="AddCategory.jsp">
+						<a class="nav-link" href="adminAddCategory.jsp">
 							<i class="fa fa-dollar"></i>
 							 	Add Category
 						</a>
@@ -103,14 +103,14 @@
                   <ul class="nav-dropdown-items">
       
 					<li class="nav-item">
-						<a class="nav-link" href="ProductList.jsp">
+						<a class="nav-link" href="adminProductList.jsp">
 							<i class="fa fa-dollar"></i>
 							 	Product List
 						</a>
 					</li>
 				
 					<li class="nav-item">
-						<a class="nav-link" href="AddProduct.jsp">
+						<a class="nav-link" href="adminAddProduct.jsp">
 							<i class="fa fa-dollar"></i>
 							 	Add Product
 						</a>

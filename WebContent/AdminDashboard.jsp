@@ -1,5 +1,5 @@
-<%@include file="AdminTopNav.jsp"%>
-<%@include file="AdminSideNav.jsp"%>
+<%@include file="adminTopNav.jsp"%>
+<%@include file="adminSideNav.jsp"%>
 
 <!-- Main content -->
 <main class="main" style="background:white">  <!-- Breadcrumb -->
@@ -171,5 +171,5 @@
  
 
 </main>
-<%@include file="AdminAsideNav.jsp"%>
-<%@include file="AdminFooter.jsp"%>
+<%@include file="adminAsideNav.jsp"%>
+<%@include file="adminFooter.jsp"%>

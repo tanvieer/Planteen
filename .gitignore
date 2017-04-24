@@ -47,3 +47,4 @@ Temporary Items
 .apdisk
 .classpath
 WebContent/sidenav.jsp
+WebContent/js/canvasjs.min.js

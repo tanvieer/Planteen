@@ -26,14 +26,14 @@
 
 <header class="app-header navbar">
         <button class="navbar-toggler mobile-sidebar-toggler d-lg-none" type="button"><i class="fa fa-reorder"></i></button>
-        <a class="navbar-brand" href="#"></a>
+        <a class="navbar-brand" href="adminDashboard.jsp"></a>
         <ul class="nav navbar-nav d-md-down-none">
             <li class="nav-item">
                 <a class="nav-link navbar-toggler sidebar-toggler" href="#"><i class="fa fa-reorder"></i></a>
             </li>
 
             <li class="nav-item px-3">
-                <a class="nav-link" href="AdminDashboard.jsp">Home</a>
+                <a class="nav-link" href="adminDashboard.jsp">Home</a>
             </li>
             
         </ul>
@@ -50,8 +50,8 @@
                         <strong>Account</strong>
                     </div>
 
-                    <a class="dropdown-item" href="AdminProfileSettings.jsp"><i class="fa fa-wrench"></i> My Profile</a>
-                    <a class="dropdown-item" href="Orders.jsp"><i class="fa fa-usd"></i> Orders</a>
+                    <a class="dropdown-item" href="adminProfileSettings.jsp"><i class="fa fa-wrench"></i> My Profile</a>
+                    <a class="dropdown-item" href="adminOrdersPage.jsp"><i class="fa fa-usd"></i> Orders</a>
                     <a class="dropdown-item" href="#"><i class="fa fa-shopping-cart"></i> Cart<span class="badge badge-primary">42</span></a>
                     <div class="divider"></div>
                     <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a>

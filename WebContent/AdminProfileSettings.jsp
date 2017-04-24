@@ -1,4 +1,4 @@
-<%@include file="AdminTopNav.jsp"%>
+<%@include file="adminTopNav.jsp"%>
 <%-- <%@include file="AdminSideNav.jsp"%>
  --%>
 
@@ -156,5 +156,5 @@
 	</div>
 
 
-<%@include file="AdminAsideNav.jsp"%>
-<%@include file="AdminFooter.jsp"%>
+<%@include file="adminAsideNav.jsp"%>
+<%@include file="adminFooter.jsp"%>
