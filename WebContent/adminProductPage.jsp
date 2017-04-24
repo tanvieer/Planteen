@@ -1,6 +1,6 @@
 
-<%@include file="AdminTopNav.jsp"%>
-<%@include file="AdminSideNav.jsp"%>
+<%@include file="adminTopNav.jsp"%>
+<%@include file="adminSideNav.jsp"%>
 
 <!-- Main content -->
 <main class="main" style="background:white"> <!-- Breadcrumb -->
@@ -247,5 +247,5 @@
 			$('#dataTables-example').dataTable();
 		});
 	</script> </main>
-<%@include file="AdminAsideNav.jsp"%>
-<%@include file="AdminUsersPageFooter.jsp"%>
+<%@include file="adminAsideNav.jsp"%>
+<%@include file="adminUsersPageFooter.jsp"%>

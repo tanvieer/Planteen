@@ -25,7 +25,7 @@
 							<li class="list-group-item text-center"><b>Price: 500BDT</b></li>
 							<li class="list-group-item text-center">
 
-								<button type="button"
+								<button type="button" onclick="window.location.href='viewItem.jsp?productId=${loop.index}'"
 									class="btn btn-outline-primary btn-lg btn-block">Product Details
 								</button>
 
@@ -66,7 +66,7 @@
 							<li class="list-group-item text-center"><b>Price: 500BDT</b></li>
 							<li class="list-group-item text-center">
 
-								<button type="button"
+								<button type="button" onclick="window.location.href='viewItem.jsp?productId=${loop.index}'"
 									class="btn btn-outline-primary btn-lg btn-block">Product Details
 								</button>
 

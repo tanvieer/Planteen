@@ -1,5 +1,5 @@
-<%@include file="AdminTopNav.jsp"%>
-<%@include file="AdminSideNav.jsp"%>
+<%@include file="adminTopNav.jsp"%>
+<%@include file="adminSideNav.jsp"%>
 
 <!-- Main content -->
 <main class="main" style="background:white">  <!-- Breadcrumb -->
@@ -10,13 +10,13 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend>ADD CATEGORY</legend>
+<legend>ADD PRODUCTS</legend>
 
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="product_id">PRODUCT ID</label>  
   <div class="col-md-4">
-  <input id="product_id" name="product_id" placeholder="PRODUCT ID" class="form-control input-md" required="" type="text">
+  <input id="product_id" name="product_id" placeholder="CAN BE EMPTY" class="form-control input-md" required="" type="text">
     
   </div>
 </div>
@@ -44,6 +44,10 @@
   <label class="col-md-4 control-label" for="product_categorie">PRODUCT CATEGORY</label>
   <div class="col-md-4">
     <select id="product_categorie" name="product_categorie" class="form-control">
+    <option class="dropdown-item ">SELECT CATEGORY</option>
+    	<c:forEach varStatus="loop" begin="1" end="10" step="1">
+			<option class="dropdown-item ">CATEGORY ${loop.index}</option>
+		</c:forEach>
     </select>
   </div>
 </div>
@@ -148,10 +152,13 @@
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="enable_display">ENABLE DISPLAY</label>  
-  <div class="col-md-4">
-  <input id="enable_display" name="enable_display" placeholder="ENABLE DISPLAY" class="form-control input-md" required="" type="text">
-    
-  </div>
+<br> &nbsp;&nbsp;&nbsp;
+	<label class="switch switch-icon switch-pill switch-success-outline-alt" >
+          <input type="checkbox" class="switch-input" checked="">
+          <span class="switch-label" data-on="ON" data-off="OFF"></span>
+          <span class="switch-handle"></span>
+      </label>
+
 </div>
 
 <!-- Text input-->
@@ -163,32 +170,19 @@
   </div>
 </div>
 
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="approuved_by">APPROUVED BY</label>  
-  <div class="col-md-4">
-  <input id="approuved_by" name="approuved_by" placeholder="APPROUVED BY" class="form-control input-md" required="" type="text">
-    
  <!-- File Button --> 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="filebutton">main_image</label>
+  <label class="col-md-4 control-label" for="filebutton">PRODUCT IMAGE</label>
   <div class="col-md-4">
     <input id="filebutton" name="filebutton" class="input-file" type="file">
   </div>
 </div>
 <!-- File Button --> 
-<div class="form-group">
-  <label class="col-md-4 control-label" for="filebutton">auxiliary_images</label>
-  <div class="col-md-4">
-    <input id="filebutton" name="filebutton" class="input-file" type="file">
-  </div>
-</div>
 
 <!-- Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="singlebutton">Single Button</label>
   <div class="col-md-4">
-    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Button</button>
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary">ADD PRODUCT</button>
   </div>
   </div>
 
@@ -197,5 +191,5 @@
 
 
 </main>
-<%@include file="AdminAsideNav.jsp"%>
-<%@include file="AdminFooter.jsp"%>
+<%@include file="adminAsideNav.jsp"%>
+<%@include file="adminFooter.jsp"%>

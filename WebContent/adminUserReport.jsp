@@ -1,6 +1,6 @@
 
-<%@include file="AdminTopNav.jsp"%>
-<%@include file="AdminSideNav.jsp"%>
+<%@include file="adminTopNav.jsp"%>
+<%@include file="adminSideNav.jsp"%>
 
 <!-- Main content -->
 <main class="main" style="background:white"> <!-- Breadcrumb -->
@@ -16,7 +16,7 @@ window.onload = function () {
 	var chart = new CanvasJS.Chart("chartContainer",
 	{
 		title:{
-			text: "Most Profitable Product Category Chart"
+			text: "Users"
 		},
                 animationEnabled: true,
 		legend:{
@@ -34,13 +34,8 @@ window.onload = function () {
 			showInLegend: true,
 			toolTipContent: "{y} - <strong>#percent%</strong>",
 			dataPoints: [
-				{  y: 4181563, legendText:"Mobile", indexLabel: "Mobile" },
-				{  y: 2175498, legendText:"Laptop", indexLabel: "Laptop" },
-				{  y: 3125844, legendText:"Watches",exploded: true, indexLabel: "Watches" },
-				{  y: 1176121, legendText:"Telivision" , indexLabel: "Telivision"},
-				{  y: 1727161, legendText:"Headphones", indexLabel: "Headphones" },
-				{  y: 4303364, legendText:"Speakers" , indexLabel: "Speakers"},
-				{  y: 1717786, legendText:"Mouse" , indexLabel: "Mouse"}
+				{  y: 4181563, legendText:"Male", indexLabel: "Male" },
+				{  y: 2175498, legendText:"Female", indexLabel: "Female" }
 			]
 		}
 		]
@@ -55,11 +50,11 @@ window.onload = function () {
 	var chart2 = new CanvasJS.Chart("chartContainer2",
 		    {
 		      title:{
-		        text: "Yearly Profit"    
+		        text: "Yearly Regestered Users"    
 		      },
 		      animationEnabled: true,
 		      axisY: {
-		        title: "Sales In BDT"
+		        title: "Users Count"
 		      },
 		      legend: {
 		        verticalAlign: "bottom",
@@ -100,5 +95,5 @@ window.onload = function () {
 
 
 </main>
-<%@include file="AdminAsideNav.jsp"%>
-<%@include file="AdminUsersPageFooter.jsp"%>
+<%@include file="adminAsideNav.jsp"%>
+<%@include file="adminUsersPageFooter.jsp"%>
