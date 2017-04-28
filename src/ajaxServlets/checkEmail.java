@@ -8,9 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.stream.events.Comment;
 
 import controller.UserInfoController;
-import entity.UserInfo;
+import entity.User;
 
 @WebServlet("/checkEmail")
 public class checkEmail extends HttpServlet {
@@ -23,9 +24,9 @@ public class checkEmail extends HttpServlet {
 		String email = (String) request.getParameter("email");
 		
 		System.out.println(email);
-
-		UserInfo user = new UserInfoController().getUserByEmail(email);
-																			
+		//comment out koro next line
+		//User user = new UserInfoController().getUserByEmail(email);
+		User user=null;																	
 
 		if (user == null) {
 			out.println("Available");

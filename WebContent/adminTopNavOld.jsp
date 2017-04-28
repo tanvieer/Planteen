@@ -41,7 +41,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                     <img src="img/avatars/6.jpg" class="img-avatar" alt="admin@planteen.com">
-                    <i class="icon-user"></i><span class="d-md-down-none"> My Account</span>
+                    <i class="icon-user"></i><span class="d-md-down-none"> My Account </span>
                     
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
@@ -58,13 +58,16 @@
                 </div>
             </li>
             <li class="nav-item d-md-down-none">
-                <a class="nav-link navbar-toggler aside-menu-toggler mx-3" href="#">
-                	<small>Orders</small>
-                	<i class="fa fa-clipboard fa-lg">
-                	</i><span class="badge badge-pill badge-danger" style="top:2px">5</span>
-                </a>
+                <a class="nav-link navbar-toggler aside-menu-toggler" href="#">Pending Orders<i class="icon-basket"></i><small><span class="badge badge-pill badge-danger">5</span></small></a>
             </li>
 
         </ul>
     </header>
     <div class="app-body">
+    
+    
+    
+    
+    
+
+   

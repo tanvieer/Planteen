@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.UserInfoController;
-import entity.UserInfo;
+import entity.User;
 
 @WebServlet("/RegistrationServlet")
 public class RegistrationServlet extends HttpServlet {
@@ -28,22 +28,26 @@ public class RegistrationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		
+		String type = (String) request.getParameter("type");
 		String name = (String) request.getParameter("name");
-        String username = (String) request.getParameter("username");
+        
         String email = (String) request.getParameter("email");
         String password = (String) request.getParameter("password");
-        String cpassword = (String) request.getParameter("cpassword");
+        String address = (String) request.getParameter("address");
+        String phone = (String) request.getParameter("phone");
+        String gender = (String) request.getParameter("gender");
+        String status = (String) request.getParameter("status");
         
-        String type = "user";
+         type = "user";
         
-        out.println("Username: " + username);  
+        out.println("Username: " +name );  
         out.println("Email: " + email); 
         out.println("Password: " + password);  
-        out.println("Confirm PassWord: " + cpassword); 
         
         
-        UserInfo user = new UserInfo(name,username,email,password,type);  
-        System.out.println(new UserInfoController().addUser(user));
+        
+        User user = new User(type,name,email,password,address,phone,gender,status);  
+        System.out.println(new UserInfoController().add(user));
         
 	}
 

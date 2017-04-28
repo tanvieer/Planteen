@@ -1,4 +1,3 @@
-
 <%@include file="adminTopNav.jsp"%>
 <%@include file="adminSideNav.jsp"%>
 
@@ -20,11 +19,10 @@
 											<tr>
 												<th>Name</th>
 												<th>Email</th>
-												<th>Address</th>
+												
 												<th>Phone</th>
-												<th>Gender</th>
-												<th>Registered Date</th>
-												<th>Total Order</th>
+												<th>Details</th>
+											
 											</tr>
 										</thead>
 										
@@ -33,32 +31,37 @@
 											<tr class="odd gradeU">
 												<td>User ${loop.index}</td>
 												<td>test${loop.index}@gmail.com</td>
-												<td>
-												Address: <br>
-												Tanvir Islam<br>
-												House 12, road 12, Nikunja 2, khilkhet, Dhaka-1229 Khilkhet (Dhaka City) Dhaka Khilkhet (Dhaka City) Dhaka
-											<br>+8801911066421 +8801774275301
- 												</td>
+											
 												<td class="center">01911066${loop.index}0</td>
-												<td class="center">Male</td>
-												<td class="center">10/02/1${loop.index}</td>
-												<td class="center">${loop.index}</td>
+												
+												<td class="center">
+													<!-- Modal Button -->
+			
+													<button type="button" class="btn btn-primary"
+														data-toggle="modal" data-target="#primaryModal${loop.index}">
+														User Details</button>
+			
+			
+												</td>
+			
 											</tr>
 											
 											<tr class="even gradeA">
 												<td>User ${loop.index}</td>
 												<td>snoozy${loop.index}@gmail.com</td>
-												<td>
-												Address: <br>
-												Tanvir Islam<br>
-												House 12, road 12, Nikunja 2, khilkhet, Dhaka-1229 Khilkhet (Dhaka City) Dhaka Khilkhet (Dhaka City) Dhaka
-											<br>+8801911066421 +8801774275301
-												
-												</td>
+									
 												<td class="center">0191166${loop.index}20</td>
-												<td class="center">Female</td>
-												<td class="center">10/02/${loop.index}</td>
-												<td class="center">${loop.index}</td>
+												
+												<td class="center">
+													<!-- Modal Button -->
+			
+													<button type="button" class="btn btn-primary"
+														data-toggle="modal" data-target="#primaryModal${loop.index}">
+														User Details</button>
+			
+			
+												</td>
+										
 											</tr>
 											
 										</c:forEach>
@@ -74,7 +77,102 @@
 					</div>
 				</div>
 				<!-- /. PAGE INNER  -->
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+<c:forEach varStatus="loop" begin="1" end="100" step="1">
+
+	<div class="modal fade" id="primaryModal${loop.index}" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-primary" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">User ${loop.index}B</h4>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">X</span>
+					</button>
+				</div>
+			
+				
+				<!-- /. MODAL user details start --> 
+				
+				
+				
+					<div class="modal-body">
+
+
+						<div class="col-sm-16">
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>User Details</strong>
+                                    
+                                </div>
+                                <div class="card-block">
+                                    <div class="form-group">
+                                        <label for="company">Address</label>
+                                        <input type="text" class="form-control" id="company" value="Dhaka"disabled>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="vat">Email</label>
+                                        <input type="text" class="form-control" id="vat" value="mobasser016@gmail.com"disabled>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="street">Gender</label>
+                                        <input type="text" class="form-control" id="street" value="male"disabled>
+                                    </div>
+
+                                    
+
+                                        <div class="form-group ">
+                                            <label for="city">Register Date</label>
+                                            <input type="text" class="form-control" id="city" value="4-27-2017"disabled>
+                                        </div>
+
+                                   
+
+                                   
+
+                                 
+                                </div>
+                            </div>
+
+                        </div>
+				
+				
+				
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Done</button>
+					</div>
+
+				
+				
+				
+				
 			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+		
+	</div>
+
+</c:forEach> 
+
+<!-- /. MODAL user details end --> 
 
 
 

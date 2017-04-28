@@ -1,7 +1,10 @@
 package DataAccessLayer;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.mysql.jdbc.PreparedStatement;
 
 public class MySqlDataAccess extends DataAccess {
 	public MySqlDataAccess() throws ClassNotFoundException, SQLException {
@@ -15,5 +18,9 @@ public class MySqlDataAccess extends DataAccess {
 
 	public ResultSet getData(String query) throws SQLException {
 		return super.getData(query);
+	}
+
+	public Connection getConnection(){
+		return super.connection;
 	}
 }

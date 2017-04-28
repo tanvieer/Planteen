@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.UserInfoController;
-import entity.UserInfo;
+import entity.User;
 
 
 @WebServlet("/checkUsername")
@@ -19,11 +19,11 @@ public class checkUsername extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		  String userid = (String) request.getParameter("username");
+		  String username = request.getParameter("username");
 		  
 		  PrintWriter out = response.getWriter();
 		  
-		  UserInfo user = new UserInfoController().getUserByUsername(userid);  // specific user
+		  User user = new UserInfoController().getByName(username);  // specific user
 	        
 	        
 	        if(user == null) {

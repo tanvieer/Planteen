@@ -24,5 +24,6 @@ public abstract class DataAccess {
 	protected ResultSet getData(String query) throws SQLException {
 		return statement.executeQuery(query);
 	}
+	
 
 }
