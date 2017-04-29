@@ -196,11 +196,42 @@ public class ProductRepository implements Repository<Product> {
 		}
 		return products;
 	}
+	public ArrayList<Product> getAllProductByCategoryId(int id) {
+		ArrayList<Product> products = new ArrayList<Product>();
+		try {
+			String query = "SELECT * FROM " + tableName+ " WHERE categoryId="+id;
+			dataAccess = new MySqlDataAccess();
+
+			resultSet = dataAccess.getData(query);
+
+			while (resultSet.next()) {
+
+				int productId=resultSet.getInt("productId");
+				String productName=resultSet.getString("productName");	
+				int categoryId = resultSet.getInt("categoryId");
+				float sellingPrice= resultSet.getFloat("sellingPrice");
+				String imagePath= resultSet.getString("imagePath");
+				String productDetails= resultSet.getString("productDetails");
+				String status= resultSet.getString("status");
+			
+				
+				Product product= new Product(productId, productName, categoryId, sellingPrice, imagePath, productDetails, status);
+				products.add(product);
+			}
+		} catch (Exception e) {
+			System.out.println("exception found at ProductRepository.java while get all");
+			return null;
+		}
+		finally {
+			closeConnection("getAll()");
+		}
+		return products;
+	}
 	
 	private void closeConnection(String tracker){
-		try { if (resultSet != null) resultSet.close(); } catch (Exception e) {System.out.println("Exception at UserRepository.java, "+tracker+" at finally block RESULTSET");};
-	    try { if (statement != null) statement.close(); } catch (Exception e) {System.out.println("Exception at UserRepository.java, "+tracker+" at finally block STMT");};
-	    try { if (connection != null) connection.close(); } catch (Exception e) {System.out.println("Exception at UserRepository.java, "+tracker+" at finally block CONNECTION");};
+		try { if (resultSet != null) resultSet.close(); } catch (Exception e) {System.out.println("Exception at ProductRepository.java, "+tracker+" at finally block RESULTSET");};
+	    try { if (statement != null) statement.close(); } catch (Exception e) {System.out.println("Exception at ProductRepository.java, "+tracker+" at finally block STMT");};
+	    try { if (connection != null) connection.close(); } catch (Exception e) {System.out.println("Exception at ProductRepository.java, "+tracker+" at finally block CONNECTION");};
 	}
 
 }

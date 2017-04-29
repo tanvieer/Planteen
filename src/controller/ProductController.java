@@ -46,5 +46,8 @@ public class ProductController implements Controller<Product> {
 	public ArrayList<Product> getAll() {
 		return repository.getAll();
 	}
-	
+
+	public ArrayList<Product> getAllProductByCategoryId(int id) {
+		return repository.getAllProductByCategoryId(id);
+	}
 }

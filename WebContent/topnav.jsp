@@ -20,6 +20,12 @@
 
     <!-- Main styles for this application -->
     <link href="css/style.css" rel="stylesheet">
+    
+    <script>
+    window.onload = function() {
+    		getCategoryList();
+    	};
+    </script>
 
 </head>
 <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">

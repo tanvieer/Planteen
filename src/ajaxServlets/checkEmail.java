@@ -25,8 +25,7 @@ public class checkEmail extends HttpServlet {
 		
 		System.out.println(email);
 		//comment out koro next line
-		//User user = new UserInfoController().getUserByEmail(email);
-		User user=null;																	
+		User user = new UserController().getByEmail(email);																
 
 		if (user == null) {
 			out.println("Available");
