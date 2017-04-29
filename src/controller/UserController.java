@@ -49,6 +49,10 @@ public class UserController implements Controller<User> {
 	public User getByEmail(String mail) { // search by email  , interface a nai
 		return repository.getByEmail(mail);
 	}
+	
+	public boolean validateUserReg(){
+		return false;
+	}
 
 }
 

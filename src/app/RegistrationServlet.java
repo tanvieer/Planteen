@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.UserController;
+import controller.ValidationController;
 import entity.User;
 
 @WebServlet("/userRegistration")
@@ -27,7 +28,7 @@ public class RegistrationServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		boolean isValid = true;
+		/*boolean isValid = true;*/
 		
 		String name = (String) request.getParameter("txt_name").trim();
 		String type = User.UserType.USER.toString();
@@ -42,69 +43,34 @@ public class RegistrationServlet extends HttpServlet {
         
         User user = new User(type,name,email,password);
         
-        //System.out.println("before  "+user);
-       
-        isValid = validateUser(user,request,response,cpassword);
         
-
-        if(isValid){
-        	 //System.out.println(user);
-             System.out.println("insert: "+new UserController().add(user));
-        }
-       
         
-	}
-	
-	private boolean validateUser(User user, HttpServletRequest request, HttpServletResponse response,String cpassword) throws ServletException, IOException{
-		
-		RequestDispatcher dispatcher= request.getRequestDispatcher("userRegistration.jsp");
+        RequestDispatcher dispatcher= request.getRequestDispatcher("userRegistration.jsp");
 		boolean check=true;
-		if(user.getEmail()==null || user.getEmail().trim()== ""){
-			request.setAttribute("err_email", "Email must be filled out");
-			check=false;
-		}
-		else if( !validateEmail(user.getEmail()) ){
-			request.setAttribute("err_email", "Invalid email address");
-			check=false;
-		}
-	
+		boolean temp;
 		
-		if(user.getName()==null || user.getName()== ""){
-			request.setAttribute("err_name", "Name must be filled out");
-			check=false;
-		}
-		if(user.getPassword()==null || user.getPassword()== ""){
-			request.setAttribute("err_password", "Password must be filled out");
-			check=false;
-		}
-		if(cpassword==null || cpassword== ""){
-			request.setAttribute("err_cpassword", "Confirm password must be filled out");
-			check=false;
-		}
-		if(user.getPassword()!= cpassword){
-			request.setAttribute("err_cpassword", "Password fields don't match");
-			check=false;
-		}
+		temp = ValidationController.checkName(user.getName());
+		check = check & temp;
+		temp = ValidationController.checkEmail(user.getEmail());
+		check = check & temp;
+		temp = ValidationController.checkPasses(user.getPassword(), cpassword);
+		check = check & temp;
 		
+		request.setAttribute("err_password", ValidationController.err_pass);
+		request.setAttribute("err_cpassword", ValidationController.err_cpass);
+		request.setAttribute("err_name", ValidationController.err_name);
+		request.setAttribute("err_email", ValidationController.err_email);
 		
 		if(check && new UserController().getByEmail(user.getEmail())!= null){
 			request.setAttribute("err_email", "Email registered by another user");
 			check=false;
 		}
-		
-		
 		if(!check){
 			dispatcher.forward(request, response);
 		}
-		
-		return check;
+		else {
+			System.out.println("insert: "+new UserController().add(user));
+		} 
 	}
-	
-	
-	 boolean validateEmail(String email) 
-	 {
-	     String regPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-	     return email.matches(regPattern);
-	 }
 
 }
