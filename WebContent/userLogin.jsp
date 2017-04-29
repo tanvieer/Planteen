@@ -27,10 +27,16 @@
     <!-- Main styles for this application -->
     <link href="css/style.css" rel="stylesheet">
     
+    <style>
+    .err{
+    	color: red;
+    }
+ 	</style>
+    
     <script type="text/javascript">
     
     function goTo(){
-    	document.location = "pages-register.jsp";
+    	document.location = "userRegistration";
     }
     
     </script>
@@ -46,22 +52,36 @@
                         <div class="card-block">
 
 
-                            <form action="LoginServlet" method="POST">
+                            <form  name="MyForm" action="userLogin" method="POST">
                                 <h1>Login</h1>
                                 <p class="text-muted">Sign In to your account</p>
                                 <div class="input-group mb-3">
                                     <span class="input-group-addon"><i class="icon-user"></i>
                                     </span>
-                                    <input type="text" class="form-control" placeholder="Username" name='username'  id='username'>
+                                    <input type="text" class="form-control" placeholder="Email" name='txt_email'  id='txt-email'
+                                    value = "${requestScope.txt_email}">
+                                </div>
+                                <div class="mb-4">
+                                	<p class="err" id="err-email">${requestScope.err_email}</p>
                                 </div>
                                 <div class="input-group mb-4">
                                     <span class="input-group-addon"><i class="icon-lock"></i>
                                     </span>
-                                    <input type="password" class="form-control" placeholder="Password" name = 'password'>
+                                    <input type="password" class="form-control" placeholder="Password" name = 'txt_password' id='txt-password'
+                                    value = "${requestScope.txt_password}">
                                 </div>
+                                <div class="mb-4">
+                                	<p class="err" id="err_password">${requestScope.err_password}</p>
+                                	
+                                	 
+                                </div>
+                                <div class="checkbox mb-4">
+                                	<label><input type="checkbox" name="rememberMe" ${requestScope.rememberMe}> Remember Me</label>
+                                </div>
+                                                            
                                 <div class="row">
                                     <div class="col-6">
-                                        <button type="submit" class="btn btn-primary px-4">Login</button>
+                                        <button type="submit" onClick="return validateLoginForm()" name="btn-submit-login" id="btn-submit-login" class="btn btn-primary px-4">Login</button>
                                     </div>
                                     <div class="col-6 text-right">
                                         <button type="button" class="btn btn-link px-0">Forgot password?</button>
@@ -93,6 +113,7 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="AJAX/checkExistingUser.js"></script>
     <script src="LoginWithSocialMedia/facebookapi.js"></script>
+  <!--   <script src="js/validation/userValidation.js"></script> -->
 
 
 

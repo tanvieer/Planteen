@@ -9,4 +9,5 @@ public interface Controller<T> {
 	public T  getById(int id);
 	public T getByName(String name);
 	public ArrayList<T> getAll();
+	
 }

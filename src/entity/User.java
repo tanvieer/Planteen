@@ -1,7 +1,5 @@
 package entity;
 
-
-
 public class User {
 	private int userId;
 	private String type;
@@ -12,7 +10,8 @@ public class User {
 	private String phone;
 	private String gender;
 	private String status;
-	
+	public static enum UserType{ADMIN,USER,STUFF}
+	public static enum UserStatus{ACTIVE,BANNED,DEACTIVE}
 
 	
 	public User( String type, String name, String email, String password, String address, String phone,String gender, String status) {
@@ -39,7 +38,22 @@ public class User {
 		this.status = status;
 	}
 	
+
+	public User(String type, String name, String email, String password) {
+		//super();
+		this.type = type;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+	}
 	
+	
+	public User(String email, String password) {
+		//super();
+		this.email = email;
+		this.password = password;
+	}
+
 	public int getUserId() {
 		return userId;
 	}
@@ -95,5 +109,16 @@ public class User {
 		this.status = status;
 	}
 
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", type=" + type + ", name=" + name
+				+ ", email=" + email + ", password=" + password + ", address="
+				+ address + ", phone=" + phone + ", gender=" + gender
+				+ ", status=" + status + "]";
+	}
+	
+	
+	
+	
 	
 }

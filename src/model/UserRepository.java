@@ -3,6 +3,8 @@ package model;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.sun.crypto.provider.RSACipher;
+
 import DataAccessLayer.MySqlDataAccess;
 import entity.User;
 
@@ -64,7 +66,7 @@ public class UserRepository implements Repository<User>{
 			da = new MySqlDataAccess();
 			connection=da.getConnection();
 			
-			stmt = connection.prepareStatement("UPDATE "+tableName+" SET ("
+			stmt = connection.prepareStatement("UPDATE "+tableName+" SET "
 					+ "type = ?,"
 					+ "name = ?,"
 					+ "email = ?,"
@@ -72,7 +74,7 @@ public class UserRepository implements Repository<User>{
 					+ "address = ?,"
 					+ "phone = ?,"
 					+ "gender = ?,"
-					+ "status = ?) "
+					+ "status = ? "
 					+ "WHERE userid = ?");  // we can use statement or we can use general query.  example: statement
 			
 	            stmt.setString(1,entity.getType());
@@ -84,7 +86,7 @@ public class UserRepository implements Repository<User>{
 	            stmt.setString(7,entity.getGender());
 	            stmt.setString(8,entity.getStatus());
 	            stmt.setInt(9,entity.getUserId());
-	            
+	            System.out.println(stmt);
 			int result = stmt.executeUpdate();
 			
 			if (result != 0) {
@@ -135,22 +137,29 @@ public class UserRepository implements Repository<User>{
 			
 			String query = "SELECT * FROM " + tableName + " where userId = '"
 					+ id + "'";
-			
+		
 			resultSet = da.getData(query);
-
+		
+			if(resultSet.next()){
 			int userId = resultSet.getInt("userId");
 			String type = resultSet.getString("type");
 			String name = resultSet.getString("name");
 			String email = resultSet.getString("email");
+			
 			String password = resultSet.getString("password");
-			String address = resultSet.getString("adress");
+			String address = resultSet.getString("address");
 			String phone = resultSet.getString("phone");
 			String gender = resultSet.getString("gender");
 			String status = resultSet.getString("status");
 			
-			User users = new User(userId,type,name, email, password,address, phone,gender,status);
-				return users;
+			
+			User user = new User(userId,type,name, email, password,address, phone,gender,status);
+				return user;
 			}
+			else 
+				return null;
+		}
+		
 		 catch (Exception e) {
 			System.out.println("exception found at UserRepository.java while getById");
 			return null;
@@ -169,19 +178,23 @@ public class UserRepository implements Repository<User>{
 			
 			da = new MySqlDataAccess();
 			resultSet = da.getData(query);
-
+			if(resultSet.next()){
 			int userId = resultSet.getInt("userId");
 			String type = resultSet.getString("type");
 			String user_name = resultSet.getString("name");
 			String email = resultSet.getString("email");
 			String password = resultSet.getString("password");
-			String address = resultSet.getString("adress");
+			String address = resultSet.getString("address");
 			String phone = resultSet.getString("phone");
 			String gender = resultSet.getString("gender");
 			String status = resultSet.getString("status");
 			
 			User users = new User(userId,type, user_name, email, password,address, phone,gender,status);
 				return users;
+			}
+			else 
+				return null;
+					
 			}
 		 catch (Exception e) {
 			System.out.println("exception found at UserRepository.java while getByName");
@@ -201,19 +214,22 @@ public class UserRepository implements Repository<User>{
 			
 			da = new MySqlDataAccess();
 			resultSet = da.getData(query);
-
+			if(resultSet.next()){
 			int userId = resultSet.getInt("userId");
 			String type = resultSet.getString("type");
 			String user_name = resultSet.getString("name");
 			String email = resultSet.getString("email");
 			String password = resultSet.getString("password");
-			String address = resultSet.getString("adress");
+			String address = resultSet.getString("address");
 			String phone = resultSet.getString("phone");
 			String gender = resultSet.getString("gender");
 			String status = resultSet.getString("status");
 			
 			User users = new User(userId,type, user_name, email, password,address, phone,gender,status);
 				return users;
+			}
+			else 
+				return null;
 			}
 		 catch (Exception e) {
 			System.out.println("exception found at UserRepository.java while getByEmail");
@@ -243,7 +259,7 @@ public class UserRepository implements Repository<User>{
 				String name = resultSet.getString("name");
 				String email = resultSet.getString("email");
 				String password = resultSet.getString("password");
-				String address = resultSet.getString("adress");
+				String address = resultSet.getString("address");
 				String phone = resultSet.getString("phone");
 				String gender = resultSet.getString("gender");
 				String status = resultSet.getString("status");

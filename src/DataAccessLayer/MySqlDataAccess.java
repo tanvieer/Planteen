@@ -8,7 +8,7 @@ import com.mysql.jdbc.PreparedStatement;
 
 public class MySqlDataAccess extends DataAccess {
 	public MySqlDataAccess() throws ClassNotFoundException, SQLException {
-		super("jdbc:mysql://localhost:3306/ecom", "root", "",
+		super("jdbc:mysql://localhost:3306/planteen", "root", "",
 				"com.mysql.jdbc.Driver");
 	}
 

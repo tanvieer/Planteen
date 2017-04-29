@@ -1,6 +1,6 @@
 function checkByEmail() {
 	var xmlhttp;
-	var email = document.getElementById('email').value;
+	var email = document.getElementById('txt-email').value;
 	var url = "checkEmail?email=" + email;
 	if (window.XMLHttpRequest) {
 		xmlhttp = new XMLHttpRequest();
@@ -12,10 +12,10 @@ function checkByEmail() {
 			var check = xmlhttp.responseText;
 			check = check.trim();
 			if (check != "Available") {
-				document.getElementById("existTagEmail").innerHTML = check;
+				document.getElementById("err-email").innerHTML = check;
 				return false;
 			} else{
-				document.getElementById("existTagUsername").innerHTML = "";
+				//document.getElementById("err-email").innerHTML = "";
 				return true;
 			}
 		}
@@ -26,7 +26,6 @@ function checkByEmail() {
 		xmlhttp.send();
 	}
 	
-
 }
 
 function checkByUsername() {

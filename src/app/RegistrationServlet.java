@@ -2,53 +2,109 @@ package app;
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.UserInfoController;
+import controller.UserController;
 import entity.User;
 
-@WebServlet("/RegistrationServlet")
+@WebServlet("/userRegistration")
 public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		//System.out.println("before" + request.getAttribute("err_email"));
+		
+		RequestDispatcher dispatcher= request.getRequestDispatcher("userRegistration.jsp");
+		dispatcher.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
+		boolean isValid = true;
 		
-		String type = (String) request.getParameter("type");
-		String name = (String) request.getParameter("name");
+		String name = (String) request.getParameter("txt_name").trim();
+		String type = User.UserType.USER.toString();
+        String email = (String) request.getParameter("txt_email").trim();
+        String password = (String) request.getParameter("txt_password");
+        String cpassword = (String) request.getParameter("txt_cpassword");
         
-        String email = (String) request.getParameter("email");
-        String password = (String) request.getParameter("password");
-        String address = (String) request.getParameter("address");
-        String phone = (String) request.getParameter("phone");
-        String gender = (String) request.getParameter("gender");
-        String status = (String) request.getParameter("status");
+        request.setAttribute("txt_name", name);
+        request.setAttribute("txt_email", email);
+        request.setAttribute("txt_password", password);
+        request.setAttribute("txt_cpassword", cpassword);
         
-         type = "user";
+        User user = new User(type,name,email,password);
         
-        out.println("Username: " +name );  
-        out.println("Email: " + email); 
-        out.println("Password: " + password);  
+        //System.out.println("before  "+user);
+       
+        isValid = validateUser(user,request,response,cpassword);
         
-        
-        
-        User user = new User(type,name,email,password,address,phone,gender,status);  
-        System.out.println(new UserInfoController().add(user));
+
+        if(isValid){
+        	 //System.out.println(user);
+             System.out.println("insert: "+new UserController().add(user));
+        }
+       
         
 	}
+	
+	private boolean validateUser(User user, HttpServletRequest request, HttpServletResponse response,String cpassword) throws ServletException, IOException{
+		
+		RequestDispatcher dispatcher= request.getRequestDispatcher("userRegistration.jsp");
+		boolean check=true;
+		if(user.getEmail()==null || user.getEmail().trim()== ""){
+			request.setAttribute("err_email", "Email must be filled out");
+			check=false;
+		}
+		else if( !validateEmail(user.getEmail()) ){
+			request.setAttribute("err_email", "Invalid email address");
+			check=false;
+		}
+	
+		
+		if(user.getName()==null || user.getName()== ""){
+			request.setAttribute("err_name", "Name must be filled out");
+			check=false;
+		}
+		if(user.getPassword()==null || user.getPassword()== ""){
+			request.setAttribute("err_password", "Password must be filled out");
+			check=false;
+		}
+		if(cpassword==null || cpassword== ""){
+			request.setAttribute("err_cpassword", "Confirm password must be filled out");
+			check=false;
+		}
+		if(user.getPassword()!= cpassword){
+			request.setAttribute("err_cpassword", "Password fields don't match");
+			check=false;
+		}
+		
+		
+		if(check && new UserController().getByEmail(user.getEmail())!= null){
+			request.setAttribute("err_email", "Email registered by another user");
+			check=false;
+		}
+		
+		
+		if(!check){
+			dispatcher.forward(request, response);
+		}
+		
+		return check;
+	}
+	
+	
+	 boolean validateEmail(String email) 
+	 {
+	     String regPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+	     return email.matches(regPattern);
+	 }
 
 }

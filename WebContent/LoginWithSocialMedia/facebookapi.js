@@ -8,9 +8,9 @@ window.fbAsyncInit = function() {
 		if (response.status === 'connected') {
 			document.getElementById('status').innerHTML = 'We are connected.';
 		} else if (response.status === 'not_authorized') {
-			document.getElementById('status').innerHTML = 'facebook';
+			document.getElementById('status').innerHTML = 'Login With Facebook';
 		} else {
-			document.getElementById('status').innerHTML = 'facebook';
+			document.getElementById('status').innerHTML = 'Login With Facebook';
 		}
 	});
 };
@@ -33,9 +33,9 @@ function loginFB() {
 			getInfo();
 
 		} else if (response.status === 'not_authorized') {
-			document.getElementById('status').innerHTML = 'facebook';
+			document.getElementById('status').innerHTML = 'Login With Facebook';
 		} else {
-			document.getElementById('status').innerHTML = 'facebook';
+			document.getElementById('status').innerHTML = 'Login With Facebook';
 		}
 	}, {
 		scope : 'email'

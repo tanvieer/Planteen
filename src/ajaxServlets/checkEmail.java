@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.stream.events.Comment;
 
-import controller.UserInfoController;
+import controller.UserController;
 import entity.User;
 
 @WebServlet("/checkEmail")
