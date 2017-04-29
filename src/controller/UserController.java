@@ -6,7 +6,7 @@ import entity.User;
 import model.UserRepository;
 
 public class UserController implements Controller<User> {
-	UserRepository repository;
+	private UserRepository repository;
 
 	public UserController() { // create repository by constructor
 		repository = new UserRepository();
@@ -14,8 +14,8 @@ public class UserController implements Controller<User> {
 	
 	
 	@Override
-	public boolean add(User user) { // add user
-		return repository.add(user);
+	public boolean add(User entity) { // add user
+		return repository.add(entity);
 	}
 
 	
@@ -45,11 +45,6 @@ public class UserController implements Controller<User> {
 	public ArrayList<User> getAll() {
 		return repository.getAll();
 	}
-	
-	
-	
-	
-	
 	
 	public User getByEmail(String mail) { // search by email  , interface a nai
 		return repository.getByEmail(mail);

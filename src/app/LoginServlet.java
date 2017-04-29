@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
 		String email = (String) request.getParameter("txt_email").trim();
         String password = (String) request.getParameter("txt_password");
         String checked =  request.getParameter("rememberMe")==null?"":(String) request.getParameter("rememberMe");
-        //String checked =  request.getParameter("rememberMe")==null?"":"checked";
+
         
         request.setAttribute("txt_email", email);
         request.setAttribute("txt_password", password);

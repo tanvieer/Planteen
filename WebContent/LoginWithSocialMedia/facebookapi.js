@@ -30,6 +30,8 @@ function loginFB() {
 	FB.login(function(response) {
 		if (response.status === 'connected') {
 			document.getElementById('status').innerHTML = 'We are connected.';
+			
+			window.location.href = "userHome.jsp";
 			getInfo();
 
 		} else if (response.status === 'not_authorized') {
@@ -54,8 +56,9 @@ function getInfo() {
 		// document.getElementById('email').innerHTML = response.email;
 		// document.getElementById('name').innerHTML = response.name;
 
-		document.getElementById("email").value = response.email;
-		document.getElementById("name").value = response.name;
+		document.getElementById("txt-email").value = response.email;
+		document.getElementById("txt-name").value = response.name;
+		
 	});
 
 	getProfilePicture();

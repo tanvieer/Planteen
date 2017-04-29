@@ -140,7 +140,7 @@
 	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="AJAX/checkExistingUser.js"></script>
 	<script src="LoginWithSocialMedia/facebookapi.js"></script>
-	<!-- <script src="js/validation/userValidation.js"></script> -->
+	<script src="js/validation/userValidation.js"></script>
 
 
 </body>

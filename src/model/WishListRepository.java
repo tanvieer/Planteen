@@ -3,21 +3,19 @@ package model;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import com.sun.swing.internal.plaf.metal.resources.metal_zh_TW;
-
 import DataAccessLayer.MySqlDataAccess;
 import entity.Category;
-import entity.Product;
+import entity.WishList;
 
-public class ProductRepository implements Repository<Product> {
+public class WishListRepository  implements Repository<WishList>{
 
-	private static final String tableName = "products";
+	private static final String tableName = "wishlists";
 	private java.sql.PreparedStatement statement;
 	private MySqlDataAccess dataAccess;
 	private Connection connection;
 	private java.sql.ResultSet resultSet;
 	
-	public ProductRepository() {
+	public WishListRepository() {
 		statement = null;
 		dataAccess=null;
 		connection=null;
@@ -25,19 +23,15 @@ public class ProductRepository implements Repository<Product> {
 	}
 	
 	@Override
-	public boolean add(Product entity) {
+	public boolean add(WishList entity) {
 		try {
 			dataAccess = new MySqlDataAccess();
 			connection=dataAccess.getConnection();
 			
-			statement = connection.prepareStatement("INSERT INTO "+tableName+" (productName,categoryId,sellingPrice,imagePath,productDetails,status)" + " Values(?,?,?,?,?,?)");  
-			
-			    statement.setString(1,entity.getProductName() );
-	            statement.setInt(2,entity.getCategoryId());
-	            statement.setFloat(3, entity.getSellingPrice());
-	            statement.setString(4, entity.getImagePath());
-	            statement.setString(5, entity.getProductDetails());
-	            statement.setString(6, entity.getStatus());
+			statement = connection.prepareStatement("INSERT INTO "+tableName+" (userId)"
+		  			+ " Values(?)");  // we can use statement or we can use general query.  example: statement
+			    
+	            statement.setInt(1,entity.getUserId());
 	           
 			
 			int result = statement.executeUpdate();
@@ -59,23 +53,16 @@ public class ProductRepository implements Repository<Product> {
 	}
 
 	@Override
-	public boolean edit(Product entity) {
+	public boolean edit(WishList entity) {
 		try {
 			dataAccess = new MySqlDataAccess();
 			connection=dataAccess.getConnection();
 			
-			statement = connection.prepareStatement("UPDATE "+tableName+" SET productName=?,categoryId=?,sellingPrice=?,imagePath=?,productDetails=?,status=? WHERE productId=?");  
+			statement = connection.prepareStatement("UPDATE "+tableName+" SET userId=? WHERE wishListId=?");  
 			// we can use statement or we can use general query.  example: statement
-
 				
-			statement.setString(1,entity.getProductName() );
-            statement.setInt(2,entity.getCategoryId());
-            statement.setFloat(3, entity.getSellingPrice());
-            statement.setString(4, entity.getImagePath());
-            statement.setString(5, entity.getProductDetails());
-            statement.setString(6, entity.getStatus());
-            statement.setInt(7, entity.getProductId());
-            
+	            statement.setInt(1,entity.getUserId());
+	            statement.setInt(2,entity.getWishListId());
 	            System.out.println(statement);
 			int result = statement.executeUpdate();
 			
@@ -99,7 +86,7 @@ public class ProductRepository implements Repository<Product> {
 		try {
 			dataAccess = new MySqlDataAccess();
 			
-			String query = "DELETE FROM " + tableName + " WHERE productId ='"
+			String query = "DELETE FROM " + tableName + " WHERE wishListId ='"
 					+ id + "'"; // we can use statement or we can use general query.  example: query
 
 			int result = dataAccess.executeQuery(query);
@@ -119,29 +106,22 @@ public class ProductRepository implements Repository<Product> {
 	}
 
 	@Override
-	public Product getById(int id) {
+	public WishList getById(int id) {
 		try {
 			dataAccess = new MySqlDataAccess();
 			
-			String query = "SELECT * FROM " + tableName + " where productId = '"
+			String query = "SELECT * FROM " + tableName + " where wishListId = '"
 					+ id + "'";
 		
 			resultSet = dataAccess.getData(query);
 		
 			if(resultSet.next()){
 				
-			int productId=resultSet.getInt("productId");
-			String productName=resultSet.getString("productName");	
-			int categoryId = resultSet.getInt("categoryId");
-			float sellingPrice= resultSet.getFloat("sellingPrice");
-			String imagePath= resultSet.getString("imagePath");
-			String productDetails= resultSet.getString("productDetails");
-			String status= resultSet.getString("status");
-					
-					
+			int wishListId = resultSet.getInt("wishListId");
+			int userId = resultSet.getInt("userId");
 			
-			Product product = new Product(productId, productName, categoryId, sellingPrice, imagePath, productDetails, status);
-				return product;
+			WishList wishList= new WishList(wishListId,userId);
+			return wishList;
 			}
 			else 
 				return null;
@@ -154,17 +134,18 @@ public class ProductRepository implements Repository<Product> {
 		finally {
 			closeConnection("getById()");
 		}
+		
 	}
 
 	@Override
-	public Product getByName(String name) {
-		System.out.println("not implemented yet");
+	public WishList getByName(String name) {
+		System.out.println("we dnt need getbyname of wishlist");
 		return null;
 	}
 
 	@Override
-	public ArrayList<Product> getAll() {
-		ArrayList<Product> products = new ArrayList<Product>();
+	public ArrayList<WishList> getAll() {
+		ArrayList<WishList> wishLists = new ArrayList<WishList>();
 		try {
 
 			String query = "SELECT * FROM " + tableName;
@@ -175,17 +156,11 @@ public class ProductRepository implements Repository<Product> {
 
 			while (resultSet.next()) {
 
-				int productId=resultSet.getInt("productId");
-				String productName=resultSet.getString("productName");	
-				int categoryId = resultSet.getInt("categoryId");
-				float sellingPrice= resultSet.getFloat("sellingPrice");
-				String imagePath= resultSet.getString("imagePath");
-				String productDetails= resultSet.getString("productDetails");
-				String status= resultSet.getString("status");
+				int wishListId = resultSet.getInt("wishListId");
+				int userId = resultSet.getInt("userId");
 			
-				
-				Product product= new Product(productId, productName, categoryId, sellingPrice, imagePath, productDetails, status);
-				products.add(product);
+				WishList wishList = new WishList(wishListId, userId);
+				wishLists.add(wishList);
 			}
 		} catch (Exception e) {
 			System.out.println("exception found at UserRepository.java while get all");
@@ -194,7 +169,7 @@ public class ProductRepository implements Repository<Product> {
 		finally {
 			closeConnection("getAll()");
 		}
-		return products;
+		return wishLists;
 	}
 	
 	private void closeConnection(String tracker){
