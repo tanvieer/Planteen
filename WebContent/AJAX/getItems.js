@@ -18,15 +18,10 @@ function SearchProductByCategoryId(id) {
 				
 		}
 	};
-
-	
-		xmlhttp.open("GET", url, false);
-		xmlhttp.send();
+	xmlhttp.open("GET", url, false);
+	xmlhttp.send();
 	
 }
-
-
-
 
 
 function getCategoryList() {

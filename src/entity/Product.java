@@ -9,6 +9,11 @@ public class Product {
 	private String productDetails;
 	private String status;
 	
+	
+	
+	public Product() {
+	}
+
 	public Product( String productName, int categoryId, float sellingPrice, String imagePath,String productDetails, String status) {
 		
 		this.productName = productName;
@@ -72,6 +77,15 @@ public class Product {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", productName="
+				+ productName + ", categoryId=" + categoryId
+				+ ", sellingPrice=" + sellingPrice + ", imagePath=" + imagePath
+				+ ", productDetails=" + productDetails + ", status=" + status
+				+ "]";
 	}
 	
 	

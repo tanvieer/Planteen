@@ -12,11 +12,11 @@
 	
 	
 	
-		<%--  <c:forEach varStatus="loop" begin="1" end="50" step="1">
+		 <%--  <c:forEach varStatus="loop" begin="1" end="3" step="1">
 		
 			<div class="col-sm-4 col-md-4">
 				<div class="card card-accent-default align-middle">
-					<h4 class="card-header card-title">Product ${loop.index}</h4>
+					<h4 class="card-header card-title">${products.productName}</h4>
 
 					<img class="card-img-top" style="max-height:20rem;width:auto" src="./img/test.jpg"
 						alt="Card image cap">
@@ -54,7 +54,50 @@
 			</div>
 
 
-		</c:forEach> --%>
+		</c:forEach>  --%>
+		
+		 <c:forEach items="${products}" var="product">
+		
+			<div class="col-sm-4 col-md-4">
+				<div class="card card-accent-default align-middle">
+					<h4 class="card-header card-title">${product.productName}</h4>
+
+					<img class="card-img-top" style="max-height:20rem;width:auto" src="./img/test.jpg"
+						alt="Card image cap">
+						
+					<div class="card-block">
+
+						<p class="card-text">${product.productDetails}</p>
+
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item text-center"><b>Price: ${product.sellingPrice} BDT</b></li>
+							<li class="list-group-item text-center">
+
+								<button type="button" onclick="window.location.href='viewItem.jsp?productId=${product.productId}'"
+									class="btn btn-outline-primary btn-lg btn-block">Product Details
+								</button>
+
+							</li>
+
+							<li class="list-group-item text-center">
+
+								<button type="button" class="btn btn-warning">
+									<i class="fa fa-check"></i>&nbsp; Add To Cart
+								</button>
+								<button type="button" class="btn btn-danger">
+									<i class="fa fa-star"></i>&nbsp; Wishlist
+								</button>
+
+							</li>
+						</ul>
+
+
+					</div>
+				</div>
+			</div>
+
+
+		</c:forEach> 
 
 	</div>
 

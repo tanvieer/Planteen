@@ -32,14 +32,14 @@
 
 <header class="app-header navbar">
         <button class="navbar-toggler mobile-sidebar-toggler d-lg-none" type="button"><i class="fa fa-reorder"></i></button>
-        <a class="navbar-brand" href="userHome.jsp"></a>
+        <a class="navbar-brand" href="home"></a>
         <ul class="nav navbar-nav d-md-down-none">
             <li class="nav-item">
                 <a class="nav-link navbar-toggler sidebar-toggler" href="#"><i class="fa fa-reorder"></i></a>
             </li>
 
             <li class="nav-item px-3">
-                <a class="nav-link" href="userHome.jsp"><i class="icon-home"></i><span class="d-md-down-none"> Home </span></a>
+                <a class="nav-link" href="home"><i class="icon-home"></i><span class="d-md-down-none"> Home </span></a>
             </li>
             
         </ul>
