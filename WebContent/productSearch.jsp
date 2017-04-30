@@ -7,7 +7,7 @@
 	<li>
 
 
-		<form action="" method="post" class="form-2orizontal ">
+		<form action="home" method="GET" class="form-2orizontal ">
 			<div class="form-group row">
 				<div class="col-md-12">
 					<div class="input-group">
@@ -41,7 +41,7 @@
 
 
 						<div class="input-group-btn">
-							<button type="button" class="btn btn-primary dropdown-toggle"
+							<button type="button" class="btn btn-primary dropdown-toggle" name="selectedCategory"
 								data-toggle="dropdown" aria-expanded="false">
 								<span class="selection"> All Categories </span><span
 									class="caret"></span>
@@ -52,18 +52,18 @@
 								<div role="separator" class="dropdown-divider"></div>
 
 
-								<c:forEach varStatus="loop" begin="1" end="50" step="1">
-									<a class="dropdown-item" href="#">Category ${loop.index}</a>
+								<c:forEach items="${categories}" var="category">
+									<a class="dropdown-item" href="#">${category.categoryName}</a>
 								</c:forEach>
-
-
+								
+		
 							</div>
 						</div>
 
 
 
 
-						<input type="text" id="input3-group3" name="input3-group3"
+						<input type="text" id="input3-group3" name="q"
 							class="form-control" placeholder="Search shop products...">
 						<div class="input-group-btn">
 							<button type="submit" class="btn btn-primary">

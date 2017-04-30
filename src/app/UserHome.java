@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.CategoryController;
 import controller.ProductController;
+import entity.Category;
 import entity.Product;
 
 /**
@@ -21,7 +23,48 @@ public class UserHome extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//String query = (String) request.getParameter("q").trim();
+
+
+		RequestDispatcher dispatcher= request.getRequestDispatcher("userHome.jsp");
+		
+		ArrayList<Category> category = new CategoryController().getAll(); 
+		request.setAttribute("categories", category);       // for side nav
+		
+
+		//===================================================search nav satart    ====================
+		String query;
+		try{
+			query = (String) request.getParameter("q").trim();
+		}
+		catch (Exception e){
+			query = null;
+		}
+		
+		if(query!=null) {
+			ArrayList<Product> products = new ProductController().searchByName(query); 
+			
+			
+			
+			if(products.isEmpty()){
+				products = new ProductController().getAll(); 
+				request.setAttribute("products", products);
+			}
+			
+			
+			request.setAttribute("products", products);
+			dispatcher.forward(request, response);
+			return;
+			
+		}
+		
+		
+		//===================================================search nav end====================
+		
+		
+		
+		
+		//=====================================search by category id==================================
+		
 		int id;
 		try{
 			id = Integer.parseInt(request.getParameter("categoryId"));
@@ -30,7 +73,6 @@ public class UserHome extends HttpServlet {
 			id=0;
 		}
 		
-		RequestDispatcher dispatcher= request.getRequestDispatcher("userHome.jsp");
 		if(id == 0) {
 			ArrayList<Product> products = new ProductController().getAll(); 
 			request.setAttribute("products", products);
@@ -39,7 +81,6 @@ public class UserHome extends HttpServlet {
 			ArrayList<Product> products = new ProductController().getAllProductByCategoryId(id); 
 			request.setAttribute("products", products);
 		}
-		
 		dispatcher.forward(request, response);
 		
 		
@@ -48,6 +89,7 @@ public class UserHome extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("UserHome.java doPost Called");
 	}
 
 }

@@ -138,10 +138,35 @@ public class CategoryRepository implements Repository<Category>{
 		
 	}
 
-	@Override
-	public Category getByName(String name) {
+
+	public ArrayList<Category> searchByName(String name) {
 		
-		return null;
+		ArrayList<Category> categoryList = new ArrayList<Category>();
+		try {
+
+			String query = "SELECT * FROM " + tableName + " WHERE categoryName LIKE '"+name+"%'";
+
+			dataAccess = new MySqlDataAccess();
+
+			resultSet = dataAccess.getData(query);
+
+			while (resultSet.next()) {
+
+				int categoryId = resultSet.getInt("categoryId");
+				String categoryName = resultSet.getString("categoryName");
+			
+				
+				Category category= new Category(categoryId, categoryName);
+				categoryList.add(category);
+			}
+		} catch (Exception e) {
+			System.out.println("exception found at UserRepository.java while get all");
+			return null;
+		}
+		finally {
+			closeConnection("getAll()");
+		}
+		return categoryList;
 	}
 
 	@Override
@@ -179,6 +204,13 @@ public class CategoryRepository implements Repository<Category>{
 		try { if (resultSet != null) resultSet.close(); } catch (Exception e) {System.out.println("Exception at UserRepository.java, "+tracker+" at finally block RESULTSET");};
 	    try { if (statement != null) statement.close(); } catch (Exception e) {System.out.println("Exception at UserRepository.java, "+tracker+" at finally block STMT");};
 	    try { if (connection != null) connection.close(); } catch (Exception e) {System.out.println("Exception at UserRepository.java, "+tracker+" at finally block CONNECTION");};
+	}
+
+
+	@Override
+	public Category getByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

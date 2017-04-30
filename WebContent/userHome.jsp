@@ -8,11 +8,15 @@
 
 
 <div class="container-fluid">
+	<div class="row animated fadeIn">
+	
+	
+	
+		 <%--  get by ajax
+		 
 	<div class="row animated fadeIn" id="showProducts">
-	
-	
-	
-		 <%--  <c:forEach varStatus="loop" begin="1" end="3" step="1">
+		 
+		 <c:forEach varStatus="loop" begin="1" end="3" step="1">
 		
 			<div class="col-sm-4 col-md-4">
 				<div class="card card-accent-default align-middle">
