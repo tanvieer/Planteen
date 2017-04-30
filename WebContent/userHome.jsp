@@ -66,7 +66,7 @@
 				<div class="card card-accent-default align-middle">
 					<h4 class="card-header card-title">${product.productName}</h4>
 
-					<img class="card-img-top" style="max-height:20rem;width:auto" src="./img/test.jpg"
+					<img class="card-img-top" style="max-height:20rem;width:auto" src="${product.imagePath}"
 						alt="Card image cap">
 						
 					<div class="card-block">
@@ -77,7 +77,7 @@
 							<li class="list-group-item text-center"><b>Price: ${product.sellingPrice} BDT</b></li>
 							<li class="list-group-item text-center">
 
-								<button type="button" onclick="window.location.href='viewItem.jsp?productId=${product.productId}'"
+								<button type="button" onclick="window.location.href='itemview?productId=${product.productId}'"
 									class="btn btn-outline-primary btn-lg btn-block">Product Details
 								</button>
 

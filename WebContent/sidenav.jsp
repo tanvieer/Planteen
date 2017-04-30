@@ -33,7 +33,7 @@ Get by ajax function
 		<ul class="nav" >
 					
 					
-		 	<li class="nav-item"><a class="nav-link" href="userHome.jsp" target="_top">
+		 	<li class="nav-item"><a class="nav-link" href="home" target="_top">
 				  <i class="icon-star"></i>All Categories</a></li>
 
 			<li class="nav-title">Select Category</li>
@@ -41,7 +41,7 @@ Get by ajax function
 				 <c:forEach items="${categories}" var="category">
 				  <li class="nav-item"><a class="nav-link" href="home?categoryId=${category.categoryId}" target="_top">
 				  		<i class="icon-star"></i>${category.categoryName}
-				  		<span class="badge badge-info">NEW</span>
+				  		<!-- <span class="badge badge-info">NEW</span> -->
 				  	</a>
 				  </li>
 				</c:forEach> 

@@ -33,21 +33,31 @@ public class UserHome extends HttpServlet {
 
 		//===================================================search nav satart    ====================
 		String query;
+		int searchCategoryId = 0;
 		try{
-			query = (String) request.getParameter("q").trim();
+			query = (String) request.getParameter("q");
+			searchCategoryId =Integer.parseInt(request.getParameter("searchCategoryId")); 
 		}
 		catch (Exception e){
 			query = null;
 		}
 		
 		if(query!=null) {
-			ArrayList<Product> products = new ProductController().searchByName(query); 
+			ArrayList<Product> products;
+			if(searchCategoryId == 0){
+				products = new ProductController().searchByName(query); 
+			}
+			else{
+				products = new ProductController().searchByNameCategoryId(query,searchCategoryId); 
+			}
+			
 			
 			
 			
 			if(products.isEmpty()){
-				products = new ProductController().getAll(); 
-				request.setAttribute("products", products);
+				//products = new ProductController().getAll(); 
+				//request.setAttribute("products", products);
+				System.out.println("Product Not Found");
 			}
 			
 			

@@ -235,7 +235,7 @@ public class ProductRepository implements Repository<Product> {
 	public ArrayList<Product> searchByName(String name){
 		ArrayList<Product> products = new ArrayList<Product>();
 		try {
-			String query = "SELECT * FROM " + tableName+ " WHERE productName LIKE '"+name+"%'";
+			String query = "SELECT * FROM " + tableName+ " WHERE productName LIKE '%"+name+"%'";
 		
 			dataAccess = new MySqlDataAccess();
 
@@ -268,6 +268,41 @@ public class ProductRepository implements Repository<Product> {
 	}
 	
 	
+public ArrayList<Product> searchByNameCategoryId(String name,int id){
+	
+	ArrayList<Product> products = new ArrayList<Product>();
+	try {
+		String query = "SELECT * FROM " + tableName+ " WHERE productName LIKE '%"+name+"%' AND categoryId="+id;
+	
+		dataAccess = new MySqlDataAccess();
+
+		resultSet = dataAccess.getData(query);
+		
+		
+
+		while (resultSet.next()) {
+
+			int productId=resultSet.getInt("productId");
+			String productName=resultSet.getString("productName");	
+			int categoryId = resultSet.getInt("categoryId");
+			float sellingPrice= resultSet.getFloat("sellingPrice");
+			String imagePath= resultSet.getString("imagePath");
+			String productDetails= resultSet.getString("productDetails");
+			String status= resultSet.getString("status");
+		
+			
+			Product product= new Product(productId, productName, categoryId, sellingPrice, imagePath, productDetails, status);
+			products.add(product);
+		}
+	} catch (Exception e) {
+		System.out.println("exception found at ProductRepository.java while searchByName");
+		return null;
+	}
+	finally {
+		closeConnection("searchByName");
+	}
+	return products;
+}
 	
 	
 	

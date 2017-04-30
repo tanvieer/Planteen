@@ -40,13 +40,13 @@
 
 
 
-						<div class="input-group-btn">
-							<button type="button" class="btn btn-primary dropdown-toggle" name="selectedCategory"
+						
+							<!-- <button type="button" class="btn btn-primary dropdown-toggle" name="selectedCategory"
 								data-toggle="dropdown" aria-expanded="false">
 								<span class="selection"> All Categories </span><span
 									class="caret"></span>
-							</button>
-							<div class="dropdown-menu"
+							</button> -->
+							<%-- <div class="dropdown-menu"
 								style="max-height: 20rem; overflow-y: scroll">
 								<a class="dropdown-item" href="#">All Categories</a>
 								<div role="separator" class="dropdown-divider"></div>
@@ -55,10 +55,21 @@
 								<c:forEach items="${categories}" var="category">
 									<a class="dropdown-item" href="#">${category.categoryName}</a>
 								</c:forEach>
+							</div> --%>
+							
+							
+							<select class="btn btn-primary" name="searchCategoryId" style="max-height: 50px;overflow-y: scroll;">
+								<option value="0">All Categories</option>
+								<!-- <div role="separator" class="dropdown-divider"></div> -->
+
+
+								<c:forEach items="${categories}" var="category">
+									<option value="${category.categoryId}" >${category.categoryName}</option>
+								</c:forEach>
 								
 		
-							</div>
-						</div>
+							</select>
+						
 
 
 

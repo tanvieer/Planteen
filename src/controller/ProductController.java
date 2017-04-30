@@ -57,4 +57,9 @@ public class ProductController implements Controller<Product> {
 	public ArrayList<Product> searchByName(String name){
 		return repository.searchByName(name);
 	}
+	
+	public ArrayList<Product> searchByNameCategoryId(String name,int id){
+		return repository.searchByNameCategoryId(name,id);
+	}
+	
 }
