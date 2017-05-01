@@ -25,6 +25,7 @@
     <!-- GenesisUI main scripts -->
 
     <script src="js/app.js"></script>
+    <script src="js/cartButton.js"></script>
 
 
 

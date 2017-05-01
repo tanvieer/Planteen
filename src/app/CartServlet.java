@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import controller.CategoryController;
 import entity.Cart;
+import entity.Category;
 
 /**
  * Servlet implementation class CartServlet
@@ -25,21 +27,26 @@ public class CartServlet extends HttpServlet {
 		//RequestDispatcher dispatcher= request.getRequestDispatcher("sampleTestPages/sessionScopeTest.jsp");
 		
 		RequestDispatcher dispatcher= request.getRequestDispatcher("userCart.jsp");
+		ArrayList<Category> category = new CategoryController().getAll(); 
+		request.setAttribute("categories", category); 
 		
 		HttpSession session = request.getSession(true);
 		
 		ArrayList<Cart> cList = new ArrayList<Cart>();
 			
-			Cart ct = new Cart(1,"Mobile",500,1000,"./img/bits1.jpg");
+			Cart ct = new Cart(1,"Mobile",500,1000,"./img/beats1.jpg");
 			cList.add(ct);
 			
-			ct = new Cart(2,"Mobile1",500,1000,"./img/bits1.jpg");
+			ct = new Cart(2,"Mobile1",500,1000,"./img/logo1.png");
 			cList.add(ct);
 			
-			ct = new Cart(1,"Mobile2",500,1000,"./img/bits1.jpg");
+			ct = new Cart(3,"Mobile2",500,1000,"./img/test.jpg");
 			cList.add(ct);
 			
-			ct = new Cart(2,"Mobile3",500,1000,"./img/bits1.jpg");
+			ct = new Cart(4,"Mobile3",500,1000,"./img/mobile1.jpg");
+			cList.add(ct);
+			
+			ct = new Cart(5,"Mobile3",500,1000,"./img/skullcandy1.jpg");
 			cList.add(ct);
 
 			

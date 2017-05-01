@@ -12,7 +12,7 @@
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,Angular 2,Angular4,Angular 4,jQuery,CSS,HTML,RWD,Dashboard,React,React.js,Vue,Vue.js">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>CoreUI - Open Source Bootstrap Admin Template</title>
+    <title>Cart Page</title>
 
     <!-- Icons -->
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -20,152 +20,7 @@
 
     <!-- Main styles for this application -->
     <link href="css/style.css" rel="stylesheet">
- <!--    
- <script>
-    window.onload = function() {
-    		getCategoryList();
-    	};
-    	
-   	function add(){
-   		var xmlhttp;
-   		var id = document.getElementById("productId").value;
-   		var url = "GetProductQuantity?productId="+id;
-   		if (window.XMLHttpRequest) {
-   			xmlhttp = new XMLHttpRequest();
-   		} else {
-   			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-   		}
-   		xmlhttp.onreadystatechange = function() {
-   			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-   				var maxQ = xmlhttp.responseText;
-   				var x = document.getElementById("txt-quantity").value;
-   				if(x > maxQ-1){
-   					document.getElementById("txt-quantity").value = maxQ;
-   					alert("Maximum available product quantity is "+maxQ);
-   				}
-   				else if(x<maxQ-1){
-   					x++;
-   					document.getElementById("txt-quantity").value = x;
-   				}
-   				else {
-   					document.getElementById("txt-quantity").value = maxQ;
-   				}
-   			}
-   		};
-   		xmlhttp.open("GET", url, true);
-   		xmlhttp.send();	
-   	}
-   	function minus(){
-   		var x = document.getElementById("txt-quantity").value;
-   		if(x>0){
-   			x--;
-   		}
-   		document.getElementById("txt-quantity").value = x;
-   	}
-   	
-   	function checkMaxQuantity(){
-   		var xmlhttp;
-   		var id = document.getElementById("productId").value;
-   		var url = "GetProductQuantity?productId="+id;
-   		if (window.XMLHttpRequest) {
-   			xmlhttp = new XMLHttpRequest();
-   		} else {
-   			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-   		}
-   		xmlhttp.onreadystatechange = function() {
-   			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-   				var maxQ = xmlhttp.responseText;
-   				var x = document.getElementById("txt-quantity").value;
-   				if(x > maxQ-1){
-   					document.getElementById("txt-quantity").value = maxQ;
-   					alert("Maximum available product quantity is "+maxQ);
-   				}
-   			}
-   		};
-   		xmlhttp.open("GET", url, true);
-   		xmlhttp.send();	
-   	}
-   	
-   	function onlyNumbers(){
-		return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));
-	}
-   	  	
-</script> -->
-
-
-  
- <script>
-    window.onload = function() {
-    		getCategoryList();
-    	};
-    	
-   	function add(idt){
-   		var xmlhttp;
-   		var id = document.getElementById("productId"+idt).value;
-   		var url = "GetProductQuantity?productId="+id;
-   		if (window.XMLHttpRequest) {
-   			xmlhttp = new XMLHttpRequest();
-   		} else {
-   			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-   		}
-   		xmlhttp.onreadystatechange = function() {
-   			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-   				var maxQ = xmlhttp.responseText;
-   				var x = document.getElementById("txt-quantity"+idt).value;
-   				if(x > maxQ-1){
-   					document.getElementById("txt-quantity"+idt).value = maxQ;
-   					alert("Maximum available product quantity is "+maxQ);
-   				}
-   				else if(x<maxQ-1){
-   					x++;
-   					document.getElementById("txt-quantity"+idt).value = x;
-   				}
-   				else {
-   					document.getElementById("txt-quantity"+idt).value = maxQ;
-   				}
-   			}
-   		};
-   		xmlhttp.open("GET", url, true);
-   		xmlhttp.send();	
-   	}
-   	function minus(idt){
-   		var x = document.getElementById("txt-quantity"+idt).value;
-   		if(x>0){
-   			x--;
-   		}
-   		document.getElementById("txt-quantity"+idt).value = x;
-   	}
-   	
-   	function checkMaxQuantity(idt){
-   		var xmlhttp;
-   		var id = document.getElementById("productId"+idt).value;
-   		var url = "GetProductQuantity?productId="+id;
-   		if (window.XMLHttpRequest) {
-   			xmlhttp = new XMLHttpRequest();
-   		} else {
-   			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-   		}
-   		xmlhttp.onreadystatechange = function() {
-   			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-   				var maxQ = xmlhttp.responseText;
-   				var x = document.getElementById("txt-quantity"+idt).value;
-   				if(x > maxQ-1){
-   					document.getElementById("txt-quantity"+idt).value = maxQ;
-   					alert("Maximum available product quantity is "+maxQ);
-   				}
-   			}
-   		};
-   		xmlhttp.open("GET", url, true);
-   		xmlhttp.send();	
-   	}
-   	
-   	function onlyNumbers(){
-		return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));
-	}
-   	  	
-</script>
-    
-    
+ 
 
 </head>
 <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
@@ -198,7 +53,7 @@
 
                     <a class="dropdown-item" href="userProfileSettings.jsp"><i class="fa fa-wrench"></i> My Profile</a>
                     <a class="dropdown-item" href="userOrders.jsp"><i class="fa fa-usd"></i> Orders</a>
-                    <a class="dropdown-item" href="userCart.jsp"><i class="fa fa-shopping-cart"></i> Cart<span class="badge badge-primary">42</span></a>
+                    <a class="dropdown-item" href="cart"><i class="fa fa-shopping-cart"></i> Cart<span class="badge badge-primary">42</span></a>
                     <div class="divider"></div>
                     <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a>
                 </div>

@@ -5,11 +5,6 @@
 <main class="main" style="background:white"> <!-- Breadcrumb -->
 <%@include file="productSearch.jsp"%>
 
-
-
-
-
-
 <div class="container-fluid">
 	<div class="row animated fadeIn">
        <!-- page content -->
@@ -32,18 +27,11 @@
            	<h2>Price: &nbsp;${product.sellingPrice} BDT</h2>
            	
            	<hr class="transparent my-3"/>
-           <%-- 	
-           	<div class="mb-0">Quantity&nbsp;
-           		<select><c:forEach varStatus="loop" begin="1" end="10" step="1">
-					<option value="${loop.index}">${loop.index}</option> <!-- item dropdown -->
-				</c:forEach></select>&nbsp;
-           	</div> --%>
            	
-           	
-           	<input type="hidden" id="productId" name="txt_productId" value="${product.productId}">
-			<input type="button" onClick="minus()" value="-">
-			<input type="text" name="txt_quantity" id="txt-quantity" value="1" onkeypress="return onlyNumbers()" onBlur="checkMaxQuantity()" >
-			<input type="button" onClick="add()" value="+">
+           	<input type="hidden" id="productId${product.productId}" name="txt_productId" value="${product.productId}">
+			<input type="button" onClick="minus(${product.productId})" value="-">
+			<input type="text" name="txt_quantity${product.productId}" id="txt-quantity${product.productId}" value="1" onkeypress="return onlyNumbers()" onBlur="checkMaxQuantity(${product.productId})" >
+			<input type="button" onClick="add(${product.productId})" value="+">
 			
 			
 			
