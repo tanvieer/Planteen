@@ -50,4 +50,8 @@ public class ProductStockController implements Controller<ProductStock> {
 	public ArrayList<ProductStock> getAll() {
 		return repository.getAll();
 	}
+	
+	public int getProductQuantity(int productId){
+		return repository.getProductQuantity(productId);
+	}
 }

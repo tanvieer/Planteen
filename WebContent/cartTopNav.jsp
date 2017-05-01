@@ -20,7 +20,7 @@
 
     <!-- Main styles for this application -->
     <link href="css/style.css" rel="stylesheet">
-    
+ <!--    
  <script>
     window.onload = function() {
     		getCategoryList();
@@ -90,6 +90,79 @@
 		return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));
 	}
    	  	
+</script> -->
+
+
+  
+ <script>
+    window.onload = function() {
+    		getCategoryList();
+    	};
+    	
+   	function add(idt){
+   		var xmlhttp;
+   		var id = document.getElementById("productId"+idt).value;
+   		var url = "GetProductQuantity?productId="+id;
+   		if (window.XMLHttpRequest) {
+   			xmlhttp = new XMLHttpRequest();
+   		} else {
+   			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+   		}
+   		xmlhttp.onreadystatechange = function() {
+   			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+   				var maxQ = xmlhttp.responseText;
+   				var x = document.getElementById("txt-quantity"+idt).value;
+   				if(x > maxQ-1){
+   					document.getElementById("txt-quantity"+idt).value = maxQ;
+   					alert("Maximum available product quantity is "+maxQ);
+   				}
+   				else if(x<maxQ-1){
+   					x++;
+   					document.getElementById("txt-quantity"+idt).value = x;
+   				}
+   				else {
+   					document.getElementById("txt-quantity"+idt).value = maxQ;
+   				}
+   			}
+   		};
+   		xmlhttp.open("GET", url, true);
+   		xmlhttp.send();	
+   	}
+   	function minus(idt){
+   		var x = document.getElementById("txt-quantity"+idt).value;
+   		if(x>0){
+   			x--;
+   		}
+   		document.getElementById("txt-quantity"+idt).value = x;
+   	}
+   	
+   	function checkMaxQuantity(idt){
+   		var xmlhttp;
+   		var id = document.getElementById("productId"+idt).value;
+   		var url = "GetProductQuantity?productId="+id;
+   		if (window.XMLHttpRequest) {
+   			xmlhttp = new XMLHttpRequest();
+   		} else {
+   			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+   		}
+   		xmlhttp.onreadystatechange = function() {
+   			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+   				var maxQ = xmlhttp.responseText;
+   				var x = document.getElementById("txt-quantity"+idt).value;
+   				if(x > maxQ-1){
+   					document.getElementById("txt-quantity"+idt).value = maxQ;
+   					alert("Maximum available product quantity is "+maxQ);
+   				}
+   			}
+   		};
+   		xmlhttp.open("GET", url, true);
+   		xmlhttp.send();	
+   	}
+   	
+   	function onlyNumbers(){
+		return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));
+	}
+   	  	
 </script>
     
     
@@ -131,7 +204,7 @@
                 </div>
             </li>
             <li class="nav-item d-md-down-none">
-                <a class="nav-link navbar-toggler aside-menu-toggler" href="#"><i class="icon-basket fa-lg"></i><small><span class="badge badge-pill badge-danger">5</span></small></a>
+                <label class="nav-link navbar-toggler" href="#"><i class="icon-basket fa-lg"></i><small><span class="badge badge-pill badge-danger">5</span></small></label>
             </li>
 
         </ul>

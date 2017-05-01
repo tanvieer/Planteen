@@ -5,7 +5,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import DataAccessLayer.MySqlDataAccess;
-import entity.Product;
 import entity.ProductStock;
 
 public class ProductStockRepository implements Repository<ProductStock> {
@@ -19,10 +18,10 @@ public class ProductStockRepository implements Repository<ProductStock> {
 	
 	
 	public ProductStockRepository() {
-		statement = null;
+		/*statement = null;
 		dataAccess=null;
 		connection=null;
-		resultSet =null;
+		resultSet =null;*/
 	}
 	
 	@Override
@@ -195,6 +194,28 @@ public class ProductStockRepository implements Repository<ProductStock> {
 			closeConnection("getAll()");
 		}
 		return productStocks;
+	}
+	public int getProductQuantity(int productId){
+		int totalQuantity = 0;
+		try {
+
+			String query = "SELECT SUM(COALESCE(boughtUnits,0)) FROM " + tableName + " WHERE productId = " + productId;
+			//System.out.println(query + "=============");
+			dataAccess = new MySqlDataAccess();
+
+			resultSet = dataAccess.getData(query);
+
+			while (resultSet.next()) {
+				totalQuantity = resultSet.getInt(1);				
+			}
+		} catch (Exception e) {
+			System.out.println("exception found at ProductStockRepository.java while getProductQuantity(productId)");
+			return -1;
+		}
+		finally {
+			closeConnection("getProductQuantity(productId)");
+		}
+		return totalQuantity;
 	}
 	private void closeConnection(String tracker){
 		try { if (resultSet != null) resultSet.close(); } catch (Exception e) {System.out.println("Exception at UserRepository.java, "+tracker+" at finally block RESULTSET");};

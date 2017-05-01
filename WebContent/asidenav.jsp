@@ -27,10 +27,19 @@
 					</div>
 					<small class="text-muted mr-3"><i class="icon-dollar"></i>&nbsp;
 						Unit Price: ${loop.index} BDT</small>
-					<div><span>&nbsp;
+					<div>
+					
+					<span>&nbsp;
 						<select><c:forEach varStatus="loop" begin="1" end="10" step="1">
 							<option value="${loop.index}">${loop.index}</option> <!-- item dropdown -->
 						</c:forEach></select>&nbsp;
+						
+						
+							<%-- <input type="hidden" id="productId" name="txt_productId" value="${product.productId}">
+							<input type="button" onClick="minus()" value="-">
+							<input type="text" name="txt_quantity" id="txt-quantity" value="1" onkeypress="return onlyNumbers()" onBlur="checkMaxQuantity()" >
+							<input type="button" onClick="add()" value="+"> --%>
+			
 						<button type="button" class="btn btn-warning btn-sm"><span class="fa fa-trash"></span></button>
 					</span></div>
 					<div class="text-muted mr-3"><i class="icon-dollar"></i>&nbsp;

@@ -1,4 +1,4 @@
-<%@include file="topnav.jsp"%>
+<%@include file="cartTopNav.jsp"%>
 <%@include file="sidenav.jsp"%>
 
 <!-- Main content -->
@@ -37,7 +37,7 @@
 			<tbody>
 
 
-				<c:forEach varStatus="loop" begin="1" end="8" step="1">
+				<%-- <c:forEach varStatus="loop" begin="1" end="8" step="1">
 					<tr>
 						<td class="text-center">
 							<div class="avatar">
@@ -66,7 +66,56 @@
 						</td>
 						
 					</tr>
+				</c:forEach> --%>
+				
+				
+				
+				
+				
+				<c:forEach items="${sessionScope.cartList}" var="cart">
+					<tr>
+						<td class="text-center">
+							<div class="avatar">
+								<img src="img/avatars/${cart.productId}.jpg" class="img-avatar"
+									alt="admin@bootstrapmaster.com"> <span
+									class="avatar-status badge-default"></span>
+							</div>
+						</td>
+						<td>
+							<div>${cart.productName}</div>
+						</td>
+						<td>
+							<%-- <select>
+								<c:forEach varStatus="hi" begin="1" end="10" step="1">
+								<option value="${hi.index}">${hi.index}</option>
+								</c:forEach>
+							</select> --%>
+							
+							
+								<input type="hidden" id="productId${cart.productId}" name="txt_productId" value="${cart.productId}">
+								<input type="button" onClick="minus('${cart.productId}')" value="-">
+								<input type="text" name="txt_quantity" id="txt-quantity${cart.productId}" value="${cart.quantity}" onkeypress="return onlyNumbers()" onBlur="checkMaxQuantity('${cart.productId}')" >
+								<input type="button" onClick="add('${cart.productId}')" value="+">
+			
+			
+						<td>
+							${cart.sellingPrice} BDT
+						</td>
+						<td>
+							<strong>${cart.sellingPrice*cart.quantity} BDT</strong>
+						</td>
+						<td class="text-center">
+							<button class="btn btn-sm btn-warning"><i class="fa fa-trash"></i></button>
+						</td>
+						
+					</tr>
 				</c:forEach>
+				
+				
+				
+				
+				
+				
 
 			</tbody>
 			
@@ -109,6 +158,6 @@
 
 <!-- /page content -->
 
-<%@include file="asidenav.jsp"%>
+<%-- <%@include file="asidenav.jsp"%> --%>
 <%@include file="footer.jsp"%>
 
