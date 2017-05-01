@@ -26,6 +26,13 @@ public class User {
 		this.status = status;
 	}
 	
+	public User(int userId ,String address, String phone) {
+		this.userId=userId;
+		this.address = address;
+		this.phone = phone;
+	
+	}
+	
 	public User(int userId, String type, String name, String email, String password, String address, String phone,String gender, String status) {
 		this.userId = userId;
 		this.type = type;

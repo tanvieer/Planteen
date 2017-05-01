@@ -10,6 +10,9 @@ public class Invoice {
 	private String approvedBy;
 	private String status;
 	
+	public Invoice() {
+		// TODO Auto-generated constructor stub
+	}
 	public Invoice( int userId, Date placementDate, Date confirmDate, String approvedBy, String status) {
 
 		this.userId = userId;
@@ -63,6 +66,11 @@ public class Invoice {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	@Override
+	public String toString() {
+		return "Invoice [invoiceId=" + invoiceId + ", userId=" + userId + ", placementDate=" + placementDate
+				+ ", confirmDate=" + confirmDate + ", approvedBy=" + approvedBy + ", status=" + status + "]";
 	}
 	
 	

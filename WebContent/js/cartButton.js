@@ -46,10 +46,12 @@
    			changeTotalPrice(idt);
    			CartUpdate(idt,x);
    		}
+   		changeTotalPrice(idt);
    		document.getElementById("txt-quantity"+idt).value = x;
    	}
    	
    	function checkMaxQuantity(idt){
+   		changeTotalPrice(idt);
    		var xmlhttp;
    		var id = document.getElementById("productId"+idt).value;
    		var url = "GetProductQuantity?productId="+id;

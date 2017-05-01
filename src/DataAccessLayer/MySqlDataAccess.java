@@ -10,6 +10,8 @@ public class MySqlDataAccess extends DataAccess {
 	public MySqlDataAccess() throws ClassNotFoundException, SQLException {
 		super("jdbc:mysql://localhost:3306/planteen", "root", "",
 				"com.mysql.jdbc.Driver");
+		/*super("jdbc:mysql://192.168.0.6:3306/planteen", "root", "",
+				"com.mysql.jdbc.Driver");*/
 	}
 
 	public int executeQuery(String query) throws SQLException {

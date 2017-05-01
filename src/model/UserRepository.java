@@ -3,8 +3,6 @@ package model;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import com.sun.crypto.provider.RSACipher;
-
 import DataAccessLayer.MySqlDataAccess;
 import entity.User;
 
@@ -31,7 +29,7 @@ public class UserRepository implements Repository<User>{
 			connection=da.getConnection();
 			
 			stmt = connection.prepareStatement("INSERT INTO "+tableName+" (type,name,email,password,address,phone,gender,status)"
-		  			+ " Values(?,?,?,?,?,?,?,?)");  // we can use statement or we can use general query.  example: statement
+		  			+ " Values(?,?,?,?,?,?,?,?)"); 
 			
 	            stmt.setString(1,entity.getType());
 	            stmt.setString(2,entity.getName());
@@ -60,6 +58,45 @@ public class UserRepository implements Repository<User>{
 		}
 	}
 
+	
+	public boolean editByUser(User entity) {
+		try {
+			da = new MySqlDataAccess();
+			connection=da.getConnection();
+			
+			stmt = connection.prepareStatement("UPDATE "+tableName+" SET "
+		
+					+ "address = ?,"
+					+ "phone = ?"
+					
+					+ " WHERE userid = ?");  // we can use statement or we can use general query.  example: statement
+			
+	     
+	            
+	            
+	            stmt.setString(1,entity.getAddress());
+	            stmt.setString(2,entity.getPhone());
+	 
+	            stmt.setInt(3,entity.getUserId());
+	            System.out.println(stmt);
+			int result = stmt.executeUpdate();
+			
+			if (result != 0) {
+				return true;
+			}
+			return false;
+
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		finally {
+			closeConnection("edit()");
+		}
+	}
+	
+	
 	@Override
 	public boolean edit(User entity) {
 		try {

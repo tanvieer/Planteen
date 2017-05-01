@@ -24,6 +24,10 @@ public class UserController implements Controller<User> {
 	public boolean edit(User entity) {
 		return repository.edit(entity);
 	}
+	
+	public boolean editByUser(User entity) {
+		return repository.editByUser(entity);
+	}
 
 	@Override
 	public boolean delete(int id) {
