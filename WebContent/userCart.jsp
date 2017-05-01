@@ -53,6 +53,7 @@
 						</td>
 						<td class="count-me" id="totalProductPrice${cart.productId}">
 							${cart.sellingPrice*cart.quantity}
+							
 						</td>
 						<td class="text-center">
 							<button class="btn btn-sm btn-warning" onClick="deleteRow(${cart.productId})"><i class="fa fa-trash"></i></button>
@@ -75,7 +76,7 @@
 					<th colspan=4>
 						<button class="btn btn-sm btn-success"><i class="fa fa-dollar"> Proceed to Checkout</i></button>
 					
-						<button class="btn btn-sm btn-warning"><i class="fa fa-shopping-cart"> Continue Shopping</i> </button>
+						<button class="btn btn-sm btn-warning" onClick="window.location.href = 'home'"><i class="fa fa-shopping-cart"> Continue Shopping</i> </button>
 					
 						<button class="btn btn-sm btn-danger" onClick="clearCart()"><i class="fa fa-trash"> Clear Cart</i></button>
 					</th>

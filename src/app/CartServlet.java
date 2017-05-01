@@ -23,6 +23,7 @@ public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
+	@SuppressWarnings("null")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//RequestDispatcher dispatcher= request.getRequestDispatcher("sampleTestPages/sessionScopeTest.jsp");
 		
@@ -32,22 +33,28 @@ public class CartServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession(true);
 		
-		ArrayList<Cart> cList = new ArrayList<Cart>();
+		@SuppressWarnings("unchecked")
+		ArrayList<Cart> cList = (ArrayList<Cart>) session.getAttribute("cartList");
+		
+		if(cList==null){
+		
+			cList = new ArrayList<Cart>();
 			
-			Cart ct = new Cart(1,"Mobile",500,1000,"./img/beats1.jpg");
-			cList.add(ct);
-			
-			ct = new Cart(2,"Mobile1",500,1000,"./img/logo1.png");
-			cList.add(ct);
-			
-			ct = new Cart(3,"Mobile2",500,1000,"./img/test.jpg");
-			cList.add(ct);
-			
-			ct = new Cart(4,"Mobile3",500,1000,"./img/mobile1.jpg");
-			cList.add(ct);
-			
-			ct = new Cart(5,"Mobile3",500,1000,"./img/skullcandy1.jpg");
-			cList.add(ct);
+/*				Cart ct = new Cart(1,"Mobile",500,1000,"./img/beats1.jpg");
+				cList.add(ct);
+				
+				ct = new Cart(2,"Mobile1",500,1000,"./img/logo1.png");
+				cList.add(ct);
+				
+				ct = new Cart(3,"Mobile2",500,1000,"./img/test.jpg");
+				cList.add(ct);
+				
+				ct = new Cart(4,"Mobile3",500,1000,"./img/mobile1.jpg");
+				cList.add(ct);
+				
+				ct = new Cart(5,"Mobile3",500,1000,"./img/skullcandy1.jpg");
+				cList.add(ct);*/
+		}
 
 			
 			session.setAttribute("cartList", cList);

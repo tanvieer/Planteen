@@ -38,7 +38,7 @@
 		  
            	<hr class="transparent my-3"/>
            	
-			<button type="button" class="btn btn-warning">
+			<button type="button" class="btn btn-warning" onClick = "addToCart(${product.productId})">
 				<i class="fa fa-check"></i>&nbsp;Add To Cart
 			</button>
 			<button type="button" class="btn btn-danger">

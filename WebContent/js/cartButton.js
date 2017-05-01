@@ -23,6 +23,8 @@
    				else if(x<maxQ-1){
    					x++;
    					document.getElementById("txt-quantity"+idt).value = x;
+   					
+   					CartUpdate(idt,x);
    				}
    				else {
    					document.getElementById("txt-quantity"+idt).value = maxQ;
@@ -42,6 +44,7 @@
    			x--;
    			checkMaxQuantity(idt);
    			changeTotalPrice(idt);
+   			CartUpdate(idt,x);
    		}
    		document.getElementById("txt-quantity"+idt).value = x;
    	}
@@ -61,7 +64,7 @@
    				var x = document.getElementById("txt-quantity"+idt).value;
    				if(x > maxQ-1){
    					document.getElementById("txt-quantity"+idt).value = maxQ;
-   					alert("Maximum available product quantity is "+maxQ);
+   					//alert("Maximum available product quantity is "+maxQ);
    					changeTotalPrice(idt);
    				}
    			}
@@ -89,6 +92,8 @@
    	function deleteRow(idt){
    	 $('#row'+idt).empty();
    	changeSumPrice();
+   	
+   	deleteFromCart(idt);
    	}
    	
    	function clearCart(){
@@ -118,3 +123,69 @@
         $('#result').empty();
         document.getElementById('result').innerHTML += 'SUB-TOTAL: ' + sum + ' BDT';
    	}
+   	
+   	
+   	function addToCart(productId){
+		var xmlhttp;
+   		var url = "CartAddServlet?productId="+productId;
+   		if (window.XMLHttpRequest) {
+   			xmlhttp = new XMLHttpRequest();
+   		} else {
+   			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+   		}
+   		xmlhttp.onreadystatechange = function() {
+   			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+   				//alert("product added"+xmlhttp.responseText);
+   			}
+   		};
+   		xmlhttp.open("GET", url, true);
+   		xmlhttp.send();	
+   	}
+   	
+   	
+
+   	function deleteFromCart(productId){
+		var xmlhttp;
+   		var url = "CartDeleteServlet?productId="+productId;
+   		if (window.XMLHttpRequest) {
+   			xmlhttp = new XMLHttpRequest();
+   		} else {
+   			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+   		}
+   		xmlhttp.onreadystatechange = function() {
+   			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+   				//alert("product deleted "+xmlhttp.responseText);
+   			}
+   		};
+   		xmlhttp.open("GET", url, true);
+   		xmlhttp.send();	
+   	}
+   	
+   	
+   	
+   	function CartUpdate(pid,quantity){
+   		var xmlhttp;
+   		var url = "	CartUpdateServlet?productId="+pid+"&productQuantity="+quantity;
+   		if (window.XMLHttpRequest) {
+   			xmlhttp = new XMLHttpRequest();
+   		} else {
+   			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+   		}
+   		xmlhttp.onreadystatechange = function() {
+   			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+   				//alert("product deleted "+xmlhttp.responseText);
+   			}
+   		};
+   		xmlhttp.open("GET", url, true);
+   		xmlhttp.send();	
+   	}
+   	
+   	
+   
+   	
+   	
+   	
+   	
+   	
+   	
+   	
