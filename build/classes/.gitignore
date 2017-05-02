@@ -1,6 +1,6 @@
-/model
-/ajaxServlets
-/controller
-/app
-/entity
 /DataAccessLayer
+/ajaxServlets
+/app
+/controller
+/entity
+/model

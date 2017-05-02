@@ -54,7 +54,7 @@
                     <a class="dropdown-item" href="adminOrdersPage.jsp"><i class="fa fa-usd"></i> Orders</a>
                     <a class="dropdown-item" href="#"><i class="fa fa-shopping-cart"></i> Cart<span class="badge badge-primary">42</span></a>
                     <div class="divider"></div>
-                    <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a>
+                    <a class="dropdown-item" href="logout"><i class="fa fa-lock"></i> Logout</a>
                 </div>
             </li>
             <li class="nav-item d-md-down-none">

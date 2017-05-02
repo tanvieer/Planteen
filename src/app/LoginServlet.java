@@ -5,9 +5,11 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.UserController;
 import entity.User;
@@ -18,13 +20,99 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher= request.getRequestDispatcher("userLogin.jsp");
-		dispatcher.forward(request, response);
+		HttpSession session = request.getSession(false);
+		  Cookie[] cookies = request.getCookies();
+		  RequestDispatcher dispatcher = request.getRequestDispatcher("home");
+		  //response.setContentType("text/html");
+		  
+		  //System.out.println("LoginServlet doGet, checking session cookie");
+		  if(session == null && (cookies==null || cookies.length <= 1)){ //neither session nor cookie exists
+			  System.out.println("LoginServlet doGet, neither session nor cookie exists");
+			  dispatcher = request.getRequestDispatcher("userLogin.jsp");
+			  dispatcher.forward(request, response);
+			  return;
+		  }else if(session == null && cookies.length > 1){ //cookie exists
+			  System.out.println("LoginServlet setting session from cookies starts");
+			  session = request.getSession();
+			  boolean em = false, uid = false;
+			  for(Cookie c:cookies){
+				  
+				  if(c.getName().equalsIgnoreCase("userEmail")){
+					  System.out.println("LoginServlet, userEmail maxAge: "+c.getMaxAge()); 
+					  System.out.println("ck userEmail = " +c.getValue());
+					  
+					  session.setAttribute("userEmail", c.getValue());
+					  em = true;
+					  
+				  }else if(c.getName().equalsIgnoreCase("userId")){
+					  System.out.println("LoginServlet, userId maxAge: "+c.getMaxAge()); 
+					  
+					  String usid = c.getValue();
+					  System.out.println("ck userId = " +usid);
+					  
+					  session.setAttribute("userId", c.getValue());
+					  uid = true;
+				  }
+			  }
+			  if(em && uid){
+
+					
+;
+				  System.out.println("Login Successful from cookie"); ///////////////////////////////////////Login successfull from cookie
+				  response.sendRedirect("home");
+				  return;
+			  }
+			  
+		  }else
+		  { //session exists
+			  
+			  System.out.println("LoginServlet doget checking session");
+			  
+			  try{
+				  
+				  int userId = 0;
+				  String email = (String) session.getAttribute("userEmail");
+				  //System.out.println(session.getAttribute("userId"));
+				  if(email != null){
+					  userId =  Integer.parseInt((String) session.getAttribute("userId"));
+				  }
+					 
+				  
+				  
+				  if(email!= null && userId != 0){
+					  User u = new UserController().getById(userId);
+					  if(u!= null && email.equals(u.getEmail())){
+						  System.out.println("Login Successful from session"); ///////////////////////////////////////Login successfull from SESSION
+						  response.sendRedirect("home");
+						  return;
+					  }
+					  else {
+						  System.out.println("LoginServlet session exist but not matched");
+					  }
+				  }
+				  else 
+				  System.out.println("LoginServlet doget empty session");
+			  }
+			  catch (Exception e){
+				  
+				  e.printStackTrace();
+			  }
+			  
+
+			  dispatcher = request.getRequestDispatcher("userLogin.jsp");
+			  dispatcher.forward(request, response);
+			  return;
+			  
+			
+		  }
+		
+		
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean isValid = true;
+		boolean rememberMe = false;
 		RequestDispatcher dispatcher= request.getRequestDispatcher("userLogin.jsp");
 		String email = (String) request.getParameter("txt_email").trim();
         String password = (String) request.getParameter("txt_password");
@@ -36,6 +124,7 @@ public class LoginServlet extends HttpServlet {
         
         if(checked.equals("on")){
         	request.setAttribute("rememberMe", "checked");
+        	rememberMe = true;
         }
 
         User user = new User(email, password);
@@ -43,8 +132,29 @@ public class LoginServlet extends HttpServlet {
         
         
         if(isValid){
-        	//set session
-        	// send to profile edit page
+        	
+        	user.setUserId(new UserController().getByEmail(user.getEmail()).getUserId());
+        	
+        	if(rememberMe){
+        		Cookie ckU=new Cookie("userId",Integer.toString(user.getUserId()));
+            	Cookie ckE=new Cookie("userEmail",user.getEmail());
+                ckU.setMaxAge(10000);
+                ckE.setMaxAge(10000);
+
+            	response.addCookie(ckU);
+            	response.addCookie(ckE);
+        	}
+        	
+    		HttpSession session = request.getSession(true);
+    		session = request.getSession();
+			session.setAttribute("userEmail", user.getEmail());
+			session.setAttribute("userId", Integer.toString(user.getUserId()));
+			session.setAttribute("userPasssword", user.getPassword());
+			
+        	
+			System.out.println("Login successfull from dopost");    ///////////////////////////////////////Login successfull from DOPOST
+        	
+        	response.sendRedirect("home");
         }
         
         
@@ -57,6 +167,7 @@ public class LoginServlet extends HttpServlet {
 		
 		RequestDispatcher dispatcher= request.getRequestDispatcher("userLogin.jsp");
 		boolean check=true;
+
 		
 		if(user.getEmail()==null || user.getEmail()== ""){
 			request.setAttribute("err_email", "Email must be filled out");
@@ -79,16 +190,10 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 		
-		//System.out.println("HERE   "+new UserController().getByEmail(user.getEmail()));
-		
-		
-		
 		
 		if(!check){
 			dispatcher.forward(request, response);
 		}
-		
-		
 		return check;
 	}
 	

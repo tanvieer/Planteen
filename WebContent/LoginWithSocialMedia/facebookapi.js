@@ -61,10 +61,10 @@ function getInfo() {
 		
 	});
 
-	getProfilePicture();
+	//getProfilePicture();
 }
 
-function getProfilePicture() {
+/*function getProfilePicture() {
 	FB.api("/me/picture?width=180&height=180", function(response) {
 
 		console.log(response.data.url);
@@ -108,4 +108,4 @@ function readCookie(name) {
 
 function eraseCookie(name) {
     createCookie(name,"",-1);
-}
+}*/
