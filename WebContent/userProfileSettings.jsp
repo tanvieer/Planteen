@@ -35,10 +35,9 @@
 				<center>
 					<img class="card-img-top my-4 img-responsive"
 						style="width: 150px; height: 150px"
-						src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png"
+						src="./img/pp.png"
 						alt="Card image cap">
 				</center>
-
 
 				<%-- <jsp:useBean id="user" class="entity.User" scope="request"></jsp:useBean> --%>
 

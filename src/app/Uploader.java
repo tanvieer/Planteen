@@ -75,20 +75,25 @@ throws ServletException, IOException {
 	  
 	//  Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
 	//  InputStream filecontent = filePart.getInputStream();
-    File uploadDir = new File("F:\\UploadedFiles");
+    File uploadDir = new File("..\\..\\WebContent\\img\\");
     File file = File.createTempFile("img",".png",uploadDir);
     item.write(file);
  
     out.println("File Saved Successfully");
+    response.sendRedirect("ProductList");
    }
   }
   catch(FileUploadException e){
     e.printStackTrace();
    out.println("upload fail");
+   response.sendRedirect("ProductList");
   }
   catch(Exception ex){
 	  ex.printStackTrace();
    out.println("can't save");
+   response.sendRedirect("ProductList");
   }
+ 
  }
+	
 }

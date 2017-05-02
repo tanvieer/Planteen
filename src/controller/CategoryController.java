@@ -39,9 +39,7 @@ public class CategoryController implements Controller<Category> {
 
 	@Override
 	public Category getByName(String name) {
-		//return repository.getByName(name);
-		System.out.println("not implemented ");
-		return null;
+		return repository.getByName(name);
 	}
 
 

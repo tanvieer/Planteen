@@ -20,38 +20,30 @@
 											<tr>
 												<th>Name</th>
 												<th>Email</th>
-												
 												<th>Phone</th>
-												<th>Details</th>
-											
+												<th>Details</th>									
 											</tr>
 										</thead>
-										
 										<tbody>
-										<c:forEach varStatus="loop" begin="1" end="100" step="1">
+										<c:forEach items="${users}" var="user">
 											<tr class="odd gradeU">
-												<td>User ${loop.index}</td>
-												<td>test${loop.index}@gmail.com</td>
-											
-												<td class="center">01911066${loop.index}0</td>
-												
+												<td>${user.name}</td>
+												<td>${user.email}</td>
+												<td class="center">${user.phone}</td>
 												<td class="center">
 													<!-- Modal Button -->
-			
 													<button type="button" class="btn btn-primary"
-														data-toggle="modal" data-target="#primaryModal${loop.index}">
-														User Details</button>
-			
-			
+														data-toggle="modal" data-target="#primaryModal${user.userId}">
+														User Details</button>	
 												</td>
 			
 											</tr>
-											
+										<%--
 											<tr class="even gradeA">
-												<td>User ${loop.index}</td>
-												<td>snoozy${loop.index}@gmail.com</td>
+												<td>${user.address }</td>
+												<td>${user.email}</td>
 									
-												<td class="center">0191166${loop.index}20</td>
+												<td class="center">${user.phone}</td>
 												
 												<td class="center">
 													<!-- Modal Button -->
@@ -64,6 +56,7 @@
 												</td>
 										
 											</tr>
+											 --%>	
 											
 										</c:forEach>
 										</tbody>
@@ -72,6 +65,7 @@
 
 							</div>
 						</div>
+						
 						<!--End Advanced Tables -->
 
 
@@ -89,14 +83,14 @@
 				
 				
 				
-<c:forEach varStatus="loop" begin="1" end="100" step="1">
+<c:forEach items="${users}" var="user">
 
-	<div class="modal fade" id="primaryModal${loop.index}" tabindex="-1"
+	<div class="modal fade" id="primaryModal${user.userId}" tabindex="-1"
 		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-primary" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title">User ${loop.index}B</h4>
+					<h4 class="modal-title">${user.name}</h4>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">X</span>
@@ -121,24 +115,24 @@
                                 <div class="card-block">
                                     <div class="form-group">
                                         <label for="company">Address</label>
-                                        <input type="text" class="form-control" id="company" value="Dhaka"disabled>
+                                        <input type="text" class="form-control" id="company" value="${user.address }"disabled>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="vat">Email</label>
-                                        <input type="text" class="form-control" id="vat" value="mobasser016@gmail.com"disabled>
+                                        <input type="text" class="form-control" id="vat" value="${user.email }"disabled>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="street">Gender</label>
-                                        <input type="text" class="form-control" id="street" value="male"disabled>
+                                        <input type="text" class="form-control" id="street" value="${user.gender }"disabled>
                                     </div>
 
                                     
 
                                         <div class="form-group ">
                                             <label for="city">Register Date</label>
-                                            <input type="text" class="form-control" id="city" value="4-27-2017"disabled>
+                                            <input type="text" class="form-control" id="city" value="Date not found"disabled>
                                         </div>
 
                                    

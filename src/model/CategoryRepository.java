@@ -34,7 +34,7 @@ public class CategoryRepository implements Repository<Category>{
 			    
 	            statement.setString(1,category.getCategoryName());
 	           
-			
+			System.out.println(statement);
 			int result = statement.executeUpdate();
 			
 
@@ -45,6 +45,7 @@ public class CategoryRepository implements Repository<Category>{
 
 		} 
 		catch (Exception e) {
+			System.out.println("CategoryRepository : add method");
 			e.printStackTrace();
 			return false;
 		}
@@ -65,6 +66,7 @@ public class CategoryRepository implements Repository<Category>{
 	            statement.setString(1,entity.getCategoryName());
 	            statement.setInt(2,entity.getCategoryId());
 	            System.out.println(statement);
+	         System.out.println(statement);
 			int result = statement.executeUpdate();
 			
 			if (result != 0) {
@@ -74,6 +76,7 @@ public class CategoryRepository implements Repository<Category>{
 
 		} 
 		catch (Exception e) {
+			System.out.println("CategoryRepository : edit method");
 			e.printStackTrace();
 			return false;
 		}
@@ -98,6 +101,7 @@ public class CategoryRepository implements Repository<Category>{
 			return false;
 
 		} catch (Exception e) {
+			System.out.println("CategoryRepository : delete method");
 			e.printStackTrace();
 			return false;
 		}
@@ -113,7 +117,7 @@ public class CategoryRepository implements Repository<Category>{
 			
 			String query = "SELECT * FROM " + tableName + " where categoryId = '"
 					+ id + "'";
-		
+			System.out.println(query);
 			resultSet = dataAccess.getData(query);
 		
 			if(resultSet.next()){
@@ -129,7 +133,7 @@ public class CategoryRepository implements Repository<Category>{
 		}
 		
 		 catch (Exception e) {
-			System.out.println("exception found at UserRepository.java while getById");
+			System.out.println("exception found at CategoryRepository.java while getById");
 			return null;
 		 }
 		finally {
@@ -160,7 +164,7 @@ public class CategoryRepository implements Repository<Category>{
 				categoryList.add(category);
 			}
 		} catch (Exception e) {
-			System.out.println("exception found at UserRepository.java while get all");
+			System.out.println("exception found at CategoryRepository.java while get all by Name");
 			return null;
 		}
 		finally {
@@ -191,7 +195,7 @@ public class CategoryRepository implements Repository<Category>{
 				categoryList.add(category);
 			}
 		} catch (Exception e) {
-			System.out.println("exception found at UserRepository.java while get all");
+			System.out.println("exception found at CategoryRepository.java while get all");
 			return null;
 		}
 		finally {
@@ -201,16 +205,40 @@ public class CategoryRepository implements Repository<Category>{
 	}
 	
 	private void closeConnection(String tracker){
-		try { if (resultSet != null) resultSet.close(); } catch (Exception e) {System.out.println("Exception at UserRepository.java, "+tracker+" at finally block RESULTSET");};
-	    try { if (statement != null) statement.close(); } catch (Exception e) {System.out.println("Exception at UserRepository.java, "+tracker+" at finally block STMT");};
-	    try { if (connection != null) connection.close(); } catch (Exception e) {System.out.println("Exception at UserRepository.java, "+tracker+" at finally block CONNECTION");};
+		try { if (resultSet != null) resultSet.close(); } catch (Exception e) {System.out.println("Exception at CategoryRepository.java, "+tracker+" at finally block RESULTSET");};
+	    try { if (statement != null) statement.close(); } catch (Exception e) {System.out.println("Exception at CategoryRepository.java, "+tracker+" at finally block STMT");};
+	    try { if (connection != null) connection.close(); } catch (Exception e) {System.out.println("Exception at CategoryRepository.java, "+tracker+" at finally block CONNECTION");};
 	}
-
 
 	@Override
-	public Category getByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public Category getByName(String categoryName) {
+		try {
+			dataAccess = new MySqlDataAccess();
+			
+			String query = "SELECT * FROM " + tableName + " where categoryName = '"
+					+ categoryName + "'";
+			System.out.println(query);
+			resultSet = dataAccess.getData(query);
+		
+			if(resultSet.next()){
+				
+				int categoryId = resultSet.getInt("categoryId");
+				
+				
+				Category category = new Category(categoryId,categoryName);
+					return category;
+			}
+			else 
+				return null;
+		}
+		
+		 catch (Exception e) {
+			System.out.println("exception found at CategoryRepository.java while getByName");
+			return null;
+		 }
+		finally {
+			closeConnection("getByName("+categoryName+")");
+		}
+		
 	}
-	
 }
