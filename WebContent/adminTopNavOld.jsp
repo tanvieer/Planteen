@@ -1,4 +1,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<% 
+if(session==null || session.getAttribute("userEmail")==null){
+	request.setAttribute("dropdownLoggedIn","style='display:none';");
+	request.setAttribute("dropdownLoggedOut","");
+}
+else{
+	request.setAttribute("dropdownLoggedIn","");
+	request.setAttribute("dropdownLoggedOut","style='display:none';");
+}
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 

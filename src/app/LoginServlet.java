@@ -18,8 +18,22 @@ import entity.User;
 @WebServlet("/userLogin")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private String redirectPage;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		if(request.getAttribute("lastRedirectPage")!= null){
+			redirectPage =(String) request.getAttribute("lastRedirectPage");
+			
+			System.out.println("redi page = " + redirectPage);
+		}
+		else {
+			System.out.println("redi page null");
+			redirectPage = "home";
+		}
+		
+		System.out.println("test redi page = "+request.getAttribute("lastRedirectPage"));
+		
 		HttpSession session = request.getSession(false);
 		  Cookie[] cookies = request.getCookies();
 		  RequestDispatcher dispatcher = request.getRequestDispatcher("home");
@@ -29,6 +43,12 @@ public class LoginServlet extends HttpServlet {
 		  if(session == null && (cookies==null || cookies.length <= 1)){ //neither session nor cookie exists
 			  System.out.println("LoginServlet doGet, neither session nor cookie exists");
 			  dispatcher = request.getRequestDispatcher("userLogin.jsp");
+			  
+			 /* session.setAttribute("dropdownLoggedIn", "style='display: none;'");
+			  session.setAttribute("dropdownLoggedOut", "");*/
+			  
+			  
+			  
 			  dispatcher.forward(request, response);
 			  return;
 		  }else if(session == null && cookies.length > 1){ //cookie exists
@@ -59,7 +79,7 @@ public class LoginServlet extends HttpServlet {
 					
 ;
 				  System.out.println("Login Successful from cookie"); ///////////////////////////////////////Login successfull from cookie
-				  response.sendRedirect("home");
+				  response.sendRedirect(redirectPage);
 				  return;
 			  }
 			  
@@ -83,7 +103,7 @@ public class LoginServlet extends HttpServlet {
 					  User u = new UserController().getById(userId);
 					  if(u!= null && email.equals(u.getEmail())){
 						  System.out.println("Login Successful from session"); ///////////////////////////////////////Login successfull from SESSION
-						  response.sendRedirect("home");
+						  response.sendRedirect(redirectPage);
 						  return;
 					  }
 					  else {
@@ -154,7 +174,7 @@ public class LoginServlet extends HttpServlet {
         	
 			System.out.println("Login successfull from dopost");    ///////////////////////////////////////Login successfull from DOPOST
         	
-        	response.sendRedirect("home");
+        	response.sendRedirect(redirectPage);
         }
         
         

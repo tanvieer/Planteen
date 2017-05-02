@@ -13,6 +13,17 @@ public class InvoiceController implements Controller<Invoice> {
 	}
 	
 	
+	public Invoice getByPrimaryId(String id) {
+		return repository.getByPrimaryId(id);
+	}
+	
+	public boolean deleteByPrimaryId(String id) {
+		return repository.deleteByPrimaryId(id);
+	}
+	
+	
+	
+	
 	@Override
 	public boolean add(Invoice entity) { 
 		return repository.add(entity);

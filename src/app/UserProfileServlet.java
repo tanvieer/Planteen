@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.UserController;
 import controller.ValidationController;
@@ -24,45 +25,59 @@ import model.UserRepository;
 @WebServlet("/UserProfile")
 public class UserProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private int userId = 0;
+	private String userEmail = "";
+	private String redirectPage = "UserProfile";
     
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//RequestDispatcher dispatcher= request.getRequestDispatcher("userProfileSettings.jsp");
 		
 		
-		int id= 1;
-		System.out.println("this is id"+ id);
-		User user= new UserController().getById(id);
-		System.out.println(user.getName());
-		
-	
-		
-		long time = System.currentTimeMillis();
-		java.sql.Date date = new java.sql.Date(time);
-		
-		ArrayList<Invoice> invoices= new ArrayList<Invoice>();
-		
-		Invoice invoice= new Invoice(1, date, date, "Mobasser", "Delivered");
-		
-		invoices.add(invoice);
-		invoice= new Invoice(2, date, date, "Tanvir", "pending");
-		invoices.add(invoice);
-		
-		request.setAttribute("invoices", invoices);
-		request.setAttribute("user", user);
 		
 		
-		RequestDispatcher dispatcher= request.getRequestDispatcher("userProfileSettings.jsp");
+		if(!isLoggedIn(request,response)){
+			RequestDispatcher dispatcher= request.getRequestDispatcher("userLogin");
+			request.setAttribute("lastRedirectPage", redirectPage);
+			dispatcher.forward(request, response);
+			return;
+		}
+		else {
+			
 		
+
+			//System.out.println("this is id"+ userId);
+			User user= new UserController().getById(userId);
+			//System.out.println(user.getName());
+			
 		
-		dispatcher.forward(request, response);
+			
+			long time = System.currentTimeMillis();
+			java.sql.Date date = new java.sql.Date(time);
+			
+			ArrayList<Invoice> invoices= new ArrayList<Invoice>();
+			
+			Invoice invoice= new Invoice(user.getUserId(), date, date, user.getName(), user.getStatus());
+			
+			invoices.add(invoice);
+			invoice= new Invoice(2, date, date, "Tanvir", "pending");
+			invoices.add(invoice);
+			
+			request.setAttribute("invoices", invoices);
+			request.setAttribute("user", user);
+			
+			
+			RequestDispatcher dispatcher= request.getRequestDispatcher("userProfileSettings.jsp");
+			
+			
+			dispatcher.forward(request, response);
+		}
 	}
 
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		
-		int userId=1;/// will come from session
 		
 		String address=request.getParameter("txt_address").trim();
 		String phone=request.getParameter("txt_phone".trim());
@@ -84,14 +99,14 @@ public class UserProfileServlet extends HttpServlet {
         boolean temp;
         
         temp = ValidationController.checkAddress(address);
-        System.out.println("address  temp"+ temp);
+        //System.out.println("address  temp"+ temp);
         check = check & temp;
-        System.out.println("address "+ check);
+        //System.out.println("address "+ check);
         temp = ValidationController.checkPhoneNumber(phone);
-        System.out.println("phone  temp"+ temp);
+       // System.out.println("phone  temp"+ temp);
        
         check = check & temp;
-        System.out.println("phone "+ check);
+        //System.out.println("phone "+ check);
         
         request.setAttribute("err_address", ValidationController.err_address);
         request.setAttribute("err_phone", ValidationController.err_phone);
@@ -104,15 +119,15 @@ public class UserProfileServlet extends HttpServlet {
 		
         if(check){
 			new UserController().editByUser(user);
-			System.out.println("updated");
+			//System.out.println("updated");
 			user= new UserController().getById(userId);
 			request.setAttribute("user", user);
 			dispatcher= request.getRequestDispatcher("userProfileSettings.jsp");
 			dispatcher.forward(request, response);
         }
         else{
-        	System.out.println(check);
-        	System.out.println("not updated");
+        	//System.out.println(check);
+        	//System.out.println("not updated");
         	user=new UserRepository().getById(userId);
         	request.setAttribute("user", user);
 			dispatcher= request.getRequestDispatcher("userProfileSettings.jsp");
@@ -122,7 +137,37 @@ public class UserProfileServlet extends HttpServlet {
 		
 	}
 	
+	
+	
+	
+	
+	
+	private boolean isLoggedIn(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession(false);
+		if(session != null){
+				userEmail = (String) session.getAttribute("userEmail");
+			  if(userEmail != null){
+				  userId =  Integer.parseInt((String) session.getAttribute("userId"));
+			  }
+			  
+			  
+			  
+			  if(userEmail!= null && userId != 0){
+				  User u = new UserController().getById(userId);
+				  if(u!= null && userEmail.equals(u.getEmail())){
+					  System.out.println("User Logged In"); ///////////////////////////////////////Login successfull from SESSION
 
+					  return true;
+				  }
+				  else {
+					  System.out.println("LoginServlet session exist but not matched");
+					  return false;
+				  }
+			  }
+			  
+		}
+		return false;
+	}
 	
 	
 

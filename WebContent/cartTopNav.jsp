@@ -1,4 +1,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<% 
+if(session==null || session.getAttribute("userEmail")==null){
+	request.setAttribute("dropdownLoggedIn","style='display:none';");
+	request.setAttribute("dropdownLoggedOut","");
+}
+else{
+	request.setAttribute("dropdownLoggedIn","");
+	request.setAttribute("dropdownLoggedOut","style='display:none';");
+}
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,17 +57,29 @@
                     <i class="icon-user"></i><span class="d-md-down-none"> My Account </span>
                     
                 </a>
-                <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-menu dropdown-menu-right" ${requestScope.dropdownLoggedIn}>
 
                     <div class="dropdown-header text-center">
                         <strong>Account</strong>
                     </div>
 
-                    <a class="dropdown-item" href="userProfileSettings.jsp"><i class="fa fa-wrench"></i> My Profile</a>
-                    <a class="dropdown-item" href="userOrders.jsp"><i class="fa fa-usd"></i> Orders</a>
+                    <a class="dropdown-item" href="UserProfile"><i class="fa fa-wrench"></i> My Profile & Orders</a>
+                    <!-- <a class="dropdown-item" href="UserOrders"><i class="fa fa-usd"></i> Orders</a> -->
                     <a class="dropdown-item" href="cart"><i class="fa fa-shopping-cart"></i> Cart<span class="badge badge-primary">42</span></a>
                     <div class="divider"></div>
-                    <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a>
+                    <a class="dropdown-item" href="logout"><i class="fa fa-lock"></i> Logout</a>
+                </div>
+                <div class="dropdown-menu dropdown-menu-right" ${requestScope.dropdownLoggedOut}>
+
+                    <div class="dropdown-header text-center">
+                        <strong>Account</strong>
+                    </div>
+
+                    <!-- <a class="dropdown-item" href="UserProfile"><i class="fa fa-wrench"></i> My Profile</a>
+                    <a class="dropdown-item" href="UserOrders"><i class="fa fa-usd"></i> Orders</a> -->
+                    <a class="dropdown-item" href="cart"><i class="fa fa-shopping-cart"></i> Cart<span class="badge badge-primary">42</span></a>
+                    <div class="divider"></div>
+                    <a class="dropdown-item" href="userLogin"><i class="fa fa-lock"></i> Log In</a>
                 </div>
             </li>
             <li class="nav-item d-md-down-none">

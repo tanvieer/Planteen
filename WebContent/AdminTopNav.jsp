@@ -1,4 +1,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<% 
+if(session==null || session.getAttribute("userEmail")==null){
+	request.setAttribute("dropdownLoggedIn","style='display:none';");
+	request.setAttribute("dropdownLoggedOut","");
+}
+else{
+	request.setAttribute("dropdownLoggedIn","");
+	request.setAttribute("dropdownLoggedOut","style='display:none';");
+}
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,6 +68,7 @@
                     <a class="dropdown-item" href="logout"><i class="fa fa-lock"></i> Logout</a>
                 </div>
             </li>
+            
             <li class="nav-item d-md-down-none">
                 <a class="nav-link navbar-toggler aside-menu-toggler mx-3" href="#">
                 	<small>Orders</small>

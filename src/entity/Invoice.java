@@ -9,6 +9,7 @@ public class Invoice {
 	private Date confirmDate;
 	private String approvedBy;
 	private String status;
+	private String invoicePrimaryId;
 	
 	public Invoice() {
 		// TODO Auto-generated constructor stub
@@ -30,6 +31,30 @@ public class Invoice {
 		this.confirmDate = confirmDate;
 		this.approvedBy = approvedBy;
 		this.status = status;
+	}
+	
+	
+	public Invoice(int invoiceId, int userId, Date placementDate, Date confirmDate, String approvedBy, String status,
+			String invoicePrimaryId) {
+
+		this.invoiceId = invoiceId;
+		this.userId = userId;
+		this.placementDate = placementDate;
+		this.confirmDate = confirmDate;
+		this.approvedBy = approvedBy;
+		this.status = status;
+		this.invoicePrimaryId = invoicePrimaryId;
+	}
+	
+	public Invoice(int userId, Date placementDate, Date confirmDate, String approvedBy, String status,
+			String invoicePrimaryId) {
+
+		this.userId = userId;
+		this.placementDate = placementDate;
+		this.confirmDate = confirmDate;
+		this.approvedBy = approvedBy;
+		this.status = status;
+		this.invoicePrimaryId = invoicePrimaryId;
 	}
 	public int getInvoiceId() {
 		return invoiceId;
@@ -67,12 +92,18 @@ public class Invoice {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	public String getInvoicePrimaryId() {
+		return invoicePrimaryId;
+	}
+	public void setInvoicePrimaryId(String invoicePrimaryId) {
+		this.invoicePrimaryId = invoicePrimaryId;
+	}
 	@Override
 	public String toString() {
 		return "Invoice [invoiceId=" + invoiceId + ", userId=" + userId + ", placementDate=" + placementDate
-				+ ", confirmDate=" + confirmDate + ", approvedBy=" + approvedBy + ", status=" + status + "]";
+				+ ", confirmDate=" + confirmDate + ", approvedBy=" + approvedBy + ", status=" + status
+				+ ", invoicePrimaryId=" + invoicePrimaryId + "]";
 	}
-	
 	
 }
 

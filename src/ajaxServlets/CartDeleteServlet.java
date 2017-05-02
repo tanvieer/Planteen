@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import controller.ProductController;
 import controller.ProductStockController;
-import entity.Cart;
+import entity.CartItem;
 import entity.Product;
 
 /**
@@ -39,12 +39,12 @@ public class CartDeleteServlet extends HttpServlet {
 			
 			
 			@SuppressWarnings("unchecked")
-			ArrayList<Cart> cList = (ArrayList<Cart>) session.getAttribute("cartList");
+			ArrayList<CartItem> cList = (ArrayList<CartItem>) session.getAttribute("cartList");
 			
 
 			if(cList!=null){
 				
-				for(Cart c : cList){
+				for(CartItem c : cList){
 					 
 					if(c.getProductId() == id){
 						 cList.remove(c);

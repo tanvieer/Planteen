@@ -1,28 +1,30 @@
 package entity;
 
-public class Cart {
+public class CartItem {
 	private int productId;
 	private String productName;
 	private int quantity;
 	private float sellingPrice;
 	private String imagePath;
+	private float buyingPrice;
 	
 	
-	public Cart(){}
+	public CartItem(){}
 	
 
 
-	public Cart(int productId, String productName) {
+	public CartItem(int productId, String productName) {
 		this.productId = productId;
 		this.productName = productName;
 	}
 	
-	public Cart(int productId, String productName, int quantity,float sellingPrice, String imagePath) {
+	public CartItem(int productId, String productName, int quantity,float sellingPrice, String imagePath, float buyingPrice) {
 		this.productId = productId;
 		this.productName = productName;
 		this.quantity = quantity;
 		this.sellingPrice = sellingPrice;
 		this.imagePath = imagePath;
+		this.buyingPrice = buyingPrice;
 	}
 
 
@@ -71,6 +73,20 @@ public class Cart {
 
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
+	}
+	
+	
+
+
+
+	public float getBuyingPrice() {
+		return buyingPrice;
+	}
+
+
+
+	public void setBuyingPrice(float buyingPrice) {
+		this.buyingPrice = buyingPrice;
 	}
 
 

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import controller.ProductController;
 import controller.ProductStockController;
-import entity.Cart;
+import entity.CartItem;
 import entity.Product;
 
 /**
@@ -42,14 +42,14 @@ public class CartUpdateServlet extends HttpServlet {
 			
 			
 			@SuppressWarnings("unchecked")
-			ArrayList<Cart> cList = (ArrayList<Cart>) session.getAttribute("cartList");
+			ArrayList<CartItem> cList = (ArrayList<CartItem>) session.getAttribute("cartList");
 			
 			if(cList!=null){
 				
-				Cart ct = new Cart(id,p.getProductName(),productQuantity,p.getSellingPrice(),p.getImagePath());
+				CartItem ct = new CartItem(id,p.getProductName(),productQuantity,p.getSellingPrice(),p.getImagePath(),p.getBuyingPrice());
 				
 				int i = 0;
-				for(Cart c : cList){
+				for(CartItem c : cList){
 					if(c.getProductId() == id){
 						 cList.set(i, ct);
 					}
@@ -59,7 +59,7 @@ public class CartUpdateServlet extends HttpServlet {
 			}
 			else {
 				System.out.println("Null List");
-				cList = new ArrayList<Cart>();
+				cList = new ArrayList<CartItem>();
 			}
 				
 			session.setAttribute("cartList", cList);

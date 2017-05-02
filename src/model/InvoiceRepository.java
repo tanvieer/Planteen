@@ -29,7 +29,7 @@ public class InvoiceRepository implements Repository<Invoice>{
 			dataAccess = new MySqlDataAccess();
 			connection=dataAccess.getConnection();
 			
-			statement = connection.prepareStatement("INSERT INTO "+tableName+" (userId,placementDate,confirmDate,approvedBy,status) Values(?,?,?,?,?)");
+			statement = connection.prepareStatement("INSERT INTO "+tableName+" (userId,placementDate,confirmDate,approvedBy,status, invoicePrimaryId) Values(?,?,?,?,?,?)");
 			// we can use statement or we can use general query.  example: statement
 			    
 	            statement.setInt(1,entity.getUserId());
@@ -37,8 +37,9 @@ public class InvoiceRepository implements Repository<Invoice>{
 	            statement.setDate(3,entity.getConfirmDate());
 	            statement.setString(4, entity.getApprovedBy());
 	            statement.setString(5, entity.getStatus());
+	            statement.setString(6, entity.getInvoicePrimaryId());
 	           
-			
+			System.out.println(statement);
 			int result = statement.executeUpdate();
 			
 
@@ -49,6 +50,7 @@ public class InvoiceRepository implements Repository<Invoice>{
 
 		} 
 		catch (Exception e) {
+			System.out.println("InvoiceRepository: add method");
 			e.printStackTrace();
 			return false;
 		}
@@ -72,6 +74,8 @@ public class InvoiceRepository implements Repository<Invoice>{
             statement.setString(4, entity.getApprovedBy());
             statement.setString(5, entity.getStatus());
             statement.setInt(6,entity.getInvoiceId());
+            
+            System.out.println(statement);
 			int result = statement.executeUpdate();
 			
 			if (result != 0) {
@@ -81,6 +85,7 @@ public class InvoiceRepository implements Repository<Invoice>{
 
 		} 
 		catch (Exception e) {
+			System.out.println("InvoiceRepository: edit method");
 			e.printStackTrace();
 			return false;
 		}
@@ -105,6 +110,32 @@ public class InvoiceRepository implements Repository<Invoice>{
 			return false;
 
 		} catch (Exception e) {
+			System.out.println("InvoiceRepository: delete method");
+			e.printStackTrace();
+			return false;
+		}
+		finally {
+			closeConnection("delete()");
+		}
+	}
+	
+	public boolean deleteByPrimaryId(String invoicePrimaryId) {
+		try {
+			dataAccess = new MySqlDataAccess();
+			
+			String query = "DELETE FROM " + tableName + " WHERE invoicePrimaryId ='"
+					+ invoicePrimaryId + "'"; // we can use statement or we can use general query.  example: query
+
+			System.out.println(query);
+			int result = dataAccess.executeQuery(query);
+
+			if (result != 0) {
+				return true;
+			}
+			return false;
+
+		} catch (Exception e) {
+			System.out.println("exception found at InvoiceRepository.java while deleteByPrimaryId");
 			e.printStackTrace();
 			return false;
 		}
@@ -118,9 +149,48 @@ public class InvoiceRepository implements Repository<Invoice>{
 		try {
 			dataAccess = new MySqlDataAccess();
 			
-			String query = "SELECT * FROM " + tableName + " where categoryId = '"
+			String query = "SELECT * FROM " + tableName + " where invoiceId = '"
 					+ id + "'";
 		
+			
+			System.out.println(query);
+			resultSet = dataAccess.getData(query);
+		
+			if(resultSet.next()){
+				
+			int invoiceId = resultSet.getInt("invoiceId");
+			int userId = resultSet.getInt("userId");
+			Date placementDate= resultSet.getDate("placementDate");
+			Date confirmDate= resultSet.getDate("confirmDate");
+			String approvedBy = resultSet.getString("approvedBy");
+			String status = resultSet.getString("status");
+			String invoicePrimaryId = resultSet.getString("invoicePrimaryId");
+			
+			Invoice invoice= new Invoice(invoiceId, userId, placementDate, confirmDate, approvedBy, status, invoicePrimaryId);
+				return invoice;
+			}
+			else 
+				return null;
+		}
+		
+		 catch (Exception e) {
+			System.out.println("exception found at InvoiceRepository.java while getById");
+			return null;
+		 }
+		finally {
+			closeConnection("getById()");
+		}
+	}
+	
+	public Invoice getByPrimaryId(String invoicePrimaryId) {
+		try {
+			dataAccess = new MySqlDataAccess();
+			
+			String query = "SELECT * FROM " + tableName + " where invoicePrimaryId = '"
+					+ invoicePrimaryId + "'";
+		
+			
+			System.out.println(query);
 			resultSet = dataAccess.getData(query);
 		
 			if(resultSet.next()){
@@ -132,7 +202,8 @@ public class InvoiceRepository implements Repository<Invoice>{
 			String approvedBy = resultSet.getString("approvedBy");
 			String status = resultSet.getString("status");
 			
-			Invoice invoice= new Invoice(invoiceId, userId, placementDate, confirmDate, approvedBy, status);
+			
+			Invoice invoice= new Invoice(invoiceId, userId, placementDate, confirmDate, approvedBy, status, invoicePrimaryId);
 				return invoice;
 			}
 			else 
@@ -140,7 +211,7 @@ public class InvoiceRepository implements Repository<Invoice>{
 		}
 		
 		 catch (Exception e) {
-			System.out.println("exception found at UserRepository.java while getById");
+			System.out.println("exception found at InvoiceRepository.java while getByPrimaryId");
 			return null;
 		 }
 		finally {
@@ -162,7 +233,7 @@ public class InvoiceRepository implements Repository<Invoice>{
 			String query = "SELECT * FROM " + tableName;
 
 			dataAccess = new MySqlDataAccess();
-
+			System.out.println(query);
 			resultSet = dataAccess.getData(query);
 
 			while (resultSet.next()) {
@@ -179,7 +250,7 @@ public class InvoiceRepository implements Repository<Invoice>{
 				invoices.add(invoice);
 			}
 		} catch (Exception e) {
-			System.out.println("exception found at UserRepository.java while get all");
+			System.out.println("exception found at InvoiceRepository.java while get all");
 			return null;
 		}
 		finally {
@@ -189,9 +260,9 @@ public class InvoiceRepository implements Repository<Invoice>{
 	}
 	
 	private void closeConnection(String tracker){
-		try { if (resultSet != null) resultSet.close(); } catch (Exception e) {System.out.println("Exception at UserRepository.java, "+tracker+" at finally block RESULTSET");};
-	    try { if (statement != null) statement.close(); } catch (Exception e) {System.out.println("Exception at UserRepository.java, "+tracker+" at finally block STMT");};
-	    try { if (connection != null) connection.close(); } catch (Exception e) {System.out.println("Exception at UserRepository.java, "+tracker+" at finally block CONNECTION");};
+		try { if (resultSet != null) resultSet.close(); } catch (Exception e) {System.out.println("Exception at InvoiceRepository.java, "+tracker+" at finally block RESULTSET");};
+	    try { if (statement != null) statement.close(); } catch (Exception e) {System.out.println("Exception at InvoiceRepository.java, "+tracker+" at finally block STMT");};
+	    try { if (connection != null) connection.close(); } catch (Exception e) {System.out.println("Exception at InvoiceRepository.java, "+tracker+" at finally block CONNECTION");};
 	}
 
 }

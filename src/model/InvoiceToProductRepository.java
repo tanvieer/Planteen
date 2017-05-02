@@ -27,18 +27,17 @@ public class InvoiceToProductRepository implements Repository<InvoiceToProduct> 
 			dataAccess = new MySqlDataAccess();
 			connection=dataAccess.getConnection();
 			
-			statement = connection.prepareStatement("INSERT INTO "+tableName+" (invoiceId, productId, units, availableStockId, buyingPrice, sellingPrice, profitMade) Values(?,?,?,?,?,?,?)");
+			statement = connection.prepareStatement("INSERT INTO "+tableName+" (invoiceId, productId, units ,  profitMade) Values(?,?,?,?)");
 			// we can use statement or we can use general query.  example: statement
 			    
-	            statement.setInt(1,entity.getInvoiceId());
+	            statement.setString(1,entity.getInvoiceId());
 	            statement.setInt(2,entity.getProductId());
 	            statement.setInt(3,entity.getUnits());
-	            statement.setInt(4, entity.getAvailableStockId());
-	            statement.setFloat(5, entity.getBuyingPrice());
-	            statement.setFloat(6, entity.getSellingPrice());
-	            statement.setFloat(7, entity.getProfitMade());
+	         
+	            statement.setFloat(4, entity.getProfitMade());
 			
-			int result = statement.executeUpdate();
+	            System.out.println(statement);
+	            int result = statement.executeUpdate();
 			
 
 			if (result != 0) {
@@ -47,6 +46,7 @@ public class InvoiceToProductRepository implements Repository<InvoiceToProduct> 
 			return false;
 		} 
 		catch (Exception e) {
+			System.out.println("invoice to productRepository: add method");
 			e.printStackTrace();
 			return false;
 		}
@@ -65,7 +65,9 @@ public class InvoiceToProductRepository implements Repository<InvoiceToProduct> 
 			// we can use statement or we can use general query.  example: statement
 			statement.setInt(1,entity.getUnits());
             statement.setInt(2,entity.getProductId());
-            statement.setInt(3,entity.getInvoiceId());
+            statement.setString(3,entity.getInvoiceId());
+            
+            System.out.println(statement);
 			int result = statement.executeUpdate();
 			
 			if (result != 0) {
@@ -75,6 +77,7 @@ public class InvoiceToProductRepository implements Repository<InvoiceToProduct> 
 
 		} 
 		catch (Exception e) {
+			System.out.println("invoice to productRepository: edit method");
 			e.printStackTrace();
 			return false;
 		}
@@ -105,6 +108,7 @@ public class InvoiceToProductRepository implements Repository<InvoiceToProduct> 
 					return false;
 
 				} catch (Exception e) {
+					System.out.println("invoice to productRepository: delete method");
 					e.printStackTrace();
 					return false;
 				}
@@ -125,24 +129,22 @@ public class InvoiceToProductRepository implements Repository<InvoiceToProduct> 
 		try {
 			dataAccess = new MySqlDataAccess();		
 			String query = "SELECT * FROM " + tableName + " where invoiceId = '"+ id + "'";
+			System.out.println(query);
 			resultSet = dataAccess.getData(query);	
 			while(resultSet.next()){	
-			int invoiceId = resultSet.getInt("invoiceId");
+			String invoiceId = resultSet.getString("invoiceId");
 			int productId = resultSet.getInt("productId");
 			int units= resultSet.getInt("units");
-			int availableStockId= resultSet.getInt("availableStockId");
-			float buyingPrice= resultSet.getFloat("buyingPrice");
-			float sellingPrice= resultSet.getFloat("sellingPrice");
 			float profitMade= resultSet.getFloat("profitMade");
 			
 			
-			InvoiceToProduct invoiceToProduct= new InvoiceToProduct(invoiceId, productId, units, availableStockId, buyingPrice, sellingPrice, profitMade);
+			InvoiceToProduct invoiceToProduct= new InvoiceToProduct(invoiceId, productId, units,profitMade);
 			invoiceToProducts.add(invoiceToProduct);
 			}			
 		}
 		
 		 catch (Exception e) {
-			System.out.println("exception found at UserRepository.java while getById");
+			System.out.println("exception found at InvoiceToProductRepository.java while getById ");
 			return null;
 		 }
 		finally {
@@ -164,9 +166,9 @@ public class InvoiceToProductRepository implements Repository<InvoiceToProduct> 
 	}
 	
 	private void closeConnection(String tracker){
-		try { if (resultSet != null) resultSet.close(); } catch (Exception e) {System.out.println("Exception at UserRepository.java, "+tracker+" at finally block RESULTSET");};
-	    try { if (statement != null) statement.close(); } catch (Exception e) {System.out.println("Exception at UserRepository.java, "+tracker+" at finally block STMT");};
-	    try { if (connection != null) connection.close(); } catch (Exception e) {System.out.println("Exception at UserRepository.java, "+tracker+" at finally block CONNECTION");};
+		try { if (resultSet != null) resultSet.close(); } catch (Exception e) {System.out.println("Exception at InvoiceToProductRepository.java, "+tracker+" at finally block RESULTSET");};
+	    try { if (statement != null) statement.close(); } catch (Exception e) {System.out.println("Exception at InvoiceToProductRepository.java, "+tracker+" at finally block STMT");};
+	    try { if (connection != null) connection.close(); } catch (Exception e) {System.out.println("Exception at InvoiceToProductRepository.java, "+tracker+" at finally block CONNECTION");};
 	}
 	
 }
