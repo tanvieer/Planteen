@@ -54,7 +54,7 @@ public class InvoiceToProductController implements Controller<InvoiceToProduct>{
 		System.out.println("getall is not implemented use getInvoiceItems");
 		return null;
 	}
-	public ArrayList<InvoiceToProduct> getInvoiceItems(int id){
+	public ArrayList<InvoiceToProduct> getInvoiceItems(String id){
 		return repository.getInvoiceItems(id);
 	}
 

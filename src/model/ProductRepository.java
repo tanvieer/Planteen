@@ -4,7 +4,11 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import com.sun.crypto.provider.RSACipher;
+import com.sun.swing.internal.plaf.metal.resources.metal_zh_TW;
+
 import DataAccessLayer.MySqlDataAccess;
+import entity.Category;
 import entity.Product;
 
 public class ProductRepository implements Repository<Product> {
@@ -70,7 +74,7 @@ public class ProductRepository implements Repository<Product> {
 			dataAccess = new MySqlDataAccess();
 			connection=dataAccess.getConnection();
 			
-			statement = connection.prepareStatement("UPDATE "+tableName+" SET productName=?,categoryId=?,sellingPrice=?,imagePath=?,productDetails=?, buyingDate=?,buyingPrice=?,boughtunits=?,remainingUnits=?,addedBy=?,adminNote=?, isVisible=?  WHERE productId=?");  
+			statement = connection.prepareStatement("UPDATE "+tableName+" SET productName=?,categoryId=?,sellingPrice=?,imagePath=?,productDetails=?,  buyingPrice=?,boughtunits=?,remainingUnits=?,addedBy=?,adminNote=?, isVisible=?  WHERE productId=?");  
 			// we can use statement or we can use general query.  example: statement
 
 				
@@ -79,14 +83,14 @@ public class ProductRepository implements Repository<Product> {
             statement.setFloat(3, entity.getSellingPrice());
             statement.setString(4, entity.getImagePath());
             statement.setString(5, entity.getProductDetails());
-            statement.setDate(6, entity.getBuyingDate());
-            statement.setFloat(7, entity.getBuyingPrice());
-            statement.setInt(8, entity.getBoughtUnits());
-            statement.setInt(9, entity.getRemainingUnits());
-            statement.setString(10, entity.getAddedBy());
-            statement.setString(11, entity.getAdminNote());
-            statement.setBoolean(12, entity.getisVisible());
-            statement.setInt(13, entity.getProductId());
+         
+            statement.setFloat(6, entity.getBuyingPrice());
+            statement.setInt(7, entity.getBoughtUnits());
+            statement.setInt(8, entity.getRemainingUnits());
+            statement.setString(9, entity.getAddedBy());
+            statement.setString(10, entity.getAdminNote());
+            statement.setBoolean(11, entity.getisVisible());
+            statement.setInt(12, entity.getProductId());
             
 	        System.out.println(statement);
 			int result = statement.executeUpdate();
@@ -252,6 +256,49 @@ public class ProductRepository implements Repository<Product> {
 		}
 		finally {
 			closeConnection("getAllProductByCategoryId()");
+		}
+		return products;
+	}
+	
+	
+	public ArrayList<Product> getAllwithCategoryName() {
+		ArrayList<Product> products = new ArrayList<Product>();
+		try {
+
+			String query = "SELECT * FROM " + tableName + ", categories WHERE products.categoryId = categories.categoryId";
+
+			dataAccess = new MySqlDataAccess();
+
+			resultSet = dataAccess.getData(query);
+
+			while (resultSet.next()) {
+
+				int productId=resultSet.getInt("productId");
+				String productName=resultSet.getString("productName");	
+				int categoryId = resultSet.getInt("categoryId");
+				float sellingPrice= resultSet.getFloat("sellingPrice");
+				String imagePath= resultSet.getString("imagePath");
+				String productDetails= resultSet.getString("productDetails");
+				Date buyingDate= resultSet.getDate("buyingDate");
+				float buyingPrice= resultSet.getFloat("buyingPrice");
+				int boughtUnits=resultSet.getInt("boughtUnits");
+				int remainingUnits=resultSet.getInt("remainingUnits");
+				String addedBy=resultSet.getString("addedBy");
+				String adminNote=resultSet.getString("adminNote");
+				boolean isVisible= resultSet.getBoolean("isVisible");
+				String categoryName=resultSet.getString("categoryName");
+			
+				
+				Product product= new Product(productId, productName, categoryId, sellingPrice, imagePath, productDetails, buyingDate, buyingPrice, boughtUnits, remainingUnits, addedBy, adminNote, isVisible,categoryName);
+				products.add(product);
+			}
+		} catch (Exception e) {
+			System.out.println("exception found at ProductRepository.java while get all with category name");
+			e.printStackTrace();
+			return null;
+		}
+		finally {
+			closeConnection("getAll()");
 		}
 		return products;
 	}

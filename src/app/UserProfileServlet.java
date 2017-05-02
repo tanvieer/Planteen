@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import controller.InvoiceController;
 import controller.UserController;
 import controller.ValidationController;
 import entity.Invoice;
@@ -46,26 +47,28 @@ public class UserProfileServlet extends HttpServlet {
 			
 		
 
-			//System.out.println("this is id"+ userId);
+			System.out.println("this is id"+ userId);
 			User user= new UserController().getById(userId);
-			//System.out.println(user.getName());
+			System.out.println(user.getName());
 			
 		
 			
 			long time = System.currentTimeMillis();
 			java.sql.Date date = new java.sql.Date(time);
-			String invoiceGeneratedId = user.getUserId() + " " + date;
+			String invoiceGeneratedId = userId + " " + date;
 			
-			ArrayList<Invoice> invoices= new ArrayList<Invoice>();
 			
-			/*Invoice invoice= new Invoice(user.getUserId(), date, date, user.getName(), user.getStatus(), invoiceGeneratedId, user.getAddress(), user.getPhone());
 			
-			invoices.add(invoice);
-			invoice= new Invoice(2, date, date, "Tanvir", "pending", invoiceGeneratedId, user.getAddress(), user.getPhone());
-			invoices.add(invoice);
+			ArrayList<Invoice> invoices = new InvoiceController().getCurrentByUserId(userId);
+			ArrayList<Invoice> invoices2 = new InvoiceController().getPreviousByUserId(userId);
 			
 			request.setAttribute("invoices", invoices);
-			request.setAttribute("user", user);*/
+			request.setAttribute("invoicesPrevious", invoices2);
+			request.setAttribute("user", user);
+			
+			for(Invoice i: invoices2){
+				System.out.println(i);
+			}
 			
 			
 			RequestDispatcher dispatcher= request.getRequestDispatcher("userProfileSettings.jsp");

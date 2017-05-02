@@ -29,6 +29,7 @@ public class ProductController implements Controller<Product> {
 	public boolean delete(int id) {
 		return repository.delete(id);
 	}
+	
 
 
 	@Override
@@ -47,6 +48,10 @@ public class ProductController implements Controller<Product> {
 	@Override
 	public ArrayList<Product> getAll() {
 		return repository.getAll();
+	}
+	
+	public ArrayList<Product> getAllwithCategoryName() {
+		return repository.getAllwithCategoryName();
 	}
 
 	public ArrayList<Product> getAllProductByCategoryId(int id) {

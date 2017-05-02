@@ -97,7 +97,7 @@ public class UserCheckoutServlet extends HttpServlet {
 			float profitMade;
 			for(CartItem cartItem : cList){
 				profitMade = cartItem.getSellingPrice()-cartItem.getBuyingPrice();
-				invoiceToProduct = new InvoiceToProduct(generatedInvoiceId, cartItem.getProductId(), cartItem.getQuantity(), profitMade);
+				invoiceToProduct = new InvoiceToProduct(generatedInvoiceId, cartItem.getProductId(), cartItem.getQuantity(), profitMade,cartItem.getSellingPrice());
 				invoiceToProductList.add(invoiceToProduct);
 			}
 			
@@ -114,6 +114,8 @@ public class UserCheckoutServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//System.out.println(request.getParameter("subTotal"));
+		
+		//float subtotal = Float.parseFloat((String)request.getParameter("subTotal"));
 		
 		
 		String deliveryAddress = request.getParameter("txt_address");
@@ -162,9 +164,12 @@ public class UserCheckoutServlet extends HttpServlet {
 			//update database
 			//System.out.println(invoice);
 			boolean invoiceToProductCheckDB = false;
+			float sum =0.0f;
 			for(InvoiceToProduct entity : invoiceToProductList){
 				invoiceToProductCheckDB = new InvoiceToProductController().add(entity);
+				sum+=entity.getSellingPrice();
 			}
+			invoice.setTotalSellingPrice(sum);
 			boolean invoicetCheckDB = new InvoiceController().add(invoice);
 			
 		
@@ -174,15 +179,15 @@ public class UserCheckoutServlet extends HttpServlet {
 					
 					HttpSession session = request.getSession();
 					@SuppressWarnings("unchecked")
-					ArrayList<CartItem> cList = (ArrayList<CartItem>) session.getAttribute("cartList");
-					if(cList!=null){
+					ArrayList<CartItem> cList = new ArrayList<CartItem> ();
+					/*if(cList!=null){
 						for(CartItem c : cList){	 
 							cList.remove(c);
 						}
 					}
 					else {
 						System.out.println("Null List");
-					}
+					}*/
 					session.setAttribute("cartList", cList);
 				}
 				

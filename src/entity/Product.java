@@ -16,7 +16,7 @@ public class Product {
 	private String addedBy;
 	private String adminNote;
 	private boolean isVisible;
-	
+	private String categoryName;
 	
 	
 	
@@ -33,6 +33,28 @@ public class Product {
 		this.isVisible = isVisible;
 	}
 	
+	
+	
+	public Product(int productId, String productName, int categoryId, float sellingPrice, String imagePath,
+			String productDetails, Date buyingDate, float buyingPrice, int boughtUnits, int remainingUnits,
+			String addedBy, String adminNote, boolean isVisible, String categoryName) {
+
+		this.productId = productId;
+		this.productName = productName;
+		this.categoryId = categoryId;
+		this.sellingPrice = sellingPrice;
+		this.imagePath = imagePath;
+		this.productDetails = productDetails;
+		this.buyingDate = buyingDate;
+		this.buyingPrice = buyingPrice;
+		this.boughtUnits = boughtUnits;
+		this.remainingUnits = remainingUnits;
+		this.addedBy = addedBy;
+		this.adminNote = adminNote;
+		this.isVisible = isVisible;
+		this.categoryName = categoryName;
+	}
+
 	public Product(int productId, String productName, int categoryId, float sellingPrice, String imagePath,String productDetails, boolean isVisible) {
 	
 		this.productId = productId;
@@ -83,6 +105,29 @@ public class Product {
 		this.addedBy = addedBy;
 		this.adminNote = adminNote;
 		this.isVisible = isVisible;
+	}
+
+
+
+
+
+	public Product(int productId, String productName, int categoryId, float sellingPrice, String imagePath,
+			String productDetails, float buyingPrice, int boughtUnits, int remainingUnits, String addedBy,
+			String adminNote, boolean isVisible) {
+	
+		this.productId = productId;
+		this.productName = productName;
+		this.categoryId = categoryId;
+		this.sellingPrice = sellingPrice;
+		this.imagePath = imagePath;
+		this.productDetails = productDetails;
+		this.buyingPrice = buyingPrice;
+		this.boughtUnits = boughtUnits;
+		this.remainingUnits = remainingUnits;
+		this.addedBy = addedBy;
+		this.adminNote = adminNote;
+		this.isVisible = isVisible;
+	
 	}
 
 	public int getProductId() {
@@ -184,6 +229,16 @@ public class Product {
 
 	public void setVisible(boolean isVisible) {
 		this.isVisible = isVisible;
+	}
+	
+	
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
 	@Override

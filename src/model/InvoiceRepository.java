@@ -29,7 +29,7 @@ public class InvoiceRepository implements Repository<Invoice>{
 			dataAccess = new MySqlDataAccess();
 			connection=dataAccess.getConnection();
 			
-			statement = connection.prepareStatement("INSERT INTO "+tableName+" (userId,placementDate,confirmDate,approvedBy,status, invoicePrimaryId) Values(?,?,?,?,?,?)");
+			statement = connection.prepareStatement("INSERT INTO "+tableName+" (userId,placementDate,confirmDate,approvedBy,status, invoicePrimaryId,totalSellingPrice,deliveryAddress,deliveryPhoneNo) Values(?,?,?,?,?,?,?,?,?)");
 			// we can use statement or we can use general query.  example: statement
 			    
 	            statement.setInt(1,entity.getUserId());
@@ -38,6 +38,10 @@ public class InvoiceRepository implements Repository<Invoice>{
 	            statement.setString(4, entity.getApprovedBy());
 	            statement.setString(5, entity.getStatus());
 	            statement.setString(6, entity.getInvoicePrimaryId());
+	            statement.setFloat(7, entity.getTotalSellingPrice());
+	            statement.setString(8, entity.getDeliveryAddress());
+	            statement.setString(9, entity.getDeliveryPhoneNo());
+	            
 	           
 			System.out.println(statement);
 			int result = statement.executeUpdate();
@@ -65,7 +69,16 @@ public class InvoiceRepository implements Repository<Invoice>{
 			dataAccess = new MySqlDataAccess();
 			connection=dataAccess.getConnection();
 			
-			statement = connection.prepareStatement("UPDATE "+tableName+" SET userId=?,placementDate=?,confirmDate=?,approvedBy=?,status=? WHERE inoviceId=?");  
+			statement = connection.prepareStatement("UPDATE "+tableName+" SET "
+					+ "userId=?,"
+					+ "placementDate=?,"
+					+ "confirmDate=?,"
+					+ "approvedBy=?,"
+					+ "status=?,"
+					+ "totalSellingPrice=?,"
+					+ "deliveryAddress=?,"
+					+ "deliveryPhoneNo=?"
+					+ " WHERE inoviceId=?");  
 			// we can use statement or we can use general query.  example: statement
 				
 			statement.setInt(1,entity.getUserId());
@@ -73,7 +86,11 @@ public class InvoiceRepository implements Repository<Invoice>{
             statement.setDate(3,entity.getConfirmDate());
             statement.setString(4, entity.getApprovedBy());
             statement.setString(5, entity.getStatus());
-            statement.setInt(6,entity.getInvoiceId());
+            
+            statement.setFloat(6, entity.getTotalSellingPrice());
+            statement.setString(7, entity.getDeliveryAddress());
+            statement.setString(8, entity.getDeliveryPhoneNo());
+            statement.setInt(9,entity.getInvoiceId());
             
             System.out.println(statement);
 			int result = statement.executeUpdate();
@@ -167,8 +184,9 @@ public class InvoiceRepository implements Repository<Invoice>{
 			String invoicePrimaryId = resultSet.getString("invoicePrimaryId");
 			String deliveryAddress = resultSet.getString("deliveryAddress");
 			String deliveryPhoneNo = resultSet.getString("deliveryPhoneNo");
+			float totalSellingPrice = resultSet.getFloat("totalSellingPrice");
 			
-			Invoice invoice= new Invoice(invoiceId, userId, placementDate, confirmDate, approvedBy, status, invoicePrimaryId, deliveryAddress, deliveryPhoneNo);
+			Invoice invoice= new Invoice(invoiceId, userId, placementDate, confirmDate, approvedBy, status, invoicePrimaryId, deliveryAddress, deliveryPhoneNo,totalSellingPrice);
 				return invoice;
 			}
 			else 
@@ -205,8 +223,10 @@ public class InvoiceRepository implements Repository<Invoice>{
 			String status = resultSet.getString("status");
 			String deliveryAddress = resultSet.getString("deliveryAddress");
 			String deliveryPhoneNo = resultSet.getString("deliveryPhoneNo");
+			float totalSellingPrice = resultSet.getFloat("totalSellingPrice");
 			
-			Invoice invoice= new Invoice(invoiceId, userId, placementDate, confirmDate, approvedBy, status, invoicePrimaryId, deliveryAddress, deliveryPhoneNo);
+			
+			Invoice invoice= new Invoice(invoiceId, userId, placementDate, confirmDate, approvedBy, status, invoicePrimaryId, deliveryAddress, deliveryPhoneNo,totalSellingPrice);
 				return invoice;
 			}
 			else 
@@ -250,9 +270,87 @@ public class InvoiceRepository implements Repository<Invoice>{
 				String invoicePrimaryId = resultSet.getString("invoicePrimaryId");
 				String deliveryAddress = resultSet.getString("deliveryAddress");
 				String deliveryPhoneNo = resultSet.getString("deliveryPhoneNo");
+				float totalSellingPrice = resultSet.getFloat("totalSellingPrice");
 			
 				
-				Invoice invoice= new Invoice(invoiceId, userId, placementDate, confirmDate, approvedBy, status, invoicePrimaryId, deliveryAddress, deliveryPhoneNo);
+				Invoice invoice= new Invoice(invoiceId, userId, placementDate, confirmDate, approvedBy, status, invoicePrimaryId, deliveryAddress, deliveryPhoneNo,totalSellingPrice);
+				invoices.add(invoice);
+			}
+		} catch (Exception e) {
+			System.out.println("exception found at InvoiceRepository.java while get all");
+			return null;
+		}
+		finally {
+			closeConnection("getAll()");
+		}
+		return invoices;
+	}
+	
+	
+	
+	public ArrayList<Invoice> getCurrentByUserId(int userId) {
+		ArrayList<Invoice> invoices = new ArrayList<Invoice>();
+		try {
+
+			String query = "SELECT * FROM " + tableName + " WHERE userId = " + userId + " AND lower(status) = 'pending'";
+			System.out.println(query);
+
+			dataAccess = new MySqlDataAccess();
+			System.out.println(query);
+			resultSet = dataAccess.getData(query);
+
+			while (resultSet.next()) {
+
+				int invoiceId = resultSet.getInt("invoiceId");
+				/*int userId = resultSet.getInt("userId");*/
+				Date placementDate= resultSet.getDate("placementDate");
+				Date confirmDate= resultSet.getDate("confirmDate");
+				String approvedBy = resultSet.getString("approvedBy");
+				String status = resultSet.getString("status");
+				String invoicePrimaryId = resultSet.getString("invoicePrimaryId");
+				String deliveryAddress = resultSet.getString("deliveryAddress");
+				String deliveryPhoneNo = resultSet.getString("deliveryPhoneNo");
+				float totalSellingPrice = resultSet.getFloat("totalSellingPrice");
+			
+				
+				Invoice invoice= new Invoice(invoiceId, userId, placementDate, confirmDate, approvedBy, status, invoicePrimaryId, deliveryAddress, deliveryPhoneNo,totalSellingPrice);
+				invoices.add(invoice);
+			}
+		} catch (Exception e) {
+			System.out.println("exception found at InvoiceRepository.java while get all");
+			return null;
+		}
+		finally {
+			closeConnection("getAll()");
+		}
+		return invoices;
+	}
+	
+	public ArrayList<Invoice> getPreviousByUserId(int userId) {
+		ArrayList<Invoice> invoices = new ArrayList<Invoice>();
+		try {
+
+			String query = "SELECT * FROM " + tableName + " WHERE userId = " + userId + " AND lower(status) <> 'pending'";
+
+			dataAccess = new MySqlDataAccess();
+			System.out.println(query);
+			resultSet = dataAccess.getData(query);
+
+			while (resultSet.next()) {
+
+				int invoiceId = resultSet.getInt("invoiceId");
+				/*int userId = resultSet.getInt("userId");*/
+				Date placementDate= resultSet.getDate("placementDate");
+				Date confirmDate= resultSet.getDate("confirmDate");
+				String approvedBy = resultSet.getString("approvedBy");
+				String status = resultSet.getString("status");
+				String invoicePrimaryId = resultSet.getString("invoicePrimaryId");
+				String deliveryAddress = resultSet.getString("deliveryAddress");
+				String deliveryPhoneNo = resultSet.getString("deliveryPhoneNo");
+				float totalSellingPrice = resultSet.getFloat("totalSellingPrice");
+			
+				
+				Invoice invoice= new Invoice(invoiceId, userId, placementDate, confirmDate, approvedBy, status, invoicePrimaryId, deliveryAddress, deliveryPhoneNo,totalSellingPrice);
 				invoices.add(invoice);
 			}
 		} catch (Exception e) {

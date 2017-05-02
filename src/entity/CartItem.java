@@ -7,6 +7,7 @@ public class CartItem {
 	private float sellingPrice;
 	private String imagePath;
 	private float buyingPrice;
+	private String productDetails;
 	
 	
 	public CartItem(){}
@@ -27,7 +28,7 @@ public class CartItem {
 		this.buyingPrice = buyingPrice;
 	}
 
-
+	
 
 	public int getProductId() {
 		return productId;
@@ -89,13 +90,31 @@ public class CartItem {
 		this.buyingPrice = buyingPrice;
 	}
 
+	
+
+	public String getProductDetails() {
+		return productDetails;
+	}
+
+
+
+	public void setProductDetails(String productDetails) {
+		this.productDetails = productDetails;
+	}
+
 
 
 	@Override
 	public String toString() {
-		return "Cart [productId=" + productId + ", productName=" + productName
-				+ "]";
+		return "CartItem [productId=" + productId + ", productName="
+				+ productName + ", quantity=" + quantity + ", sellingPrice="
+				+ sellingPrice + ", imagePath=" + imagePath + ", buyingPrice="
+				+ buyingPrice + ", productDetails=" + productDetails + "]";
 	}
+
+
+
+	
 	
 	
 }

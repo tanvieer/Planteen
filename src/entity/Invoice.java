@@ -12,6 +12,7 @@ public class Invoice {
 	private String invoicePrimaryId;
 	private String deliveryAddress;
 	private String deliveryPhoneNo;
+	private float totalSellingPrice;
 	
 	public Invoice() {
 		// TODO Auto-generated constructor stub
@@ -20,7 +21,7 @@ public class Invoice {
 	public Invoice(int invoiceId, int userId, Date placementDate,
 			Date confirmDate, String approvedBy, String status,
 			String invoicePrimaryId, String deliveryAddress,
-			String deliveryPhoneNo) {
+			String deliveryPhoneNo,	float totalSellingPrice) {
 		this.invoiceId = invoiceId;
 		this.userId = userId;
 		this.placementDate = placementDate;
@@ -30,6 +31,21 @@ public class Invoice {
 		this.invoicePrimaryId = invoicePrimaryId;
 		this.deliveryAddress = deliveryAddress;
 		this.deliveryPhoneNo = deliveryPhoneNo;
+		this.totalSellingPrice = totalSellingPrice;
+	}
+	
+	public Invoice(int userId, Date placementDate, Date confirmDate,
+			String approvedBy, String status, String invoicePrimaryId,
+			String deliveryAddress, String deliveryPhoneNo,float totalSellingPrice) {
+		this.userId = userId;
+		this.placementDate = placementDate;
+		this.confirmDate = confirmDate;
+		this.approvedBy = approvedBy;
+		this.status = status;
+		this.invoicePrimaryId = invoicePrimaryId;
+		this.deliveryAddress = deliveryAddress;
+		this.deliveryPhoneNo = deliveryPhoneNo;
+		this.totalSellingPrice = totalSellingPrice;
 	}
 	
 	public Invoice(int userId, Date placementDate, Date confirmDate,
@@ -45,48 +61,6 @@ public class Invoice {
 		this.deliveryPhoneNo = deliveryPhoneNo;
 	}
 
-	/*public Invoice( int userId, Date placementDate, Date confirmDate, String approvedBy, String status) {
-
-		this.userId = userId;
-		this.placementDate = placementDate;
-		this.confirmDate = confirmDate;
-		this.approvedBy = approvedBy;
-		this.status = status;
-	}
-	
-	public Invoice(int invoiceId, int userId, Date placementDate, Date confirmDate, String approvedBy, String status) {
-
-		this.invoiceId = invoiceId;
-		this.userId = userId;
-		this.placementDate = placementDate;
-		this.confirmDate = confirmDate;
-		this.approvedBy = approvedBy;
-		this.status = status;
-	}
-	
-	
-	public Invoice(int invoiceId, int userId, Date placementDate, Date confirmDate, String approvedBy, String status,
-			String invoicePrimaryId) {
-
-		this.invoiceId = invoiceId;
-		this.userId = userId;
-		this.placementDate = placementDate;
-		this.confirmDate = confirmDate;
-		this.approvedBy = approvedBy;
-		this.status = status;
-		this.invoicePrimaryId = invoicePrimaryId;
-	}
-	
-	public Invoice(int userId, Date placementDate, Date confirmDate, String approvedBy, String status,
-			String invoicePrimaryId) {
-
-		this.userId = userId;
-		this.placementDate = placementDate;
-		this.confirmDate = confirmDate;
-		this.approvedBy = approvedBy;
-		this.status = status;
-		this.invoicePrimaryId = invoicePrimaryId;
-	}*/
 	public int getInvoiceId() {
 		return invoiceId;
 	}
@@ -142,6 +116,14 @@ public class Invoice {
 	public void setDeliveryPhoneNo(String deliveryPhoneNo) {
 		this.deliveryPhoneNo = deliveryPhoneNo;
 	}
+	
+	public float getTotalSellingPrice() {
+		return totalSellingPrice;
+	}
+
+	public void setTotalSellingPrice(float totalSellingPrice) {
+		this.totalSellingPrice = totalSellingPrice;
+	}
 
 	@Override
 	public String toString() {
@@ -150,8 +132,11 @@ public class Invoice {
 				+ confirmDate + ", approvedBy=" + approvedBy + ", status="
 				+ status + ", invoicePrimaryId=" + invoicePrimaryId
 				+ ", deliveryAddress=" + deliveryAddress + ", deliveryPhoneNo="
-				+ deliveryPhoneNo + "]";
+				+ deliveryPhoneNo + ", totalSellingPrice=" + totalSellingPrice
+				+ "]";
 	}
+
+	
 	
 	
 	

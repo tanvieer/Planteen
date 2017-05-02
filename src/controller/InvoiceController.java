@@ -59,4 +59,15 @@ public class InvoiceController implements Controller<Invoice> {
 	public ArrayList<Invoice> getAll() {
 		return repository.getAll();
 	}
+
+
+	public ArrayList<Invoice> getCurrentByUserId(int userId) {
+		// TODO Auto-generated method stub
+		return repository.getCurrentByUserId(userId);
+	}
+	
+	public ArrayList<Invoice> getPreviousByUserId(int userId){
+		return repository.getPreviousByUserId(userId);
+		
+	}
 }
