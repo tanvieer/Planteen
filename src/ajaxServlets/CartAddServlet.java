@@ -36,9 +36,7 @@ public class CartAddServlet extends HttpServlet {
 			
 			
 			HttpSession session = request.getSession(true);
-			
-			
-			
+
 			@SuppressWarnings("unchecked")
 			ArrayList<CartItem> cList = (ArrayList<CartItem>) session.getAttribute("cartList");
 			
@@ -51,10 +49,25 @@ public class CartAddServlet extends HttpServlet {
 				
 			}
 			else {
-				CartItem ct = new CartItem(id,p.getProductName(),1,p.getSellingPrice(),p.getImagePath(),p.getBuyingPrice());
-				cList.add(ct);
-				System.out.println(ct);
+				boolean isAlreadyAdded = false;
+				//added by nabila starts
+				for(CartItem c : cList){
+					if(c.getProductId() == id){
+						 c.setQuantity(c.getQuantity()+1);
+						 isAlreadyAdded = true;
+					}
+				}
 				
+				//added by nabila ends
+				
+				
+				if(!isAlreadyAdded){
+					CartItem ct = new CartItem(id,p.getProductName(),1,p.getSellingPrice(),p.getImagePath(),p.getBuyingPrice());
+					cList.add(ct);
+					System.out.println(ct);
+				}
+				
+
 				for(CartItem c : cList){
 					 System.out.println("new cart list: "+ c);
 				 }
@@ -64,17 +77,9 @@ public class CartAddServlet extends HttpServlet {
 			
 				
 			session.setAttribute("cartList", cList);
+			session.setMaxInactiveInterval(200*600);
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
 			
 			
 		}catch(Exception e){

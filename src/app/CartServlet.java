@@ -32,6 +32,7 @@ public class CartServlet extends HttpServlet {
 		request.setAttribute("categories", category); 
 		
 		HttpSession session = request.getSession(true);
+		session.setMaxInactiveInterval(20*60);
 		
 		@SuppressWarnings("unchecked")
 		ArrayList<CartItem> cList = (ArrayList<CartItem>) session.getAttribute("cartList");

@@ -27,7 +27,7 @@ public class InvoiceToProductRepository implements Repository<InvoiceToProduct> 
 			dataAccess = new MySqlDataAccess();
 			connection=dataAccess.getConnection();
 			
-			statement = connection.prepareStatement("INSERT INTO "+tableName+" (invoiceId, productId, units ,  profitMade) Values(?,?,?,?)");
+			statement = connection.prepareStatement("INSERT INTO "+tableName+" (invoicePrimaryId, productId, units ,  profitMade) Values(?,?,?,?)");
 			// we can use statement or we can use general query.  example: statement
 			    
 	            statement.setString(1,entity.getInvoiceId());
@@ -61,7 +61,7 @@ public class InvoiceToProductRepository implements Repository<InvoiceToProduct> 
 			dataAccess = new MySqlDataAccess();
 			connection=dataAccess.getConnection();
 			
-			statement = connection.prepareStatement("UPDATE "+tableName+" SET units=? WHERE productId=? AND invoiceId=?");  
+			statement = connection.prepareStatement("UPDATE "+tableName+" SET units=? WHERE productId=? AND invoicePrimaryId=?");  
 			// we can use statement or we can use general query.  example: statement
 			statement.setInt(1,entity.getUnits());
             statement.setInt(2,entity.getProductId());
@@ -98,7 +98,7 @@ public class InvoiceToProductRepository implements Repository<InvoiceToProduct> 
 				try {
 					dataAccess = new MySqlDataAccess();
 					
-					String query = "DELETE FROM " + tableName + " WHERE invoiceId ="+invoiceId+" AND productId="+productId+""; // we can use statement or we can use general query.  example: query
+					String query = "DELETE FROM " + tableName + " WHERE invoicePrimaryId ="+invoiceId+" AND productId="+productId+""; // we can use statement or we can use general query.  example: query
 					
 					int result = dataAccess.executeQuery(query);
 
@@ -128,17 +128,17 @@ public class InvoiceToProductRepository implements Repository<InvoiceToProduct> 
 		ArrayList<InvoiceToProduct> invoiceToProducts = new ArrayList<InvoiceToProduct>();
 		try {
 			dataAccess = new MySqlDataAccess();		
-			String query = "SELECT * FROM " + tableName + " where invoiceId = '"+ id + "'";
+			String query = "SELECT * FROM " + tableName + " where invoicePrimaryId = '"+ id + "'";
 			System.out.println(query);
 			resultSet = dataAccess.getData(query);	
 			while(resultSet.next()){	
-			String invoiceId = resultSet.getString("invoiceId");
+			String invoicePrimaryId = resultSet.getString("invoicePrimaryId");
 			int productId = resultSet.getInt("productId");
 			int units= resultSet.getInt("units");
 			float profitMade= resultSet.getFloat("profitMade");
 			
 			
-			InvoiceToProduct invoiceToProduct= new InvoiceToProduct(invoiceId, productId, units,profitMade);
+			InvoiceToProduct invoiceToProduct= new InvoiceToProduct(invoicePrimaryId, productId, units,profitMade);
 			invoiceToProducts.add(invoiceToProduct);
 			}			
 		}

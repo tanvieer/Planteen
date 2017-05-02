@@ -54,17 +54,18 @@ public class UserProfileServlet extends HttpServlet {
 			
 			long time = System.currentTimeMillis();
 			java.sql.Date date = new java.sql.Date(time);
+			String invoiceGeneratedId = user.getUserId() + " " + date;
 			
 			ArrayList<Invoice> invoices= new ArrayList<Invoice>();
 			
-			Invoice invoice= new Invoice(user.getUserId(), date, date, user.getName(), user.getStatus());
+			/*Invoice invoice= new Invoice(user.getUserId(), date, date, user.getName(), user.getStatus(), invoiceGeneratedId, user.getAddress(), user.getPhone());
 			
 			invoices.add(invoice);
-			invoice= new Invoice(2, date, date, "Tanvir", "pending");
+			invoice= new Invoice(2, date, date, "Tanvir", "pending", invoiceGeneratedId, user.getAddress(), user.getPhone());
 			invoices.add(invoice);
 			
 			request.setAttribute("invoices", invoices);
-			request.setAttribute("user", user);
+			request.setAttribute("user", user);*/
 			
 			
 			RequestDispatcher dispatcher= request.getRequestDispatcher("userProfileSettings.jsp");

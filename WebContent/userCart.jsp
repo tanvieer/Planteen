@@ -39,7 +39,9 @@
 							</div>
 						</td>
 						<td>
-							<div>${cart.productName}</div>
+							<div>
+								<a href="itemview?productId=${cart.productId}">${cart.productName}</a>
+							</div>
 						</td>
 						<td>
 							
@@ -74,7 +76,7 @@
 			<thead class="thead-default">
 				<tr>
 					<th colspan=4>
-						<button class="btn btn-sm btn-success"><i class="fa fa-dollar"> Proceed to Checkout</i></button>
+						<button class="btn btn-sm btn-success"><i class="fa fa-dollar" onClick="window.location.href = 'UserCheckout'"> Proceed to Checkout</i></button>
 					
 						<button class="btn btn-sm btn-warning" onClick="window.location.href = 'home'"><i class="fa fa-shopping-cart"> Continue Shopping</i> </button>
 					

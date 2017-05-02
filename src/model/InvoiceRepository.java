@@ -165,8 +165,10 @@ public class InvoiceRepository implements Repository<Invoice>{
 			String approvedBy = resultSet.getString("approvedBy");
 			String status = resultSet.getString("status");
 			String invoicePrimaryId = resultSet.getString("invoicePrimaryId");
+			String deliveryAddress = resultSet.getString("deliveryAddress");
+			String deliveryPhoneNo = resultSet.getString("deliveryPhoneNo");
 			
-			Invoice invoice= new Invoice(invoiceId, userId, placementDate, confirmDate, approvedBy, status, invoicePrimaryId);
+			Invoice invoice= new Invoice(invoiceId, userId, placementDate, confirmDate, approvedBy, status, invoicePrimaryId, deliveryAddress, deliveryPhoneNo);
 				return invoice;
 			}
 			else 
@@ -201,9 +203,10 @@ public class InvoiceRepository implements Repository<Invoice>{
 			Date confirmDate= resultSet.getDate("confirmDate");
 			String approvedBy = resultSet.getString("approvedBy");
 			String status = resultSet.getString("status");
+			String deliveryAddress = resultSet.getString("deliveryAddress");
+			String deliveryPhoneNo = resultSet.getString("deliveryPhoneNo");
 			
-			
-			Invoice invoice= new Invoice(invoiceId, userId, placementDate, confirmDate, approvedBy, status, invoicePrimaryId);
+			Invoice invoice= new Invoice(invoiceId, userId, placementDate, confirmDate, approvedBy, status, invoicePrimaryId, deliveryAddress, deliveryPhoneNo);
 				return invoice;
 			}
 			else 
@@ -244,9 +247,12 @@ public class InvoiceRepository implements Repository<Invoice>{
 				Date confirmDate= resultSet.getDate("confirmDate");
 				String approvedBy = resultSet.getString("approvedBy");
 				String status = resultSet.getString("status");
+				String invoicePrimaryId = resultSet.getString("invoicePrimaryId");
+				String deliveryAddress = resultSet.getString("deliveryAddress");
+				String deliveryPhoneNo = resultSet.getString("deliveryPhoneNo");
 			
 				
-				Invoice invoice= new Invoice(invoiceId, userId, placementDate, confirmDate, approvedBy, status);
+				Invoice invoice= new Invoice(invoiceId, userId, placementDate, confirmDate, approvedBy, status, invoicePrimaryId, deliveryAddress, deliveryPhoneNo);
 				invoices.add(invoice);
 			}
 		} catch (Exception e) {

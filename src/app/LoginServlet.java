@@ -62,6 +62,7 @@ public class LoginServlet extends HttpServlet {
 					  System.out.println("ck userEmail = " +c.getValue());
 					  
 					  session.setAttribute("userEmail", c.getValue());
+					  session.setMaxInactiveInterval(200*600);
 					  em = true;
 					  
 				  }else if(c.getName().equalsIgnoreCase("userId")){
@@ -71,12 +72,13 @@ public class LoginServlet extends HttpServlet {
 					  System.out.println("ck userId = " +usid);
 					  
 					  session.setAttribute("userId", c.getValue());
+					  session.setMaxInactiveInterval(200*600);
 					  uid = true;
 				  }
 			  }
 			  if(em && uid){
 
-					
+				  session.setMaxInactiveInterval(200*600);
 ;
 				  System.out.println("Login Successful from cookie"); ///////////////////////////////////////Login successfull from cookie
 				  response.sendRedirect(redirectPage);
@@ -170,6 +172,8 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("userEmail", user.getEmail());
 			session.setAttribute("userId", Integer.toString(user.getUserId()));
 			session.setAttribute("userPasssword", user.getPassword());
+			
+			session.setMaxInactiveInterval(200*600);
 			
         	
 			System.out.println("Login successfull from dopost");    ///////////////////////////////////////Login successfull from DOPOST

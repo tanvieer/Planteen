@@ -40,7 +40,7 @@ public class UserOrdersServlet extends HttpServlet {
 		long time = System.currentTimeMillis();
 		java.sql.Date date = new java.sql.Date(time);
 		
-		ArrayList<Invoice> invoices= new ArrayList<Invoice>();
+		/*ArrayList<Invoice> invoices= new ArrayList<Invoice>();
 		
 		Invoice invoice= new Invoice(1, date, date, "Mobasser", "Delivered");
 		
@@ -48,7 +48,7 @@ public class UserOrdersServlet extends HttpServlet {
 		invoice= new Invoice(2, date, date, "Tanvir", "pending");
 		invoices.add(invoice);
 		
-		request.setAttribute("invoices", invoices);
+		request.setAttribute("invoices", invoices);*/
 		request.setAttribute("user", user);
 		
 		
@@ -106,7 +106,7 @@ public class UserOrdersServlet extends HttpServlet {
         long time = System.currentTimeMillis();
 		java.sql.Date date = new java.sql.Date(time);
 		
-		ArrayList<Invoice> invoices= new ArrayList<Invoice>();
+		/*ArrayList<Invoice> invoices= new ArrayList<Invoice>();
 		
 		Invoice invoice= new Invoice(1, date, date, "Mobasser", "Delivered");
 		
@@ -114,7 +114,7 @@ public class UserOrdersServlet extends HttpServlet {
 		invoice= new Invoice(2, date, date, "Tanvir", "pending");
 		invoices.add(invoice);
 		
-		request.setAttribute("invoices", invoices);
+		request.setAttribute("invoices", invoices);*/
 		
         if(check){
 			new UserController().editByUser(user);

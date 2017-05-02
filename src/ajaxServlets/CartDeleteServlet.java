@@ -22,53 +22,40 @@ import entity.Product;
 public class CartDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		int id;
 		int maxProductQuantity;
-		try{
+		try {
 			id = Integer.parseInt(request.getParameter("productId"));
-			
-			
-			Product p = new ProductController().getById(id);
-			maxProductQuantity = new ProductStockController().getProductQuantity(id);
-			
-			
-			
-			HttpSession session = request.getSession(true);
-			
-			
-			
-			@SuppressWarnings("unchecked")
-			ArrayList<CartItem> cList = (ArrayList<CartItem>) session.getAttribute("cartList");
-			
 
-			if(cList!=null){
-				
-				for(CartItem c : cList){
-					 
-					if(c.getProductId() == id){
-						 cList.remove(c);
+			Product p = new ProductController().getById(id);
+			maxProductQuantity = new ProductStockController()
+					.getProductQuantity(id);
+
+			HttpSession session = request.getSession(true);
+
+			@SuppressWarnings("unchecked")
+			ArrayList<CartItem> cList = (ArrayList<CartItem>) session
+					.getAttribute("cartList");
+
+			if (cList != null) {
+
+				for (CartItem c : cList) {
+
+					if (c.getProductId() == id) {
+						cList.remove(c);
 					}
 				}
-			}
-			else {
+			} else {
 				System.out.println("Null List");
 			}
-				
-				
-			
-				
+
 			session.setAttribute("cartList", cList);
-			
-			
-			
-			
-			
-		}catch(Exception e){
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 }
-
-
