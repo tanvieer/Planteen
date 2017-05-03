@@ -69,9 +69,15 @@
 				</a>
 			</li>
 			
+			<li class="nav-item">
+				<a class="nav-link" href="CategoryList">
+					<i class="fa fa-dollar"></i>
+					 	Categories
+				</a>
+			</li>
 			
 			
-			
+			<!-- 
 							
 		 <li class="nav-item nav-dropdown">
                   <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> Categories</a>
@@ -89,15 +95,22 @@
 							<i class="fa fa-dollar"></i>
 							 	Add Category
 						</a>
-					   </li>
+					   </li> 
                   </ul>
               </li>
+              -->
               
               
+              <li class="nav-item">
+				<a class="nav-link" href="ProductList">
+					<i class="fa fa-dollar"></i>
+					 	Products
+				</a>
+			   </li>
+            
               
               
-              
-              
+     <!--          
                <li class="nav-item nav-dropdown">
                   <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> Products</a>
                   <ul class="nav-dropdown-items">
@@ -118,7 +131,7 @@
                   </ul>
               </li>
               
-              
+               -->
 		
               
               
