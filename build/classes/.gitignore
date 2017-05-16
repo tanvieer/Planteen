@@ -1,5 +1,3 @@
 /app
-/controller
 /model
-/entity
-/ajaxServlets
+/controller

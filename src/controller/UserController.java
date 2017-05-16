@@ -1,5 +1,6 @@
 package controller;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import entity.User;
@@ -54,9 +55,13 @@ public class UserController implements Controller<User> {
 		return repository.getByEmail(mail);
 	}
 	
-	public boolean validateUserReg(){
-		return false;
+	//ADDED BY NABILA HERE
+	public ArrayList<User> getAllByRegistrationDate(Date date) { // search by email  , interface a nai
+		return repository.getAllByRegistrationDate(date);
 	}
+	
+	
+	//ADDED BY NABILA ENDS
 
 }
 

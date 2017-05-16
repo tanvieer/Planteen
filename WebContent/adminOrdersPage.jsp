@@ -19,47 +19,59 @@
 										<thead>
 											<tr>
 												<th>SL</th>
-												<th>Order By</th>
-												<th>Delivery Address</th>
-												<th>Phone Number</th>
-												<th>Order Date</th>
-												<th>Order Status</th>
-												<th>Total Order</th>
+												<th>Invoice Details</th>
+												<th>User Details</th>
+												<th>Total Price</th>
+												<th colspan=2>Action</th>
+												
+												
+												
 											</tr>
 										</thead>
 										
-										<tbody>
-										<c:forEach varStatus="loop" begin="1" end="100" step="1">
+										<tbody><%-- 
+										<c:forEach varStatus="loop" begin="1" end="100" step="1"> --%>
+										<c:forEach items="${invoices}" var="invoice" varStatus="loop">
 											<tr class="odd gradeU">
-												<td>User ${loop.index}</td>
-												<td>test${loop.index}@gmail.com</td>
 												<td>
-												Address: <br>
-												Tanvir Islam<br>
-												House 12, road 12, Nikunja 2, khilkhet, Dhaka-1229 Khilkhet (Dhaka City) Dhaka Khilkhet (Dhaka City) Dhaka
-											<br>+8801911066421 +8801774275301
- 												</td>
-												<td class="center">01911066${loop.index}0</td>
-												<td class="center">Male</td>
-												<td class="center">10/02/1${loop.index}</td>
-												<td class="center">${loop.index}</td>
+													${loop.index+1 }
+												</td>
+												<td>
+												
+													<button type="button" class="btn btn-primary"
+														data-toggle="modal" data-target="#invoiceModal" 
+														onClick = "showInvoiceProducts('${invoice.invoicePrimaryId}')">
+														Items</button> 
+														
+														<!-- <button type="button" class="btn btn-primary"
+														data-toggle="modal" data-target="#invoiceModal" 
+														onClick = "showInvoiceProducts('3t1493755173824r1578')">
+														Invoice Items</button>  -->
+
+												</td>
+												
+												<td>  
+													<button type="button" class="btn btn-primary"
+														data-toggle="modal" data-target="#userModal" 
+														onClick = "showUserInfo('${invoice.userId}')">
+														User Details</button>
+													<!-- <button type="button" class="btn btn-primary"
+														data-toggle="modal" data-target="#userModal" 
+														onClick = "showUserInfo('3')">
+														User Details</button> -->
+												</td>
+												
+												
+												<td>${invoice.totalSellingPrice }</td>
+												<td colspan=2>
+													<a class="btn btn-success" href="AdminConfirmOrderButton?invoicePrimaryId=${invoice.invoicePrimaryId}&status=delivered">Confirm</a>
+													<a class="btn btn-danger" href="AdminConfirmOrderButton?invoicePrimaryId=${invoice.invoicePrimaryId}&status=cancelled">Cancel</a>
+												</td>
+												
+												
+												
 											</tr>
 											
-											<tr class="even gradeA">
-												<td>User ${loop.index}</td>
-												<td>snoozy${loop.index}@gmail.com</td>
-												<td>
-												Address: <br>
-												Tanvir Islam<br>
-												House 12, road 12, Nikunja 2, khilkhet, Dhaka-1229 Khilkhet (Dhaka City) Dhaka Khilkhet (Dhaka City) Dhaka
-											<br>+8801911066421 +8801774275301
-												
-												</td>
-												<td class="center">0191166${loop.index}20</td>
-												<td class="center">Female</td>
-												<td class="center">10/02/${loop.index}</td>
-												<td class="center">${loop.index}</td>
-											</tr>
 											
 										</c:forEach>
 										</tbody>
@@ -78,6 +90,82 @@
 
 
 
+
+<div class="modal fade" id="invoiceModal"
+					tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog modal-primary" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title">${i}</h4>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">X</span>
+								</button>
+							</div>
+							<!-- /. MODAL user details start -->
+							<div class="modal-body">
+								<div class="col-sm-16">
+									<div class="card">
+										<div class="card-block" id="testModalTable1">
+											
+											
+											
+											<!-- AJAX DIYE ADD HOBE MODAL BODY -->
+											
+											
+											
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+				
+				
+	
+	
+	<div class="modal fade" id="userModal"
+					tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog modal-primary" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title">${i}</h4>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">X</span>
+								</button>
+							</div>
+							<!-- /. MODAL user details start -->
+							<div class="modal-body">
+								<div class="col-sm-16">
+									<div class="card">
+										<div class="card-block" id="userDetailsDiv">
+											
+											
+											
+											<!-- AJAX DIYE ADD HOBE MODAL BODY -->
+											
+											
+											
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>			
+				
+				
+
 			<script src="assets/js/jquery-1.10.2.js"></script>
 
 
@@ -90,6 +178,55 @@
 					$('#dataTables-example').dataTable();
 				});
 			</script>
+			
+			
+			
+			
+<script>
+	function showInvoiceProducts(id){
+
+		var xmlhttp;
+		var url = "getInvoicesProduct?invoicePrimaryId=" + id;
+		if (window.XMLHttpRequest) {
+			xmlhttp = new XMLHttpRequest();
+		} else {
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				
+	/*			alert(xmlhttp.responseText);*/
+				document.getElementById("testModalTable1").innerHTML = xmlhttp.responseText;
+					
+			}
+		};
+		xmlhttp.open("GET", url, false);
+		xmlhttp.send();
+	}
+	
+	
+	function showUserInfo(id){
+
+		var xmlhttp;
+		var url = "GetUserDetailsByUserId?userId=" + id;
+		if (window.XMLHttpRequest) {
+			xmlhttp = new XMLHttpRequest();
+		} else {
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				
+	/*			alert(xmlhttp.responseText);*/
+				document.getElementById("userDetailsDiv").innerHTML = xmlhttp.responseText;
+					
+			}
+		};
+		xmlhttp.open("GET", url, false);
+		xmlhttp.send();
+	}
+
+</script>
 
 
 </main>

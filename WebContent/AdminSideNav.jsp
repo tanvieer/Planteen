@@ -4,14 +4,14 @@
 		<ul class="nav">
 		
 			<li class="nav-item">
-				<a class="nav-link" href="adminDashboard.jsp">
+				<a class="nav-link" href="AdminDashboard">
 					<i class="icon-speedometer"></i>
 					 	Dashboard 
 				</a>
 			</li>
 			
 			<li class="nav-item">
-				<a class="nav-link" href="adminUsersPage.jsp">
+				<a class="nav-link" href="AdminUsersPageServlet">
 					<i class="icon-people"></i>
 					 	Users Page 
 				</a>
@@ -39,7 +39,7 @@
 					 
 					 
 					 <li class="nav-item">
-						<a class="nav-link" href="adminUserReport.jsp">
+						<a class="nav-link" href="AdminUsersPage">
 							<i class="fa fa-user"></i>
 							 	User Report
 						</a>
@@ -51,9 +51,9 @@
 			
 			
 			<li class="nav-item">
-				<a class="nav-link" href="adminOrdersPage.jsp">
+				<a class="nav-link" href="AdminPendingOrders">
 					<i class="icon-basket-loaded"></i>
-					 	Order Page
+					 	Pending Orders
 				</a>
 			</li>
 			
@@ -63,9 +63,9 @@
 			
 			
 			<li class="nav-item">
-				<a class="nav-link" href="adminOrdersPage.jsp">
+				<a class="nav-link" href="AdminAllOrders">
 					<i class="fa fa-motorcycle"></i>
-					 	Delivery Page
+					 	All Orders
 				</a>
 			</li>
 			

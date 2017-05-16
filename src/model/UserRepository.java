@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import DataAccessLayer.MySqlDataAccess;
@@ -318,6 +319,43 @@ public class UserRepository implements Repository<User>{
 		try { if (resultSet != null) resultSet.close(); } catch (Exception e) {System.out.println("Exception at UserRepository.java, "+tracker+" at finally block RESULTSET");};
 	    try { if (stmt != null) stmt.close(); } catch (Exception e) {System.out.println("Exception at UserRepository.java, "+tracker+" at finally block STMT");};
 	    try { if (connection != null) connection.close(); } catch (Exception e) {System.out.println("Exception at UserRepository.java, "+tracker+" at finally block CONNECTION");};
+	}
+
+	public ArrayList<User> getAllByRegistrationDate(Date date) {
+		// TODO Auto-generated method stub
+		
+		ArrayList<User> userList = new ArrayList<User>();
+		try {
+
+			String query = "SELECT * FROM " + tableName;
+
+			da = new MySqlDataAccess();
+
+			resultSet = da.getData(query);
+
+			while (resultSet.next()) {
+
+				int userId = resultSet.getInt("userId");
+				String type = resultSet.getString("type");
+				String name = resultSet.getString("name");
+				String email = resultSet.getString("email");
+				String password = resultSet.getString("password");
+				String address = resultSet.getString("address");
+				String phone = resultSet.getString("phone");
+				String gender = resultSet.getString("gender");
+				String status = resultSet.getString("status");
+				
+				User users = new User(userId,type, name, email, password,address, phone,gender,status);
+				userList.add(users);
+			}
+		} catch (Exception e) {
+			System.out.println("exception found at UserRepository.java while get all");
+			return null;
+		}
+		finally {
+			closeConnection("getAllByRegistrationDate()");
+		}
+		return userList;
 	}
 
 }
